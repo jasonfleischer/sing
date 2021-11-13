@@ -48,17 +48,28 @@ const fretboardView = fretboardKit({
 const freelizer = require("freelizer");
 //import { freelizer } from 'freelizer'
 
+const callbackExample = data => {
+
+	$("output").innerHTML = "test" + data;
+}
+
 ;(async function () {
     try {
       const { start, subscribe } = await freelizer()
       start()
-      subscribe(console.log)
+      //subscribe(console.log)
+
+      subscribe(callbackExample)
     } catch (error) {
       // Error handling goes here
     }
 })()
 
-$("output").innerHTML = "test";
+
+
+
+
+
 
 // add a midi listener
 /*new musicKit.MidiListener(
