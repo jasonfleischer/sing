@@ -81,11 +81,17 @@ const callbackExample = data => {
 		var c = Math.abs(parseInt(cents));
 		if (c <= 10) {
 			let number = parseInt(255 * ((0-c)/10));
-			let redValueHexStr = number.toString(16);
+			var redValueHexStr = number.toString(16);
+			if(redValueHexStr < 10) {
+				redValueHexStr = "0" + redValueHexStr;
+			}
 			return "#" + redValueHexStr+ "ff00";
 		} else {
 			let number = parseInt(255 * ((90-(c-10))/90));
 			let greenValueHexStr = number.toString(16);
+			if(greenValueHexStr < 10) {
+				greenValueHexStr = "0" + greenValueHexStr;
+			}
 			return "#ff" + greenValueHexStr+ "00";
 		}
 	}
