@@ -50,10 +50,14 @@ const freelizer = require("freelizer");
 
 const callbackExample = data => {
 
+
+	if (data.frequency !== undefined) {
 	$("output").innerHTML = " : " + data.frequency + " " + data.note +
 		data.noteFrequency + " " + data.octave + " " + data.deviation;
 
 		console.log(data)
+	}
+
 }
 
 ;(async function () {
