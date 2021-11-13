@@ -86,7 +86,7 @@ const callbackExample = data => {
 				redValueHexStr = "0" + redValueHexStr;
 			}
 			return "#" + redValueHexStr+ "ff00";
-		} else if (<= 25) {
+		} else if (c <= 25) {
 			return "red"
 		} else { // yellow to red (10 to 25)
 			let number = parseInt(255 * ((15-(c-10))/15));
