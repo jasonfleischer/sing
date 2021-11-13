@@ -96,8 +96,8 @@ const callbackExample = data => {
 
 		var cents = calculateCents(data.frequency, data.noteFrequency)
 
-		$("output").innerHTML = " : " + data.note + data.octave + " " + cents + "c " +
-			data.noteFrequency + " " + data.frequency + " " + data.deviation;
+		$("output").innerHTML = " : " + data.note + data.octave + " " + cents + "c " //+
+			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
 
 
 		var note = findNote(data.note, data.octave);
