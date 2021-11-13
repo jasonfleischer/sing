@@ -52,8 +52,8 @@ const callbackExample = data => {
 
 
 	if (data.frequency !== undefined) {
-	$("output").innerHTML = " : " + data.frequency + " " + data.note +
-		data.noteFrequency + " " + data.octave + " " + data.deviation;
+	$("output").innerHTML = " : " + data.note + data.octave + " " +
+		data.noteFrequency + " " + data.frequency + " " + data.deviation;
 
 		console.log(data)
 	}
