@@ -78,7 +78,7 @@ const callbackExample = data => {
 
 	function getCentsColor(cents) {
 
-		var c = Math.abs(cents);
+		var c = parseInt(Math.abs(cents));
 
 		if (c <= 10) {
 			let number = 255 * (c/10);
