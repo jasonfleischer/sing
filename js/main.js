@@ -58,6 +58,8 @@ const freelizer = require("freelizer");
     }
 })()
 
+$("output").innerHTML = "test";
+
 // add a midi listener
 /*new musicKit.MidiListener(
 	function (midiValue, channel, velocity) { // note on
