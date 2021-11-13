@@ -80,7 +80,6 @@ const callbackExample = data => {
 
 		var c = Math.abs(cents);
 
-		console.log(c)
 
 		if (c <= 10) {
 			let number = parseInt(255 * (c/10));
@@ -114,7 +113,7 @@ const callbackExample = data => {
 			$("cents").style.backgroundColor = getCentsColor(cents);
 
 
-console.log(getCentsColor(cents))
+			console.log(getCentsColor(cents))
 			//fretboardView.drawNote(note);
 		}
 		//console.log(data)
