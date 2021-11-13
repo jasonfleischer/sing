@@ -86,16 +86,16 @@ const callbackExample = data => {
 				redValueHexStr = "0" + redValueHexStr;
 			}
 			return "#" + redValueHexStr+ "ff00";
-		} else if (c <= 25) {
-			return "red"
-		} else { // yellow to red (10 to 25)
+		} else if (c > 10 && c <= 25) { // yellow to red (10 to 25)
 			let number = parseInt(255 * ((15-(c-10))/15));
 			var greenValueHexStr = number.toString(16);
 			if(greenValueHexStr < 10) {
 				greenValueHexStr = "0" + greenValueHexStr;
 			}
 			return "#ff" + greenValueHexStr+ "00";
-		}
+		} else { //c <= 25
+			return "red"
+		} 
 	}
 
 
