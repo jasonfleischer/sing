@@ -58,6 +58,9 @@ const callbackExample = data => {
 
 			let note = musicKit.all_notes[i];
 
+
+			console.log(note.octave == octave)
+			console.log(note.note_name.type.startsWith(noteName))
 			if(note.octave == octave && note.note_name.type.startsWith(noteName)){
 				return note
 			}
