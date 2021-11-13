@@ -78,7 +78,7 @@ const callbackExample = data => {
 
 	function getCentsColor(cents) {
 
-		var c = Math.abs(parseInt(cents));
+		var c = Math.abs(cents);
 
 		console.log(c)
 
