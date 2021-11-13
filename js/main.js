@@ -111,6 +111,8 @@ const callbackExample = data => {
 			$("cents").innerHTML = cents;
 			$("cents").style.backgroundColor = getCentsColor(cents);
 
+
+console.log(getCentsColor(cents))
 			//fretboardView.drawNote(note);
 		}
 		//console.log(data)
