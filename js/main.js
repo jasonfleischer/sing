@@ -69,9 +69,19 @@ const callbackExample = data => {
 		return undefined
 	}
 
+	function calculateCents(f1, f2){
+		if (f1 === undefined || f2 === undefined) {
+			return undefined;
+		}
+		return 1200 * Math.log2(f1/f2);
+	}
+
 
 	if (data.frequency !== undefined) {
-		$("output").innerHTML = " : " + data.note + data.octave + " " +
+
+		var cents = calculateCents(data.noteFrequency, data.frequency)
+
+		$("output").innerHTML = " : " + data.note + data.octave + " " + cents + "c " +
 			data.noteFrequency + " " + data.frequency + " " + data.deviation;
 
 
