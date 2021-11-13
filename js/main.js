@@ -79,14 +79,9 @@ const callbackExample = data => {
 	function getCentsColor(cents) {
 
 		var c = Math.abs(parseInt(cents));
-		if (c <= 11) { // green to yellow
-			let number = parseInt(255 * ((0-c)/10));
-			var redValueHexStr = number.toString(16);
-			if(redValueHexStr < 10) {
-				redValueHexStr = "0" + redValueHexStr;
-			}
-			return "#" + redValueHexStr+ "ff00";
-		} else if (c > 11 && c <= 25) { // yellow to red (11 to 25)
+		if (c <= 10) {
+			return "green";
+		} else if (c > 10 && c <= 25) { // yellow to red (11 to 25)
 			let number = parseInt(255 * ((14-(c-11))/14));
 			var greenValueHexStr = number.toString(16);
 			if(greenValueHexStr < 10) {
