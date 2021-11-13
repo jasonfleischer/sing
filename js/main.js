@@ -76,7 +76,7 @@ const callbackExample = data => {
 		return 1200 * Math.log2(f1/f2);
 	}
 
-	function getCentColor(cents) {
+	function getCentsColor(cents) {
 
 		var c = Math.abs(cents);
 
