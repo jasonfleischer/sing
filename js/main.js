@@ -79,16 +79,18 @@ const callbackExample = data => {
 	function getCentsColor(cents) {
 
 		var c = Math.abs(parseInt(cents));
-		if (c <= 10) {
+		if (c <= 10) { // green to yellow
 			let number = parseInt(255 * ((0-c)/10));
 			var redValueHexStr = number.toString(16);
 			if(redValueHexStr < 10) {
 				redValueHexStr = "0" + redValueHexStr;
 			}
 			return "#" + redValueHexStr+ "ff00";
-		} else {
-			let number = parseInt(255 * ((90-(c-10))/90));
-			let greenValueHexStr = number.toString(16);
+		} else if (<= 25) {
+			return "red"
+		} else { // yellow to red (10 to 25)
+			let number = parseInt(255 * ((15-(c-10))/15));
+			var greenValueHexStr = number.toString(16);
 			if(greenValueHexStr < 10) {
 				greenValueHexStr = "0" + greenValueHexStr;
 			}
