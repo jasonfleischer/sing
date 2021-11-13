@@ -76,13 +76,13 @@ const callbackExample = data => {
 
 
 		var note = findNote(data.note, data.octave);
-		console.log(note)
+		//console.log(note)
 		if (note !== undefined) {
 			pianoView.clear()
 			pianoView.drawNoteWithColor(note, "red");
 			//fretboardView.drawNote(note);
 		}
-		console.log(data)
+		//console.log(data)
 	} else {
 		pianoView.clear()
 	}
