@@ -79,15 +79,12 @@ const callbackExample = data => {
 	function getCentsColor(cents) {
 
 		var c = Math.abs(cents);
-
-
 		if (c <= 10) {
 			let number = parseInt(255 * (c/10));
 			let greenValueHexStr = number.toString(16);
 			return "#ff" + greenValueHexStr+ "00"
 		} else {
 			let number = parseInt(255 * ((c-10)/90));
-
 			let redValueHexStr = number.toString(16);
 			return "#" + redValueHexStr+ "ff00"
 			return "red"
@@ -106,11 +103,14 @@ const callbackExample = data => {
 		var note = findNote(data.note, data.octave);
 		//console.log(note)
 		if (note !== undefined) {
+
+			let color = getCentsColor(cents);
+
 			pianoView.clear()
-			pianoView.drawNoteWithColor(note, "red");
+			pianoView.drawNoteWithColor(note, color);
 
 			$("cents").innerHTML = parseInt(cents);
-			$("cents").style.backgroundColor = getCentsColor(cents);
+			$("cents").style.backgroundColor = color;
 
 
 			console.log(getCentsColor(cents))
