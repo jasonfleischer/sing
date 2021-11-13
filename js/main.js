@@ -51,12 +51,37 @@ const freelizer = require("freelizer");
 const callbackExample = data => {
 
 
-	if (data.frequency !== undefined) {
-	$("output").innerHTML = " : " + data.note + data.octave + " " +
-		data.noteFrequency + " " + data.frequency + " " + data.deviation;
+	function findNote(noteName, octave){
+		let notes = musicKit.all_notes;
+		var i;
+		for (i = 0; i < notes.length; i++) {
 
+			let note = musicKit.all_notes[i];
+
+			if(note.octave == octave && note.note_name.type.startsWith(noteName)){
+				return note
+			}
+			return undefined
+		}
+	}
+
+
+	if (data.frequency !== undefined) {
+		$("output").innerHTML = " : " + data.note + data.octave + " " +
+			data.noteFrequency + " " + data.frequency + " " + data.deviation;
+
+
+		var note = findNote(data.note, data.octave);
+		console.log(note)
+		if (note !== undefined) {
+			pianoView.drawNoteWithColor(note, "red");
+			fretboardView.drawNote(note);
+		}
 		console.log(data)
 	}
+
+
+	
 
 }
 
