@@ -50,7 +50,8 @@ const freelizer = require("freelizer");
 
 const callbackExample = data => {
 
-	$("output").innerHTML = "test" + data;
+	$("output").innerHTML = " : " + data.frequency + " " + data.note +
+		data.noteFrequency + " " + data.octave + " " + data.deviation;
 }
 
 ;(async function () {
