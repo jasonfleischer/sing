@@ -76,10 +76,26 @@ const callbackExample = data => {
 		return 1200 * Math.log2(f1/f2);
 	}
 
+	function getCentColor(cents) {
+
+		var c = Math.abs(cents);
+
+		if (c <= 10) {
+			let number = 255 * (c/10);
+			let redValueHexStr = number.toString(16);
+			return "#" + redValueHexStr+ "ff00"
+		} else {
+
+			return "red"
+
+
+		}
+	}
+
 
 	if (data.frequency !== undefined) {
 
-		var cents = calculateCents(data.noteFrequency, data.frequency)
+		var cents = calculateCents(data.frequency, data.noteFrequency)
 
 		$("output").innerHTML = " : " + data.note + data.octave + " " + cents + "c " +
 			data.noteFrequency + " " + data.frequency + " " + data.deviation;
@@ -90,6 +106,10 @@ const callbackExample = data => {
 		if (note !== undefined) {
 			pianoView.clear()
 			pianoView.drawNoteWithColor(note, "red");
+
+			$("cents").innerHTML = cents;
+			$("cents").style.backgroundColor = getCentsColor(cents);
+
 			//fretboardView.drawNote(note);
 		}
 		//console.log(data)
