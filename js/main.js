@@ -80,6 +80,8 @@ const callbackExample = data => {
 
 		var c = Math.abs(parseInt(cents));
 
+		console.log(c)
+
 		if (c <= 10) {
 			let number = 255 * (c/10);
 			let greenValueHexStr = number.toString(16);
