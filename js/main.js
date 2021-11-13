@@ -43,6 +43,21 @@ const fretboardView = fretboardKit({
 	darkMode: true
 });
 
+
+
+
+import { freelizer } from 'freelizer'
+
+;(async function () {
+    try {
+      const { start, subscribe } = await freelizer()
+      start()
+      subscribe(console.log)
+    } catch (error) {
+      // Error handling goes here
+    }
+})()
+
 // add a midi listener
 /*new musicKit.MidiListener(
 	function (midiValue, channel, velocity) { // note on
