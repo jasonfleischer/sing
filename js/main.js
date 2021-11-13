@@ -110,7 +110,7 @@ const callbackExample = data => {
 			pianoView.clear()
 			pianoView.drawNoteWithColor(note, "red");
 
-			$("cents").innerHTML = cents;
+			$("cents").innerHTML = parseInt(cents);
 			$("cents").style.backgroundColor = getCentsColor(cents);
 
 
