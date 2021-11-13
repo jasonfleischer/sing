@@ -82,13 +82,14 @@ const callbackExample = data => {
 
 		if (c <= 10) {
 			let number = 255 * (c/10);
+			let greenValueHexStr = number.toString(16);
+			return "#ff" + greenValueHexStr+ "00"
+		} else {
+			let number = 255 * ((c-10)/90)
+
 			let redValueHexStr = number.toString(16);
 			return "#" + redValueHexStr+ "ff00"
-		} else {
-
 			return "red"
-
-
 		}
 	}
 
