@@ -52,6 +52,8 @@ const callbackExample = data => {
 
 	$("output").innerHTML = " : " + data.frequency + " " + data.note +
 		data.noteFrequency + " " + data.octave + " " + data.deviation;
+
+		console.log(data)
 }
 
 ;(async function () {
