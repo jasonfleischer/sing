@@ -96,7 +96,7 @@ init = function() {
 	//model.note_range = musicKit.guitar_range;
 	setupControls();
 	windowResizedEnd();
-	updateUI();
+	//updateUI();
 
 }
 
