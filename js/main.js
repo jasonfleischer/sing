@@ -79,9 +79,11 @@ const callbackExample = data => {
 		console.log(note)
 		if (note !== undefined) {
 			pianoView.drawNoteWithColor(note, "red");
-			fretboardView.drawNote(note);
+			//fretboardView.drawNote(note);
 		}
 		console.log(data)
+	} else {
+		pianoView.clear()
 	}
 
 
