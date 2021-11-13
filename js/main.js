@@ -45,8 +45,8 @@ const fretboardView = fretboardKit({
 
 
 
-
-import { freelizer } from 'freelizer'
+const freelizer = require("freelizer");
+//import { freelizer } from 'freelizer'
 
 ;(async function () {
     try {
