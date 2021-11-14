@@ -266,6 +266,14 @@ function setupControls(){
 			updateUI();
 		});
 	}
+
+	setupClearButton()
+	function setupClearButton(){
+		$("clear_button").addEventListener("click", function(event){
+			pianoView.clear();
+			fretboardView.clear();
+		});
+	}
 }
 
 
