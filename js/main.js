@@ -103,27 +103,23 @@ const callbackExample = data => {
 
 
 		var note = findNote(data.note, data.octave);
-		//console.log(note)
 		if (note !== undefined) {
 
 			let color = getCentsColor(cents);
 
-			pianoView.clearHover();
-			pianoView.drawHoverNote(note, color);
-		
-
 			$("cents").innerHTML = parseInt(cents);
 			$("cents").style.backgroundColor = color;
 
-
-			console.log(getCentsColor(cents))
-			
+			pianoView.clearHover();
+			pianoView.drawHoverNote(note, color);
+		
+				
 			fretboardView.clearHover();
 			fretboardView.drawHoverNote(note, color);
 		}
-		//console.log(data)
 	} else {
-		pianoView.clearHover()
+		pianoView.clearHover();
+		fretboardView.clearHover();
 	}
 
 
