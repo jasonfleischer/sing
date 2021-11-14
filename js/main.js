@@ -108,6 +108,7 @@ const callbackExample = data => {
 
 			let color = getCentsColor(cents);
 
+			pianoView.clearHover()
 			pianoView.drawHoverNote(note, color);
 			//pianoView.drawNoteWithColor(note, color);
 
