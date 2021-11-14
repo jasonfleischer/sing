@@ -38,7 +38,7 @@ const fretboardView = fretboardKit({
 		model.selected_root_note = midi_value;
 		updateUI();*/
 	},
-	hover: false,
+	hover: true,
 	showLabels: false,
 	darkMode: true
 });
@@ -108,16 +108,18 @@ const callbackExample = data => {
 
 			let color = getCentsColor(cents);
 
-			pianoView.clearHover()
+			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
-			//pianoView.drawNoteWithColor(note, color);
+		
 
 			$("cents").innerHTML = parseInt(cents);
 			$("cents").style.backgroundColor = color;
 
 
 			console.log(getCentsColor(cents))
-			//fretboardView.drawNote(note);
+			
+			fretboardView.clearHover();
+			fretboardView.drawHoverNote(note, color);
 		}
 		//console.log(data)
 	} else {
