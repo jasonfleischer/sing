@@ -111,6 +111,8 @@ const callbackExample = data => {
 			$("cents").innerHTML = parseInt(cents);
 			$("cents").style.backgroundColor = color;
 
+			$("cents2").innerHTML = parseInt(cents) % 5;
+
 			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
 		
