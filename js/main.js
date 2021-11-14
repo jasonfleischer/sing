@@ -106,6 +106,7 @@ const callbackExample = data => {
 		if (note !== undefined) {
 
 			let color = getCentsColor(cents);
+			let midiValue = note.midi_value
 
 			$("cents").innerHTML = parseInt(cents);
 			$("cents").style.backgroundColor = color;
@@ -113,9 +114,12 @@ const callbackExample = data => {
 			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
 		
-				
-			fretboardView.clearHover();
-			fretboardView.drawHoverNote(note, color);
+
+			if(midiValue >= musicKit.guitar_range.min &&
+				midiValue <= musicKit.guitar_range.max) {
+				fretboardView.clearHover();
+				fretboardView.drawHoverNote(note, color);
+			}
 		}
 	} else {
 		pianoView.clearHover();
