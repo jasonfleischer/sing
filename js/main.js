@@ -108,8 +108,8 @@ const callbackExample = data => {
 
 			let color = getCentsColor(cents);
 
-			pianoView.clear()
-			pianoView.drawNoteWithColor(note, color);
+			pianoView.drawHoverNote(note, color);
+			//pianoView.drawNoteWithColor(note, color);
 
 			$("cents").innerHTML = parseInt(cents);
 			$("cents").style.backgroundColor = color;
@@ -120,7 +120,7 @@ const callbackExample = data => {
 		}
 		//console.log(data)
 	} else {
-		pianoView.clear()
+		pianoView.clearHover()
 	}
 
 
