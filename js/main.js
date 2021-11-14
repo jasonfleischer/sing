@@ -27,7 +27,7 @@ const pianoView = pianoKit({
 		model.selected_root_note = midi_value;
 		updateUI();*/
 	},
-	hover: false
+	hover: true
 });
 
 const fretboardView = fretboardKit({
