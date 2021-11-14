@@ -114,10 +114,9 @@ const callbackExample = data => {
 			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
 		
-
+			fretboardView.clearHover();
 			if(midiValue >= musicKit.guitar_range.min &&
 				midiValue <= musicKit.guitar_range.max) {
-				fretboardView.clearHover();
 				fretboardView.drawHoverNote(note, color);
 			}
 		}
