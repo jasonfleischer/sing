@@ -74,12 +74,12 @@ class TunerView {
 
 		let spacing = this.WIDTH * 0.10;
 
-		let percentage = 0;
+		let percentage = 1.0;
 
 //108 -21
 		let total_length = spacing * (this.max_midi_value - this.min_midi_value);
 
-		var offset = (this.WIDTH * 0.5) + (percentage * total_length);
+		var offset = (this.WIDTH * 0.5) + (-1 * (percentage * total_length));
 		
 
 		var xPosition = offset;
