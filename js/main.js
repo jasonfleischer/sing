@@ -190,6 +190,8 @@ init = function() {
 	windowResizedEnd();
 	//updateUI();
 
+
+	var tunerView = new TunerView();
 }
 
 function setupControls(){
