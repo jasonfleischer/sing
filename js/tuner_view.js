@@ -10,7 +10,7 @@ class TunerView {
 		this.max_midi_value = range.max;
 	
 		this.WIDTH = 1000;
-		this.HEIGHT = 100;
+		this.HEIGHT = 60;
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.backgroundColor = this.backgroundColor;
@@ -45,7 +45,7 @@ class TunerView {
 	resize(newWidth){
 		this.width = newWidth;
 		var newWidth = Math.min(newWidth, 1000);
-		let newHeight = newWidth * (100/1000);
+		let newHeight = newWidth * (60/1000);
 
 		this.root_view.style.height = newHeight + "px";
 		this.canvas.style.height = newHeight + "px";
