@@ -76,6 +76,7 @@ class TunerView {
 
 		let percentage = 1.0;
 
+//108 -21
 		let total_length = spacing * (this.max_midi_value - this.min_midi_value);
 
 		var offset = (this.WIDTH * 0.5) + (percentage * total_length);
@@ -87,7 +88,7 @@ class TunerView {
 		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
 
 			if(xPosition < 0 || xPosition > this.WIDTH){
-				continue;
+				//continue;
 			}
 
 			var note = musicKit.all_notes[i];
