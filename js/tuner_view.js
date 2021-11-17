@@ -70,7 +70,7 @@ class TunerView {
 
 
 
-		var offset = 0;
+		var offset = this.WIDTH * 0.5;
 		let spacing = this.WIDTH * 0.10;
 
 		var xPosition = offset;
