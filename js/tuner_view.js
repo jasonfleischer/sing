@@ -82,7 +82,7 @@ class TunerView {
 			ctx.fillStyle = '#00f';
 	    	ctx.font = (this.HEIGHT * 0.5) + 'px san-serif';
 	    	ctx.textAlign = 'center';
-	    	ctx.fillText(note.note_name.type, xPosition, this.HEIGHT*0.5);
+	    	ctx.fillText(note.note_name.type.substring(0,2), xPosition, this.HEIGHT*0.5);
 	    	xPosition = xPosition + spacing
 		}
 
