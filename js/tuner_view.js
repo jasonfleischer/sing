@@ -70,8 +70,16 @@ class TunerView {
 
 
 
-		var offset = this.WIDTH * 0.5 + 0;
+		var frequency = 440;
+
 		let spacing = this.WIDTH * 0.10;
+
+		let percentage = 1.0;
+
+		let total_length = spacing * (this.max_midi_value - this.min_midi_value);
+
+		var offset = this.WIDTH * 0.5 + (percentage * total_length);
+		
 
 		var xPosition = offset;
 
