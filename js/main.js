@@ -308,7 +308,7 @@ function windowResizedEnd(){
 	pianoView.resize(Math.min(contentWidth-pianoPaddingLeftRight, 1000));
 
 	let tunerPaddingLeftRight = 30;
-	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000))
+	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 }
 
 function updateUI() {

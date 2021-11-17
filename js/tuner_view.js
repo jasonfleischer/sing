@@ -42,7 +42,6 @@ class TunerView {
 		var newHeight = newWidth * (230/1000);
 
 		this.root_view.style.height = newHeight + "px";
-		this.canvas_background.style.height = newHeight + "px";
 		this.canvas.style.height = newHeight + "px";
 
 		this.root_view .style.width = newWidth + "px";
