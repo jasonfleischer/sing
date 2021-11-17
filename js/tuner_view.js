@@ -11,7 +11,7 @@ class TunerView {
 	
 		this.WIDTH = 1000;
 		this.width = width;
-		this.HEIGHT = 230;
+		this.HEIGHT = 100;
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.backgroundColor = this.backgroundColor;
@@ -20,7 +20,7 @@ class TunerView {
 		this.root_view.style.height = this.HEIGHT  + "px";
 		this.root_view.width = this.WIDTH;
 		this.root_view.height = this.HEIGHT
-		
+
 		this.canvas = this.buildCanvas("tuner_canvas_"+this.id);
 	
 		this.draw();
@@ -46,7 +46,7 @@ class TunerView {
 	resize(newWidth){
 		this.width = newWidth;
 		var newWidth = Math.min(newWidth, 1000);
-		var newHeight = newWidth * (230/1000);
+		var newHeight = newWidth * (100/1000);
 
 		this.root_view.style.height = newHeight + "px";
 		this.canvas.style.height = newHeight + "px";
