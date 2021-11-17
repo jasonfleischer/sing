@@ -80,7 +80,7 @@ class TunerView {
 			var note = musicKit.all_notes[i];
 		
 			ctx.fillStyle = '#00f';
-	    	ctx.font = (this.HEIGHT) + 'px san-serif';
+	    	ctx.font = (this.HEIGHT * 0.5) + 'px san-serif';
 	    	ctx.textAlign = 'center';
 	    	ctx.fillText(note.note_name.type.substring(0,2), xPosition, this.HEIGHT*0.5);
 	    	xPosition = xPosition + spacing
