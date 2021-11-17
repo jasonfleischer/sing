@@ -70,7 +70,7 @@ class TunerView {
 
 
 
-		var offset = this.WIDTH * 0.5;
+		var offset = this.WIDTH * 0.5 + 0;
 		let spacing = this.WIDTH * 0.10;
 
 		var xPosition = offset;
@@ -90,6 +90,16 @@ class TunerView {
 	    	ctx.fillText(note.note_name.type.substring(0,2), xPosition, this.HEIGHT*0.5);
 	    	xPosition = xPosition + spacing
 		}
+
+
+		// 
+
+		ctx.beginPath();
+		ctx.strokeStyle = color;
+		ctx.lineWidth = 0;
+		ctx.moveTo(this.WIDTH * 0.5, 0);
+		ctx.lineTo(this.WIDTH * 0.5, this.HEIGHT);
+		ctx.stroke();
 
 
 
