@@ -71,7 +71,7 @@ class TunerView {
 
 
 		var offset = 0;
-		let spacing = this.WIDTH * 0.025;
+		let spacing = this.WIDTH * 0.035;
 
 		var xPosition = offset;
 
@@ -82,7 +82,7 @@ class TunerView {
 			ctx.fillStyle = '#00f';
 	    	ctx.font = (this.HEIGHT * 0.5) + 'px san-serif';
 	    	ctx.textAlign = 'center';
-	    	ctx.fillText(note.note_name.type, xPosition, 10, this.HEIGHT*0.2);
+	    	ctx.fillText(note.note_name.type, xPosition, 10, this.HEIGHT*0.4);
 	    	xPosition = xPosition + spacing
 		}
 
