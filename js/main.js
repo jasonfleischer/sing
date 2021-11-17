@@ -19,6 +19,8 @@ let note_name_to_midi_value_map = {
 	"B": 71
 };
 
+const tunerView = new TunerView("tuner");
+
 const pianoView = pianoKit({
 	id: 'piano',
 	onClick: function(note, isOn) {
@@ -191,7 +193,7 @@ init = function() {
 	//updateUI();
 
 
-	var tunerView = new TunerView("tuner");
+
 }
 
 function setupControls(){
@@ -304,6 +306,9 @@ function windowResizedEnd(){
 	fretboardView.resize(Math.min(contentWidth-fretboardPaddingLeftRight, 1000));
 	let pianoPaddingLeftRight = 30;
 	pianoView.resize(Math.min(contentWidth-pianoPaddingLeftRight, 1000));
+
+	let tunerPaddingLeftRight = 30;
+	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000))
 }
 
 function updateUI() {
