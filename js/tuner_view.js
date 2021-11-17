@@ -77,6 +77,11 @@ class TunerView {
 
 		var i;
 		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
+
+			if(xPosition > this.WIDTH || xPosition < this.WIDTH){
+				continue;
+			}
+
 			var note = musicKit.all_notes[i];
 		
 			ctx.fillStyle = '#00f';
