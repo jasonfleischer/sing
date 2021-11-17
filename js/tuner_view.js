@@ -14,6 +14,13 @@ class TunerView {
 		this.HEIGHT = 230;
 
 		this.root_view = document.getElementById(this.id);
+		this.root_view.style.backgroundColor = this.backgroundColor;
+		this.root_view.style.position = "relative"
+		this.root_view.style.width = this.WIDTH  + "px";
+		this.root_view.style.height = this.HEIGHT  + "px";
+		this.root_view.width = this.WIDTH;
+		this.root_view.height = this.HEIGHT
+		
 		this.canvas = this.buildCanvas("tuner_canvas_"+this.id);
 	
 		this.draw();
