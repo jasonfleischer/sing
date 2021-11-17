@@ -191,7 +191,7 @@ init = function() {
 	//updateUI();
 
 
-	var tunerView = new TunerView();
+	var tunerView = new TunerView("tuner");
 }
 
 function setupControls(){
