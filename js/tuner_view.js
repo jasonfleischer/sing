@@ -10,7 +10,6 @@ class TunerView {
 		this.max_midi_value = range.max;
 	
 		this.WIDTH = 1000;
-		this.width = width;
 		this.HEIGHT = 100;
 
 		this.root_view = document.getElementById(this.id);
@@ -29,7 +28,7 @@ class TunerView {
 
 	buildCanvas(id) {
 
-		var canvas = document.createElement('canvas'); 
+		let canvas = document.createElement('canvas'); 
 	    canvas.id = id;
 	    canvas.style.position = "absolute"
 	    canvas.style.left = "0px"
@@ -45,8 +44,8 @@ class TunerView {
 
 	resize(newWidth){
 		this.width = newWidth;
-		var newWidth = Math.min(newWidth, 1000);
-		var newHeight = newWidth * (100/1000);
+		let newWidth = Math.min(newWidth, 1000);
+		let newHeight = newWidth * (100/1000);
 
 		this.root_view.style.height = newHeight + "px";
 		this.canvas.style.height = newHeight + "px";
@@ -58,7 +57,7 @@ class TunerView {
 	draw(){
 
 		let canvas = this.canvas;
-		var ctx = canvas.getContext("2d");
+		let ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
@@ -68,5 +67,27 @@ class TunerView {
 		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
 		ctx.fill();
 		ctx.stroke();
+
+
+
+		var offset = 0;
+		let spacing = this.WIDTH * 0.025;
+
+		var xPosition = offset;
+
+		var i;
+		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
+			var note = musicKit.all_notes[i];
+		
+			ctx.fillStyle = '#050505';
+	    	ctx.font = (this.HEIGHT * 0.1) + 'px san-serif';
+	    	ctx.textAlign = 'center';
+	    	ctx.fillText(note.note_name.type, xPosition, 10, this.HEIGHT*0.2);
+	    	xPosition = xPosition + spacing
+		}
+
+
+
+
 	}
 }
