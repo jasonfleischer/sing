@@ -77,7 +77,7 @@ class TunerView {
 		
 		let min_frequency = musicKit.all_notes[this.min_midi_value].frequency;
 		let max_frequency = musicKit.all_notes[this.max_midi_value].frequency;
-		let percentage = 1.0;//frequency / (max_frequency - min_midi_value);
+		let percentage = (frequency - min_frequency) / (max_frequency - min_frequency);
 
 
 //108 -21
