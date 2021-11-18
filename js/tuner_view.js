@@ -70,7 +70,7 @@ class TunerView {
 
 
 
-		var frequency = 440;
+		var frequency = 261.63;
 
 		let spacing = this.WIDTH * 0.10;
 
