@@ -106,7 +106,7 @@ class TunerView {
 
 		ctx.beginPath();
 		ctx.strokeStyle = '#0ff';
-		ctx.lineWidth = 0;
+		ctx.lineWidth = 1;
 		ctx.moveTo(this.WIDTH * 0.5, 0);
 		ctx.lineTo(this.WIDTH * 0.5, this.HEIGHT);
 		ctx.stroke();
