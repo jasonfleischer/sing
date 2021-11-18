@@ -69,9 +69,6 @@ class TunerView {
 		ctx.stroke();
 
 
-
-		//var frequency = 261.63;
-
 		let spacing = this.WIDTH * 0.10;
 
 		
@@ -92,7 +89,7 @@ class TunerView {
 		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
 
 			if(xPosition < 0 || xPosition > this.WIDTH){
-				//continue;
+				continue;
 			}
 
 			var note = musicKit.all_notes[i];
