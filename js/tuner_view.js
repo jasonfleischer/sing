@@ -74,13 +74,10 @@ class TunerView {
 		
 		let min_frequency = musicKit.all_notes[this.min_midi_value].frequency;
 		let max_frequency = musicKit.all_notes[this.max_midi_value].frequency;
-
-		var percentage = (Math.log2(frequency) - Math.log2(min_frequency)) / (Math.log2(max_frequency) - Math.log2(min_frequency));
-
-//108 -21
+		let log2_min_frequency = Math.log2(min_frequency);
+		let percentage = (Math.log2(frequency) - log2_min_frequency) / (Math.log2(max_frequency) - log2_min_frequency);
 		let total_length = spacing * (this.max_midi_value - this.min_midi_value);
-
-		var offset = (this.WIDTH * 0.5) + (-1 * (percentage * total_length));
+		let offset = (this.WIDTH * 0.5) + (-1 * (percentage * total_length));
 		
 
 		var xPosition = offset;
