@@ -123,6 +123,8 @@ const callbackExample = data => {
 				midiValue <= musicKit.guitar_range.max) {
 				fretboardView.drawHoverNote(note, color);
 			}
+
+			tunerView.draw(data.frequency);
 		}
 	} else {
 		pianoView.clearHover();

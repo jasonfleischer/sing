@@ -54,7 +54,7 @@ class TunerView {
 		this.canvas.style.width = newWidth + "px";
 	}
 
-	draw(){
+	draw(frequency = 261.63){
 
 		let canvas = this.canvas;
 		let ctx = canvas.getContext("2d");
@@ -70,17 +70,15 @@ class TunerView {
 
 
 
-		var frequency = 261.63;
+		//var frequency = 261.63;
 
 		let spacing = this.WIDTH * 0.10;
 
 		
 		let min_frequency = musicKit.all_notes[this.min_midi_value].frequency;
 		let max_frequency = musicKit.all_notes[this.max_midi_value].frequency;
-		//var percentage = (frequency - min_frequency) / (max_frequency - min_frequency);
 
 		var percentage = (Math.log2(frequency) - Math.log2(min_frequency)) / (Math.log2(max_frequency) - Math.log2(min_frequency));
-		//percentage = Math.log2(percentage)
 
 //108 -21
 		let total_length = spacing * (this.max_midi_value - this.min_midi_value);
