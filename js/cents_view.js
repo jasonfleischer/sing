@@ -92,7 +92,7 @@ class CentsView {
 		ctx.strokeStyle = '#00f';
 		ctx.lineWidth = 1;
 
-		let x = ((cents + 50) /100) * this.width;
+		let x = ((cents + 50) /100) * this.WIDTH;
 		ctx.moveTo(x, 0);
 		ctx.lineTo(x, this.HEIGHT);
 		ctx.stroke();
