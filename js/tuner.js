@@ -21,7 +21,7 @@ const tuner = {
 
 /*'use strict'
 
-
+*/
 const USER_MEDIA_CONSTRAINTS = {
   audio: {
     mandatory: {
@@ -33,7 +33,7 @@ const USER_MEDIA_CONSTRAINTS = {
     optional: [],
   },
 }
-const FFT_SIZE = 2048*/
+const FFT_SIZE = 2048
 
 //import { USER_MEDIA_CONSTRAINTS, FFT_SIZE } from './constants.js'
 
