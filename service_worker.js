@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v1';
+const CACHE_NAME = 'v1.1';
 const CACHE = [
         '/sing/index.html',
         '/sing/css/bundle.css',
