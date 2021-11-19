@@ -11,7 +11,6 @@ const tuner = {
       optional: [],
     },
   },
-
   NOTES: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
   CONCERT_PITCH: 440, //frequency of a fixed note, which is used as a standard for tuning. It is usually a standard (also called concert) pitch of 440 Hz, which is called A440 or note A in the one-line (or fourth) octave (A4)
   MIDI: 69, // the MIDI note number of A4
