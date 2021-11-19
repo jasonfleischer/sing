@@ -1,11 +1,9 @@
-class TunerView {
+class CentsView {
 
-	constructor(id = "tuner_view_id", width = 1000, range = musicKit.piano_range) {
+	constructor(id = "cents_view_id", width = 1000, range = musicKit.piano_range) {
 
 	  	this.id = id;
 		this.range = range;
-		this.min_midi_value = range.min;
-		this.max_midi_value = range.max;
 	
 		this.WIDTH = 1000;
 		this.HEIGHT = 60;
@@ -18,7 +16,7 @@ class TunerView {
 		this.root_view.width = this.WIDTH;
 		this.root_view.height = this.HEIGHT
 
-		this.canvas = this.buildCanvas("tuner_canvas_"+this.id);
+		this.canvas = this.buildCanvas("cents_canvas_"+this.id);
 	
 		this.draw();
 		this.resize(width);
@@ -52,7 +50,7 @@ class TunerView {
 		this.canvas.style.width = newWidth + "px";
 	}
 
-	draw(frequency = 261.63){
+	draw(cents = 0){
 
 		let canvas = this.canvas;
 		let ctx = canvas.getContext("2d");
@@ -66,34 +64,24 @@ class TunerView {
 		ctx.fill();
 		ctx.stroke();
 
+		let number_of_cents = 100;
 
-		let spacing = this.WIDTH * 0.10;
+
+		let spacing = this.WIDTH / 100;
 
 		
-		let min_frequency = musicKit.all_notes[this.min_midi_value].frequency;
-		let max_frequency = musicKit.all_notes[this.max_midi_value].frequency;
-		let log2_min_frequency = Math.log2(min_frequency);
-		let percentage = (Math.log2(frequency) - log2_min_frequency) / (Math.log2(max_frequency) - log2_min_frequency);
-		let total_length = spacing * (this.max_midi_value - this.min_midi_value);
-		let offset = (this.WIDTH * 0.5) + (-1 * (percentage * total_length));
-		
 
-		var xPosition = offset;
+		var xPosition = 0;
 
 		var i;
-		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
+		for(i = 0; i <= number_of_cents; i++){
 
-			if(xPosition < 0 || xPosition > this.WIDTH){
-				//continue;
-			}
-
-			var note = musicKit.all_notes[i];
-		
-			ctx.fillStyle = '#fff';
-	    	ctx.font = (this.HEIGHT * 0.8) + 'px san-serif';
-	    	ctx.textAlign = 'center';
-	    	ctx.fillText(note.note_name.type.substring(0,2), xPosition, this.HEIGHT*0.75);
-	    	xPosition = xPosition + spacing
+			ctx.beginPath();
+			ctx.strokeStyle = color;
+			ctx.lineWidth = 1;
+			ctx.moveTo(xPosition, i % 10 == 0 ? 0: this.HEIGHT*0.5);
+			ctx.lineTo(xPosition, this.HEIGHT);
+			ctx.stroke();
 		}
 
 
@@ -102,8 +90,10 @@ class TunerView {
 		ctx.beginPath();
 		ctx.strokeStyle = '#00f';
 		ctx.lineWidth = 1;
-		ctx.moveTo(this.WIDTH * 0.5, 0);
-		ctx.lineTo(this.WIDTH * 0.5, this.HEIGHT);
+
+		let x = ((cents + 50) /100) * this.width;
+		ctx.moveTo(x, 0);
+		ctx.lineTo(x, this.HEIGHT);
 		ctx.stroke();
 	}
 }

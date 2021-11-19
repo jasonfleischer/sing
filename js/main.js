@@ -20,6 +20,7 @@ let note_name_to_midi_value_map = {
 };
 
 const tunerView = new TunerView("tuner");
+const centsView = new CentsView("cents");
 
 const pianoView = pianoKit({
 	id: 'piano',
@@ -110,10 +111,12 @@ const callbackExample = data => {
 			let color = getCentsColor(cents);
 			let midiValue = note.midi_value
 
-			$("cents").innerHTML = parseInt(cents);
-			$("cents").style.backgroundColor = color;
+			$("cents1").innerHTML = parseInt(cents);
+			$("cents1").style.backgroundColor = color;
 
 			$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
+
+			centsView.draw(cents);
 
 			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
