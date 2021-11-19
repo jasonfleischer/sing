@@ -82,6 +82,7 @@ class CentsView {
 			ctx.moveTo(xPosition, i % 10 == 0 ? 0: this.HEIGHT*0.5);
 			ctx.lineTo(xPosition, this.HEIGHT);
 			ctx.stroke();
+			xPosition += spacing;
 		}
 
 
