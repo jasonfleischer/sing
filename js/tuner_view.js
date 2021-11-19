@@ -62,8 +62,8 @@ class TunerView {
 
 		ctx.beginPath();
 		ctx.lineWidth = 2;
-		ctx.fillStyle = "#f00";
-		ctx.strokeStyle = "#0f0";
+		ctx.fillStyle = "#000";
+		ctx.strokeStyle = "#ff";
 		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
 		ctx.fill();
 		ctx.stroke();
@@ -91,7 +91,7 @@ class TunerView {
 
 			var note = musicKit.all_notes[i];
 		
-			ctx.fillStyle = '#00f';
+			ctx.fillStyle = '#fff';
 	    	ctx.font = (this.HEIGHT * 0.8) + 'px san-serif';
 	    	ctx.textAlign = 'center';
 	    	ctx.fillText(note.note_name.type.substring(0,2), xPosition, this.HEIGHT*0.75);
@@ -102,14 +102,10 @@ class TunerView {
 		// 
 
 		ctx.beginPath();
-		ctx.strokeStyle = '#0ff';
+		ctx.strokeStyle = '#00f';
 		ctx.lineWidth = 1;
 		ctx.moveTo(this.WIDTH * 0.5, 0);
 		ctx.lineTo(this.WIDTH * 0.5, this.HEIGHT);
 		ctx.stroke();
-
-
-
-
 	}
 }
