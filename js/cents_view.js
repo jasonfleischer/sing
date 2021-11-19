@@ -86,9 +86,9 @@ class CentsView {
 		}
 	}
 
-
 	drawCents(cents) {
-		// 
+		
+		let ctx = this.canvas.getContext("2d");
 
 		ctx.beginPath();
 		ctx.strokeStyle = this.getCentsColor(cents);
