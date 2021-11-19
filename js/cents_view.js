@@ -83,7 +83,7 @@ class CentsView {
 			ctx.strokeStyle = "#fff";
 			ctx.lineWidth = 1;
 
-			let dividerHeight = i % 50 == 0 ? 0: (i % 10 == 0? this.HEIGHT*0.5 : this.HEIGHT*0.25)
+			let dividerHeight = (i % 50 == 0 ? 0 : (i % 10 == 0 ? this.HEIGHT*0.5 : this.HEIGHT*0.25))
 
 			ctx.moveTo(xPosition, i % 10 == 0 ? 0: this.HEIGHT*0.5);
 			ctx.lineTo(xPosition, this.HEIGHT);
