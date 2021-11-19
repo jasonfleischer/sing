@@ -89,12 +89,31 @@ class CentsView {
 		// 
 
 		ctx.beginPath();
-		ctx.strokeStyle = '#00f';
-		ctx.lineWidth = 1;
+		ctx.strokeStyle = getCentsColor(cents);
+		ctx.lineWidth = 3;
 
 		let x = ((cents + 50) /100) * this.WIDTH;
 		ctx.moveTo(x, 0);
 		ctx.lineTo(x, this.HEIGHT);
 		ctx.stroke();
+	}
+
+
+	//duplicate
+	getCentsColor(cents) {
+
+		var c = Math.abs(parseInt(cents));
+		if (c <= 10) {
+			return "#00ff00";
+		} else if (c > 10 && c < 25) { // yellow to red (11 to 24)
+			let number = parseInt(255 * ((13-(c-11))/13));
+			var greenValueHexStr = number.toString(16);
+			if(greenValueHexStr < 10) {
+				greenValueHexStr = "0" + greenValueHexStr;
+			}
+			return "#ff" + greenValueHexStr+ "00";
+		} else { //c <= 25
+			return "red"
+		} 
 	}
 }
