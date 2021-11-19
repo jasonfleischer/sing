@@ -87,6 +87,15 @@ tuner.getDataFromFrequency = (frequency) => {
   }
 }
 
+tuner.getAverageVolume(buf){
+  let result = 0;
+
+  for (let i = 0; i < buf.length; ++i) {
+    result = result + buf[i];
+  }
+  return result / buf.length;
+}
+
 tuner.setup = async () => {
   let rafID
   let audioContext
@@ -109,10 +118,14 @@ tuner.setup = async () => {
     const frequency = tuner.autoCorrelate(buffer, audioContext.sampleRate)
 
 
-    console.log(callbacks.length)
+    const averageVolume = tuner.getAverageVolume(buffer)
 
     callbacks.forEach((fn) =>
-      fn(frequency ? tuner.getDataFromFrequency(frequency) : {})
+
+      {
+        let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
+        fn(data)
+      }
     )
     rafID = requestAnimationFrame(update)
   }
