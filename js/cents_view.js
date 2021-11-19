@@ -50,7 +50,7 @@ class CentsView {
 		this.canvas.style.width = newWidth + "px";
 	}
 
-	draw(cents = 0){
+	draw(){
 
 		let canvas = this.canvas;
 		let ctx = canvas.getContext("2d");
@@ -84,12 +84,14 @@ class CentsView {
 			ctx.stroke();
 			xPosition += spacing;
 		}
+	}
 
 
+	drawCents(cents) {
 		// 
 
 		ctx.beginPath();
-		ctx.strokeStyle = getCentsColor(cents);
+		ctx.strokeStyle = this.getCentsColor(cents);
 		ctx.lineWidth = 3;
 
 		let x = ((cents + 50) /100) * this.WIDTH;

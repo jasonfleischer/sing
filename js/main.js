@@ -116,7 +116,7 @@ const callbackExample = data => {
 
 			$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
 
-			centsView.draw(cents);
+			centsView.drawCents(cents);
 
 			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
