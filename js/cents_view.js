@@ -46,9 +46,11 @@ class CentsView {
 
 		this.root_view.style.height = newHeight + "px";
 		this.canvas.style.height = newHeight + "px";
+		this.drawing_canvas.style.height = newHeight + "px";
 
 		this.root_view .style.width = newWidth + "px";
 		this.canvas.style.width = newWidth + "px";
+		this.drawing_canvas.style.width = newWidth + "px";
 	}
 
 	draw(){
