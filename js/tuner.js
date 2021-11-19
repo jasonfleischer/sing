@@ -35,6 +35,13 @@ const USER_MEDIA_CONSTRAINTS = {
 }
 const FFT_SIZE = 2048
 
+const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+
+const CONCERT_PITCH = 440 //frequency of a fixed note, which is used as a standard for tuning. It is usually a standard (also called concert) pitch of 440 Hz, which is called A440 or note A in the one-line (or fourth) octave (A4)
+const MIDI = 69 // the MIDI note number of A4
+const A = 2 ** (1 / 12) // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
+const C0_PITCH = 16.35 // frequency of lowest note: C0
+
 //import { USER_MEDIA_CONSTRAINTS, FFT_SIZE } from './constants.js'
 
 
