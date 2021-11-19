@@ -121,6 +121,8 @@ tuner.setup = async () => {
 
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
+    data.volume = averageVolume;
+
     callbacks.forEach((fn) =>
         fn(data)
     )
