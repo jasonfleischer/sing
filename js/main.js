@@ -138,7 +138,7 @@ const callbackExample = data => {
 
 ;(async function () {
     try {
-      const { start, subscribe } = await tuner.freelizer()
+      const { start, subscribe } = await tuner.setup()
       start()
       //subscribe(console.log)
 

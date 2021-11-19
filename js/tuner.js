@@ -19,32 +19,6 @@ const tuner = {
   C0_PITCH: 16.35, // frequency of lowest note: C0
 };
 
-/*'use strict'
-
-
-const USER_MEDIA_CONSTRAINTS = {
-  audio: {
-    mandatory: {
-      googEchoCancellation: 'false',
-      googAutoGainControl: 'false',
-      googNoiseSuppression: 'false',
-      googHighpassFilter: 'false',
-    },
-    optional: [],
-  },
-}
-const FFT_SIZE = 2048
-
-const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
-
-const CONCERT_PITCH = 440 //frequency of a fixed note, which is used as a standard for tuning. It is usually a standard (also called concert) pitch of 440 Hz, which is called A440 or note A in the one-line (or fourth) octave (A4)
-const MIDI = 69 // the MIDI note number of A4
-const A = 2 ** (1 / 12) // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
-const C0_PITCH = 16.35 // frequency of lowest note: C0
-*/
-//import { USER_MEDIA_CONSTRAINTS, FFT_SIZE } from './constants.js'
-
-
 // Implements modified ACF2+ algorithm
 // Source: https://github.com/cwilso/PitchDetect
 tuner.autoCorrelate = (buf, sampleRate) => {
@@ -97,8 +71,6 @@ tuner.autoCorrelate = (buf, sampleRate) => {
 
   return sampleRate / (a ? T0 - b / (2 * a) : T0)
 }
-//import { autoCorrelate } from './algorithm.js'
-
 
 tuner.getDataFromFrequency = (frequency) => {
   const N = Math.round(12 * Math.log2(frequency / tuner.CONCERT_PITCH)) // the number of half steps away from the fixed note you are. If you are at a higher note, n is positive. If you are on a lower note, n is negative.
@@ -115,9 +87,7 @@ tuner.getDataFromFrequency = (frequency) => {
   }
 }
 
-//import getDataFromFrequency from './getDataFromFrequency.js'
-
-tuner.freelizer = async () => {
+tuner.setup = async () => {
   let rafID
   let audioContext
   let analyser
