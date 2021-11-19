@@ -17,6 +17,7 @@ class CentsView {
 		this.root_view.height = this.HEIGHT
 
 		this.canvas = this.buildCanvas("cents_canvas_"+this.id);
+		this.drawing_canvas = this.buildCanvas("cents_drawing_canvas_"+this.id);
 	
 		this.draw();
 		this.resize(width);
@@ -54,7 +55,7 @@ class CentsView {
 
 		let canvas = this.canvas;
 		let ctx = canvas.getContext("2d");
-		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+		
 
 		ctx.beginPath();
 		ctx.lineWidth = 2;
@@ -88,7 +89,8 @@ class CentsView {
 
 	drawCents(cents) {
 		
-		let ctx = this.canvas.getContext("2d");
+		let ctx = this.drawing_canvas.getContext("2d");
+		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
 		ctx.strokeStyle = this.getCentsColor(cents);
