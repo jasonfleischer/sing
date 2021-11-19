@@ -136,7 +136,7 @@ tuner.freelizer = async () => {
   const update = () => {
     const buffer = new Float32Array(FFT_SIZE)
     analyser.getFloatTimeDomainData(buffer)
-    const frequency = autoCorrelate(buffer, audioContext.sampleRate)
+    const frequency = this.autoCorrelate(buffer, audioContext.sampleRate)
     callbacks.forEach((fn) =>
       fn(frequency ? getDataFromFrequency(frequency) : {})
     )
