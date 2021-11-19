@@ -87,7 +87,7 @@ tuner.getDataFromFrequency = (frequency) => {
   }
 }
 
-tuner.getAverageVolume(buf){
+tuner.getAverageVolume = (buf) => {
   let result = 0;
   for (let i = 0; i < buf.length; ++i) {
     result = result + buf[i];
@@ -117,7 +117,7 @@ tuner.setup = async () => {
     const frequency = tuner.autoCorrelate(buffer, audioContext.sampleRate)
 
 
-    const averageVolume = tuner.getAverageVolume(buffer)
+    const averageVolume = tuner.getAverageVolume(buffer);
 
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
