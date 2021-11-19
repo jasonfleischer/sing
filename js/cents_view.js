@@ -77,7 +77,7 @@ class CentsView {
 		for(i = 0; i <= number_of_cents; i++){
 
 			ctx.beginPath();
-			ctx.strokeStyle = color;
+			ctx.strokeStyle = "#fff";
 			ctx.lineWidth = 1;
 			ctx.moveTo(xPosition, i % 10 == 0 ? 0: this.HEIGHT*0.5);
 			ctx.lineTo(xPosition, this.HEIGHT);
