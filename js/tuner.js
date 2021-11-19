@@ -120,12 +120,14 @@ tuner.setup = async () => {
 
     const averageVolume = tuner.getAverageVolume(buffer)
 
+     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
+
     callbacks.forEach((fn) =>
 
-      {
-        let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
+
+       
         fn(data)
-      }
+      
     )
     rafID = requestAnimationFrame(update)
   }
