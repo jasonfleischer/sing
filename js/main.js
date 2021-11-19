@@ -310,6 +310,9 @@ function windowResizedEnd(){
 
 	let tunerPaddingLeftRight = 60;
 	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
+
+	let centsPaddingLeftRight = 60;
+	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 }
 
 function updateUI() {
