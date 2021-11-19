@@ -138,7 +138,7 @@ tuner.freelizer = async () => {
     analyser.getFloatTimeDomainData(buffer)
     const frequency = this.autoCorrelate(buffer, audioContext.sampleRate)
     callbacks.forEach((fn) =>
-      fn(frequency ? getDataFromFrequency(frequency) : {})
+      fn(frequency ? this.getDataFromFrequency(frequency) : {})
     )
     rafID = requestAnimationFrame(update)
   }
