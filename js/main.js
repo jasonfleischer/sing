@@ -130,10 +130,6 @@ const callbackExample = data => {
 		pianoView.clearHover();
 		fretboardView.clearHover();
 	}
-
-
-	
-
 }
 
 ;(async function () {
