@@ -47,7 +47,7 @@ const fretboardView = fretboardKit({
 
 
 
-const freelizer = require("freelizer");
+//const freelizer = require("freelizer");
 //import { freelizer } from 'freelizer'
 
 const callbackExample = data => {
@@ -138,7 +138,7 @@ const callbackExample = data => {
 
 ;(async function () {
     try {
-      const { start, subscribe } = await freelizer()
+      const { start, subscribe } = await tuner.freelizer()
       start()
       //subscribe(console.log)
 

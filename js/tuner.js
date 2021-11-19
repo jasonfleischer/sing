@@ -1,4 +1,25 @@
-'use strict'
+const tuner = {
+  FFT_SIZE: 2048,
+  USER_MEDIA_CONSTRAINTS: {
+    audio: {
+      mandatory: {
+        googEchoCancellation: 'false',
+        googAutoGainControl: 'false',
+        googNoiseSuppression: 'false',
+        googHighpassFilter: 'false',
+      },
+      optional: [],
+    },
+  },
+
+  NOTES: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
+  CONCERT_PITCH: 440, //frequency of a fixed note, which is used as a standard for tuning. It is usually a standard (also called concert) pitch of 440 Hz, which is called A440 or note A in the one-line (or fourth) octave (A4)
+  MIDI: 69, // the MIDI note number of A4
+  A: 2 ** (1 / 12), // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
+  C0_PITCH: 16.35, // frequency of lowest note: C0
+};
+
+/*'use strict'
 
 
 const USER_MEDIA_CONSTRAINTS = {
@@ -12,14 +33,14 @@ const USER_MEDIA_CONSTRAINTS = {
     optional: [],
   },
 }
-const FFT_SIZE = 2048
+const FFT_SIZE = 2048*/
 
 //import { USER_MEDIA_CONSTRAINTS, FFT_SIZE } from './constants.js'
 
 
 // Implements modified ACF2+ algorithm
 // Source: https://github.com/cwilso/PitchDetect
-const autoCorrelate = (buf, sampleRate) => {
+tuner.autoCorrelate = (buf, sampleRate) => {
   // Not enough signal check
   const RMS = Math.sqrt(buf.reduce((acc, el) => acc + el ** 2, 0) / buf.length)
   if (RMS < 0.001) return NaN
@@ -72,14 +93,7 @@ const autoCorrelate = (buf, sampleRate) => {
 //import { autoCorrelate } from './algorithm.js'
 
 
-const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
-
-const CONCERT_PITCH = 440 //frequency of a fixed note, which is used as a standard for tuning. It is usually a standard (also called concert) pitch of 440 Hz, which is called A440 or note A in the one-line (or fourth) octave (A4)
-const MIDI = 69 // the MIDI note number of A4
-const A = 2 ** (1 / 12) // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
-const C0_PITCH = 16.35 // frequency of lowest note: C0
-
-const getDataFromFrequency = (frequency) => {
+tuner.getDataFromFrequency = (frequency) => {
   const N = Math.round(12 * Math.log2(frequency / CONCERT_PITCH)) // the number of half steps away from the fixed note you are. If you are at a higher note, n is positive. If you are on a lower note, n is negative.
   const Fn = CONCERT_PITCH * A ** N // the frequency of the note n half steps away of concert pitch
   const noteIndex = (N + MIDI) % 12 // index of note letter from NOTES array
@@ -96,7 +110,7 @@ const getDataFromFrequency = (frequency) => {
 
 //import getDataFromFrequency from './getDataFromFrequency.js'
 
-const freelizer = async () => {
+tuner.freelizer = async () => {
   let rafID
   let audioContext
   let analyser
@@ -131,6 +145,3 @@ const freelizer = async () => {
     unsubscribe: (fn) => (callbacks = callbacks.filter((el) => el !== fn)),
   }
 }
-
-
-module.exports = freelizer;
