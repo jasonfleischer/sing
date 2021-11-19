@@ -16,6 +16,8 @@ const tuner = {
   MIDI: 69, // the MIDI note number of A4
   A: 2 ** (1 / 12), // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
   C0_PITCH: 16.35, // frequency of lowest note: C0
+
+  THRES: 0.2
 };
 
 // Implements modified ACF2+ algorithm
@@ -25,17 +27,16 @@ tuner.autoCorrelate = (buf, sampleRate) => {
   const RMS = Math.sqrt(buf.reduce((acc, el) => acc + el ** 2, 0) / buf.length)
   if (RMS < 0.001) return NaN
 
-  const THRES = 0.2
   let r1 = 0
   let r2 = buf.length - 1
   for (let i = 0; i < buf.length / 2; ++i) {
-    if (Math.abs(buf[i]) < THRES) {
+    if (Math.abs(buf[i]) < tuner.THRES) {
       r1 = i
       break
     }
   }
   for (let i = 1; i < buf.length / 2; ++i) {
-    if (Math.abs(buf[buf.length - i]) < THRES) {
+    if (Math.abs(buf[buf.length - i]) < tuner.THRES) {
       r2 = buf.length - i
       break
     }
@@ -106,6 +107,10 @@ tuner.setup = async () => {
     const buffer = new Float32Array(tuner.FFT_SIZE)
     analyser.getFloatTimeDomainData(buffer)
     const frequency = tuner.autoCorrelate(buffer, audioContext.sampleRate)
+
+
+    console.log(callbacks.length)
+
     callbacks.forEach((fn) =>
       fn(frequency ? tuner.getDataFromFrequency(frequency) : {})
     )
