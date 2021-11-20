@@ -16,14 +16,14 @@ class VolumeView {
 		this.root_view.width = this.WIDTH;
 		this.root_view.height = this.HEIGHT
 
-		this.canvas = this.buildCanvas("volume_canvas_"+this.id);
-		this.drawing_canvas = this.buildCanvas("volume_drawing_canvas_"+this.id);
+		this.canvas = this.#buildCanvas("volume_canvas_"+this.id);
+		this.drawing_canvas = this.#buildCanvas("volume_drawing_canvas_"+this.id);
 	
-		this.draw();
+		this.#drawBackground();
 		this.resize(width);
 	}
 
-	buildCanvas(id) {
+	#buildCanvas(id) {
 
 		let canvas = document.createElement('canvas'); 
 	    canvas.id = id;
@@ -52,7 +52,7 @@ class VolumeView {
 		}
 	}
 
-	draw(){
+	#drawBackground(){
 
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
@@ -70,13 +70,13 @@ class VolumeView {
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
-		ctx.fillStyle = this.getBarColor(volumePercent);
+		ctx.fillStyle = this.#getBarColor(volumePercent);
 		ctx.lineWidth = 2;
 		ctx.rect(0, 0, this.WIDTH*volumePercent, this.HEIGHT);
 		ctx.fill();
 	}	
 
-	getBarColor(volumePercent) {
+	#getBarColor(volumePercent) {
 		if(volumePercent >= this.clip){
 			return "#f00";
 		} else if (volumePercent <= this.threshold) {
