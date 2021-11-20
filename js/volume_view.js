@@ -81,11 +81,11 @@ class VolumeView {
 
 	getBarColor(volumePercent) {
 		if(volumePercent >= this.clip){
-			return "red";
+			return "#f00";
 		} else if (volumePercent <= this.threshold) {
 			return "#eee";
 		} else {
-			return "green"
+			return "#0f0"
 		} 
 	}
 }
