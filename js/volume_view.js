@@ -7,7 +7,7 @@ class VolumeView {
 	  	this.clip = 0.9;
 	
 		this.WIDTH = 1000;
-		this.HEIGHT = 60;
+		this.HEIGHT = 30;
 
 
 
@@ -43,8 +43,8 @@ class VolumeView {
 
 	resize(newWidth){
 		this.width = newWidth;
-		var newWidth = Math.min(newWidth, 1000);
-		let newHeight = newWidth * (60/1000);
+		var newWidth = Math.min(newWidth, this.WIDTH);
+		let newHeight = newWidth * (this.HEIGHT/this.WIDTH);
 
 		this.root_view.style.height = newHeight + "px";
 		this.canvas.style.height = newHeight + "px";
