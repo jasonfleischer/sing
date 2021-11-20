@@ -113,7 +113,6 @@ const callbackExample = data => {
 
 			$("cents1").innerHTML = parseInt(cents);
 			$("cents1").style.backgroundColor = color;
-
 			$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
 
 			centsView.drawCents(cents);
@@ -192,7 +191,7 @@ init = function() {
 	setupControls();
 	windowResizedEnd();
 	//updateUI();
-
+	musicKit.changeNoteColors();
 
 
 }
