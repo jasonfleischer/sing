@@ -3,7 +3,6 @@ class TunerView {
 	constructor(id = "tuner_view_id", width = 1000, range = musicKit.piano_range) {
 
 	  	this.id = id;
-		this.range = range;
 		this.min_midi_value = range.min;
 		this.max_midi_value = range.max;
 	
@@ -38,23 +37,22 @@ class TunerView {
 	    return canvas;
 	}
 
-
 	resize(newWidth){
-		
-		var newWidth = Math.min(newWidth, 1000);
-		let newHeight = newWidth * (60/1000);
 
-		this.root_view.style.height = newHeight + "px";
-		this.canvas.style.height = newHeight + "px";
+		var newWidth = Math.min(newWidth, this.WIDTH);
+		let newHeight = newWidth * (this.HEIGHT/this.WIDTH);
 
-		this.root_view .style.width = newWidth + "px";
-		this.canvas.style.width = newWidth + "px";
+		let views = [this.root_view, this.canvas];
+		for (let i = 0; i < views.length; i++) {
+			let view = views[i];
+			view.style.height = newHeight + "px";
+			view.style.width = newWidth + "px";
+		}
 	}
 
 	draw(frequency = 261.63){
 
-		let canvas = this.canvas;
-		let ctx = canvas.getContext("2d");
+		let ctx = this.canvas.getContext("2d");
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
@@ -65,10 +63,7 @@ class TunerView {
 		ctx.fill();
 		ctx.stroke();
 
-
 		let spacing = this.WIDTH * 0.10;
-
-		
 		let min_frequency = musicKit.all_notes[this.min_midi_value].frequency;
 		let max_frequency = musicKit.all_notes[this.max_midi_value].frequency;
 		let log2_min_frequency = Math.log2(min_frequency);
@@ -94,9 +89,6 @@ class TunerView {
 	    	ctx.fillText(note.note_name.type.substring(0,2), xPosition, this.HEIGHT*0.75);
 	    	xPosition = xPosition + spacing
 		}
-
-
-		// 
 
 		ctx.beginPath();
 		ctx.strokeStyle = '#00f';

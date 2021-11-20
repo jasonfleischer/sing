@@ -39,7 +39,7 @@ class VolumeView {
 	}
 
 	resize(newWidth){
-		this.width = newWidth;
+		
 		var newWidth = Math.min(newWidth, this.WIDTH);
 		let newHeight = newWidth * (this.HEIGHT/this.WIDTH);
 
