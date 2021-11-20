@@ -16,14 +16,14 @@ class VolumeView {
 		this.root_view.width = this.WIDTH;
 		this.root_view.height = this.HEIGHT
 
-		this.canvas = this.#buildCanvas("volume_canvas_"+this.id);
-		this.drawing_canvas = this.#buildCanvas("volume_drawing_canvas_"+this.id);
+		this.canvas = this.buildCanvas("volume_canvas_"+this.id);
+		this.drawing_canvas = this.buildCanvas("volume_drawing_canvas_"+this.id);
 	
-		this.#drawBackground();
+		this.draw();
 		this.resize(width);
 	}
 
-	#buildCanvas(id) {
+	buildCanvas(id) {
 
 		let canvas = document.createElement('canvas'); 
 	    canvas.id = id;
@@ -52,7 +52,7 @@ class VolumeView {
 		}
 	}
 
-	#drawBackground(){
+	draw(){
 
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
