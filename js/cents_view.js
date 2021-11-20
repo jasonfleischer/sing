@@ -59,13 +59,13 @@ class CentsView {
 		let ctx = canvas.getContext("2d");
 		
 
-		ctx.beginPath();
-		ctx.lineWidth = 2;
-		ctx.fillStyle = "#000";
-		ctx.strokeStyle = "#fff";
-		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
-		ctx.fill();
-		ctx.stroke();
+		//ctx.beginPath();
+		//ctx.lineWidth = 2;
+		//ctx.fillStyle = "#000";
+		//ctx.strokeStyle = "#fff";
+		//ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
+		//ctx.fill();
+		//ctx.stroke();
 
 		let number_of_cents = 100;
 
