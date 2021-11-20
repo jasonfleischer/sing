@@ -70,13 +70,13 @@ class VolumeView {
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
-		ctx.fillStyle = this.getBarColor(volumePercent);
+		ctx.fillStyle = this.#getBarColor(volumePercent);
 		ctx.lineWidth = 2;
 		ctx.rect(0, 0, this.WIDTH*volumePercent, this.HEIGHT);
 		ctx.fill();
 	}	
 
-	getBarColor(volumePercent) {
+	#getBarColor(volumePercent) {
 		if(volumePercent >= this.clip){
 			return "#f00";
 		} else if (volumePercent <= this.threshold) {
