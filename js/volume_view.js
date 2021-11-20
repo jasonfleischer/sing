@@ -83,7 +83,7 @@ class VolumeView {
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
-		ctx.fillStyle = this.getBarColor(volumePercent);
+		ctx.fillStyle = getBarColor(volumePercent);
 		ctx.lineWidth = 2;
 		ctx.rect(0, 0, this.WIDTH*volumePercent, this.HEIGHT);
 		ctx.fill();
