@@ -55,13 +55,11 @@ class VolumeView {
 
 	draw(){
 
-		let canvas = this.canvas;
-		let ctx = canvas.getContext("2d");
-
+		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
 		ctx.lineWidth = 2;
 		ctx.fillStyle = "#f00";
-		ctx.strokeStyle = "#fff";
+		ctx.strokeStyle = "#f0f";
 		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
 		ctx.fill();
 		ctx.stroke();
