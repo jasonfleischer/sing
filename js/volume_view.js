@@ -60,15 +60,15 @@ class VolumeView {
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
 		ctx.lineWidth = 2;
-		ctx.fillStyle = "#f00";
-		ctx.strokeStyle = "#f0f";
+		ctx.fillStyle = "#000";
+		ctx.strokeStyle = "#fff";
 		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
 		ctx.fill();
 		ctx.stroke();
 	}
 
 	drawVolume(volumePercent) {
-		
+
 		let ctx = this.drawing_canvas.getContext("2d");
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
