@@ -68,24 +68,24 @@ class VolumeView {
 	}
 
 	drawVolume(volumePercent) {
-
-		function getBarColor(volumePercent) {
-			if(volumePercent >= this.clip){
-				return "red";
-			} else if (volumePercent <= this.threshold) {
-				return "#eee";
-			} else {
-				return "green"
-			} 
-		}
 		
 		let ctx = this.drawing_canvas.getContext("2d");
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
-		ctx.fillStyle = getBarColor(volumePercent);
+		ctx.fillStyle = this.getBarColor(volumePercent);
 		ctx.lineWidth = 2;
 		ctx.rect(0, 0, this.WIDTH*volumePercent, this.HEIGHT);
 		ctx.fill();
 	}	
+
+	getBarColor(volumePercent) {
+		if(volumePercent >= this.clip){
+			return "red";
+		} else if (volumePercent <= this.threshold) {
+			return "#eee";
+		} else {
+			return "green"
+		} 
+	}
 }
