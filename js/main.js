@@ -21,6 +21,7 @@ let note_name_to_midi_value_map = {
 
 const tunerView = new TunerView("tuner");
 const centsView = new CentsView("cents");
+const volumeView = new VolumeView("volume");
 
 const pianoView = pianoKit({
 	id: 'piano',
@@ -104,6 +105,7 @@ const callbackExample = data => {
 		$("output").innerHTML = " : " + data.note + data.octave + ' V:' + Math.log2(data.volume)//+ " " + parsecents + "c " //+
 			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
 
+		volumeView.drawVolume(data.volume);
 
 		var note = findNote(data.note, data.octave);
 		if (note !== undefined) {
@@ -312,6 +314,9 @@ function windowResizedEnd(){
 
 	let centsPaddingLeftRight = 60;
 	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
+
+	let volumePaddingLeftRight = 60;
+	volumeView.resize(Math.min(contentWidth-volumePaddingLeftRight, 1000));
 }
 
 function updateUI() {

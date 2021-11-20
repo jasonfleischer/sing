@@ -11,7 +11,6 @@ class TunerView {
 		this.HEIGHT = 60;
 
 		this.root_view = document.getElementById(this.id);
-		this.root_view.style.backgroundColor = this.backgroundColor;
 		this.root_view.style.position = "relative"
 		this.root_view.style.width = this.WIDTH  + "px";
 		this.root_view.style.height = this.HEIGHT  + "px";
