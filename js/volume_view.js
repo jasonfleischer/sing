@@ -3,13 +3,11 @@ class VolumeView {
 	constructor(id = "volume_view_id", width = 1000, threshold=0.2, clip=0.9) {
 
 	  	this.id = id;
-	  	this.threshold = 0.2;
-	  	this.clip = 0.9;
+	  	this.threshold = threshold;
+	  	this.clip = clip;
 	
 		this.WIDTH = 1000;
 		this.HEIGHT = 30;
-
-
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.position = "relative"
@@ -46,13 +44,12 @@ class VolumeView {
 		var newWidth = Math.min(newWidth, this.WIDTH);
 		let newHeight = newWidth * (this.HEIGHT/this.WIDTH);
 
-		this.root_view.style.height = newHeight + "px";
-		this.canvas.style.height = newHeight + "px";
-		this.drawing_canvas.style.height = newHeight + "px";
-
-		this.root_view .style.width = newWidth + "px";
-		this.canvas.style.width = newWidth + "px";
-		this.drawing_canvas.style.width = newWidth + "px";
+		let views = [this.root_view, this.canvas, this.drawing_canvas];
+		for (let i = 0; i < views.length; i++) {
+			let view = views[i];
+			view.style.height = newHeight + "px";
+			view.style.width = newWidth + "px";
+		}
 	}
 
 	draw(){
