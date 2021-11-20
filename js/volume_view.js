@@ -9,7 +9,7 @@ class VolumeView {
 		this.WIDTH = 1000;
 		this.HEIGHT = 60;
 
-		console.log("bhbjb")
+
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.position = "relative"
@@ -69,7 +69,7 @@ class VolumeView {
 
 	drawVolume(volumePercent) {
 
-		getBarColor(volumePercent) {
+		function getBarColor(volumePercent) {
 			if(volumePercent >= this.clip){
 				return "red";
 			} else if (volumePercent <= this.threshold) {
