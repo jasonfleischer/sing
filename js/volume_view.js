@@ -38,7 +38,6 @@ class VolumeView {
 	    return canvas;
 	}
 
-
 	resize(newWidth){
 		this.width = newWidth;
 		var newWidth = Math.min(newWidth, this.WIDTH);

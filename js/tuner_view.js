@@ -40,7 +40,7 @@ class TunerView {
 
 
 	resize(newWidth){
-		this.width = newWidth;
+		
 		var newWidth = Math.min(newWidth, 1000);
 		let newHeight = newWidth * (60/1000);
 
