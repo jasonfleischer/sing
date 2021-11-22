@@ -89,10 +89,10 @@ tuner.getDataFromFrequency = (frequency) => {
 
 tuner.getAverageVolume = (buf) => {
   let sum = 0;
-  for (let i = 0; i < buf.length/ 2; ++i) {
+  for (let i = 0; i < buf.length; ++i) {
     sum = sum + Math.abs(buf[i]);
   }
-  return sum / buf.length/ 2;
+  return Math.sqrt(sum / buf.length);
 }
 
 tuner.setup = async () => {
