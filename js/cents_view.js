@@ -92,7 +92,7 @@ class CentsView {
 
 		let number = Math.max(0, parseInt(255 * ((50-Math.abs(cents))/50)));
 		var valueHexStr = number.toString(16);
-		if(valueHexStr < 10) {
+		if(valueHexStr.length < 2) {
 			valueHexStr = "0" + valueHexStr;
 		}
 		return "#" + valueHexStr + valueHexStr + valueHexStr;
