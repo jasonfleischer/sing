@@ -83,6 +83,9 @@ strong {
 	width: 150px;
 }
 
+#note_display {
+	width: 100%;
+}
 #note_octave {
 
 
