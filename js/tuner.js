@@ -130,7 +130,7 @@ tuner.setup = async () => {
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
     data.volume = averageVolume;
-    data.cents = this.calculateCents(data.frequency, data.noteFrequency);
+    data.cents = tuner.calculateCents(data.frequency, data.noteFrequency);
 
     callbacks.forEach((fn) =>
         fn(data)
