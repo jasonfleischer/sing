@@ -102,7 +102,7 @@ const callbackExample = data => {
 
 		var cents = calculateCents(data.frequency, data.noteFrequency)
 
-		$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
+		//$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
 			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
 
 		volumeView.drawVolume(data.volume);
