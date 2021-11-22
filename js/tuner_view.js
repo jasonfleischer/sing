@@ -78,6 +78,7 @@ class TunerView {
 		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
 
 			if(xPosition < 0|| xPosition > this.WIDTH/2){
+				xPosition = xPosition + spacing
 				continue;
 			}
 
