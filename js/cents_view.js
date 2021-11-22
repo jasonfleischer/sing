@@ -107,7 +107,7 @@ class CentsView {
 		} else if (c > 10 && c < 25) { // yellow to red (11 to 24)
 			let number = parseInt(255 * ((13-(c-11))/13));
 			var greenValueHexStr = number.toString(16);
-			if(greenValueHexStr < 10) {
+			if(greenValueHexStr.length < 2) {
 				greenValueHexStr = "0" + greenValueHexStr;
 			}
 			return "#ff" + greenValueHexStr+ "00";
