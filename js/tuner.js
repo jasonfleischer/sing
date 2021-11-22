@@ -17,7 +17,7 @@ const tuner = {
   A: 2 ** (1 / 12), // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
   C0_PITCH: 16.35, // frequency of lowest note: C0
 
-  THRES: 0.5
+  THRES: 0.2
 };
 
 // Implements modified ACF2+ algorithm
@@ -92,7 +92,7 @@ tuner.getAverageVolume = (buf) => {
   for (let i = 0; i < buf.length; ++i) {
     sum += Math.abs(buf[i]);
   }
-  return sum / buf.length;
+  return Math.sqrt(sum / buf.length);
 }
 
 tuner.setup = async () => {
