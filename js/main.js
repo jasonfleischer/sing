@@ -117,9 +117,9 @@ const callbackExample = data => {
 			$("note").innerHTML = data.note;
 			$("octave").innerHTML = data.octave;
 
-			$("cents1").innerHTML = parseInt(cents);
-			$("cents1").style.backgroundColor = color;
-			$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
+			//$("cents1").innerHTML = parseInt(cents);
+			//$("cents1").style.backgroundColor = color;
+			//$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
 
 			centsView.drawCents(cents);
 
