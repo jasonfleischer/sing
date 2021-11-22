@@ -56,7 +56,7 @@ class VolumeView {
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
 		//ctx.lineWidth = 2;
-		ctx.fillStyle = "#333";
+		ctx.fillStyle = "#222";
 		//ctx.strokeStyle = "#fff";
 		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
 		ctx.fill();
