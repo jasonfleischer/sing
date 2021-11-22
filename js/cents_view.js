@@ -5,7 +5,7 @@ class CentsView {
 	  	this.id = id;
 	
 		this.WIDTH = 1000;
-		this.HEIGHT = 60;
+		this.HEIGHT = 40;
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.position = "relative"
@@ -63,7 +63,7 @@ class CentsView {
 			ctx.strokeStyle = this.getLineColor(i-50);
 			ctx.lineWidth = 1;
 
-			let dividerHeight = (i % 10 == 0) ? 0 : this.HEIGHT*0.33;
+			let dividerHeight = (i % 10 == 0) ? 0 : this.HEIGHT*0.4;
 
 			ctx.moveTo(xPosition, dividerHeight);
 			ctx.lineTo(xPosition, this.HEIGHT);
