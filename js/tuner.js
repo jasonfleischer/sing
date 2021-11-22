@@ -1,5 +1,5 @@
 const tuner = {
-  FFT_SIZE: 2048,
+  FFT_SIZE: 1024,//2048,
   USER_MEDIA_CONSTRAINTS: {
     audio: {
       mandatory: {
@@ -90,7 +90,7 @@ tuner.getDataFromFrequency = (frequency) => {
 tuner.getAverageVolume = (buf) => {
   let sum = 0;
   for (let i = 0; i < buf.length; ++i) {
-    sum += buf[i];//Math.abs(buf[i]);
+    sum += Math.abs(buf[i]);
   }
   return Math.sqrt(sum / buf.length);
 }
