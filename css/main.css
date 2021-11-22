@@ -89,10 +89,12 @@ strong {
 
 }
 #note {
-	font-size: 22px;
+	position: absolute;
+	font-size: 42px;
 }
 #octave {
-	font-size: 14px;
+	position: absolute;
+	font-size: 22px;
 }
 
 #piano {
