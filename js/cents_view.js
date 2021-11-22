@@ -5,7 +5,7 @@ class CentsView {
 	  	this.id = id;
 	
 		this.WIDTH = 1000;
-		this.HEIGHT = 40;
+		this.HEIGHT = 60;
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.position = "relative"
