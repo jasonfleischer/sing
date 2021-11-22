@@ -95,6 +95,13 @@ tuner.getAverageVolume = (buf) => {
   return Math.sqrt(sum / buf.length);
 }
 
+tuner.calculateCents = (f1, f2) => {
+  if (f1 === undefined || f2 === undefined) {
+    return undefined;
+  }
+  return 1200 * Math.log2(f1/f2);
+}
+
 tuner.setup = async () => {
   let rafID
   let audioContext
@@ -123,6 +130,7 @@ tuner.setup = async () => {
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
     data.volume = averageVolume;
+    data.cents = this.calculateCents(data.frequency, data.noteFrequency);
 
     callbacks.forEach((fn) =>
         fn(data)

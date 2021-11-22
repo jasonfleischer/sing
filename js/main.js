@@ -61,23 +61,11 @@ const callbackExample = data => {
 		for (i = 0; i < notes.length; i++) {
 
 			let note = musicKit.all_notes[i];
-
-
-			//console.log(note.octave == octave)
-			//console.log(note.note_name.type.startsWith(noteName))
 			if(note.octave == octave && note.note_name.type.startsWith(noteName)){
 				return note
 			}
-			
 		}
 		return undefined
-	}
-
-	function calculateCents(f1, f2){
-		if (f1 === undefined || f2 === undefined) {
-			return undefined;
-		}
-		return 1200 * Math.log2(f1/f2);
 	}
 
 	function getCentsColor(cents) {
@@ -100,7 +88,7 @@ const callbackExample = data => {
 
 	if (data.frequency !== undefined) {
 
-		var cents = calculateCents(data.frequency, data.noteFrequency)
+		
 
 		//$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
 			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
@@ -110,16 +98,14 @@ const callbackExample = data => {
 		var note = findNote(data.note, data.octave);
 		if (note !== undefined) {
 
+			var cents = data.cents;
+
 			let color = getCentsColor(cents);
 			let midiValue = note.midi_value
 
 
 			$("note").innerHTML = data.note;
 			$("octave").innerHTML = data.octave;
-
-			//$("cents1").innerHTML = parseInt(cents);
-			//$("cents1").style.backgroundColor = color;
-			//$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
 
 			centsView.drawCents(cents);
 
