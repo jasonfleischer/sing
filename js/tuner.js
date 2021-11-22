@@ -77,12 +77,14 @@ tuner.getDataFromFrequency = (frequency) => {
   const Fn = tuner.CONCERT_PITCH * tuner.A ** N // the frequency of the note n half steps away of concert pitch
   const noteIndex = (N + tuner.MIDI) % 12 // index of note letter from NOTES array
   const octave = Math.floor(Math.log2(Fn / tuner.C0_PITCH))
+  const cents = tuner.calculateCents(frequency, Fn);
 
   return {
     frequency,
     note: tuner.NOTES[noteIndex],
     noteFrequency: Fn,
     deviation: frequency - Fn,
+    cents,
     octave,
   }
 }
@@ -115,7 +117,7 @@ tuner.setup = async () => {
     audioContext = new AudioContext()
     analyser = audioContext.createAnalyser()
     analyser.fftSize = tuner.FFT_SIZE
-    analyser.smoothingTimeConstant = 1;
+    analyser.smoothingTimeConstant = 0.8;
     audioContext.createMediaStreamSource(stream).connect(analyser)
   }
 
@@ -130,7 +132,7 @@ tuner.setup = async () => {
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
     data.volume = averageVolume;
-    data.cents = tuner.calculateCents(data.frequency, data.noteFrequency);
+    
 
     callbacks.forEach((fn) =>
         fn(data)
