@@ -90,7 +90,7 @@ class CentsView {
 
 	getLineColor(cents) {
 
-		let number = parseInt(255 * ((50-Math.abs(cents))/50));
+		let number = Math.max(0, parseInt(255 * ((50-Math.abs(cents))/50)));
 		var valueHexStr = number.toString(16);
 		if(valueHexStr < 10) {
 			valueHexStr = "0" + valueHexStr;
