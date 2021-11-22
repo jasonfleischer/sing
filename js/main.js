@@ -133,6 +133,7 @@ const callbackExample = data => {
 	} else {
 		pianoView.clearHover();
 		fretboardView.clearHover();
+		volumeView.drawVolume(0);
 	}
 }
 
