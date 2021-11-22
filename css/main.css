@@ -83,6 +83,18 @@ strong {
 	width: 150px;
 }
 
+#note_octave {
+	position: relative;
+	width: 100px;
+
+}
+#note {
+	font-size: 22px;
+}
+#octave {
+	font-size: 14px;
+}
+
 #piano {
 	margin-top: 10px;
 }

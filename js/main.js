@@ -113,6 +113,10 @@ const callbackExample = data => {
 			let color = getCentsColor(cents);
 			let midiValue = note.midi_value
 
+
+			$("note").innerHTML = parseInt(data.note);
+			$("octave").innerHTML = parseInt(data.octave);
+
 			$("cents1").innerHTML = parseInt(cents);
 			$("cents1").style.backgroundColor = color;
 			$("cents2").innerHTML = parseInt(cents) - (parseInt(cents) % 5);
