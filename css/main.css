@@ -92,11 +92,13 @@ strong {
 
 }
 #note {
+	width:  50px;
 	position: absolute;
+	text-align: right;
 	font-size: 42px;
 }
 #octave {
-	padding-top: 15px;
+	padding-top: 20px;
 	font-size: 22px;
 	float: right;
 }
