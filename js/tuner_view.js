@@ -78,7 +78,7 @@ class TunerView {
 		for(i = this.min_midi_value; i <= this.max_midi_value; i++){
 
 			if(xPosition < offset-this.WIDTH/2 || xPosition > offset+this.WIDTH/2){
-				//continue;
+				continue;
 			}
 
 			var note = musicKit.all_notes[i];
