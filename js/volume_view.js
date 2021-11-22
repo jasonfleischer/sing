@@ -7,7 +7,7 @@ class VolumeView {
 	  	this.clip = clip;
 	
 		this.WIDTH = 1000;
-		this.HEIGHT = 30;
+		this.HEIGHT = 10;
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.position = "relative"

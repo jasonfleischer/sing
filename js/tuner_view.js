@@ -7,7 +7,7 @@ class TunerView {
 		this.max_midi_value = range.max;
 	
 		this.WIDTH = 1000;
-		this.HEIGHT = 60;
+		this.HEIGHT = 30;
 
 		this.root_view = document.getElementById(this.id);
 		this.root_view.style.position = "relative"
