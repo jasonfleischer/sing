@@ -86,7 +86,7 @@ strong {
 #note_octave {
 
 
-	width: 100px;
+	width: 70px;
 	height: 50px;
 	margin: auto;
 
@@ -96,8 +96,9 @@ strong {
 	font-size: 42px;
 }
 #octave {
-	position: absolute;
+	padding-top: 15px;
 	font-size: 22px;
+	float: right;
 }
 
 #piano {
