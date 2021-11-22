@@ -92,7 +92,7 @@ tuner.getAverageVolume = (buf) => {
   for (let i = 0; i < buf.length; ++i) {
     sum += Math.abs(buf[i]);
   }
-  return Math.sqrt(sum / buf.length);
+  return sum / buf.length;
 }
 
 tuner.setup = async () => {
