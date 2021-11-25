@@ -119,6 +119,18 @@ tuner.setup = async () => {
     analyser.fftSize = tuner.FFT_SIZE
     analyser.smoothingTimeConstant = 0.8;
     audioContext.createMediaStreamSource(stream).connect(analyser)
+
+    navigator.permissions.query(
+      { name: 'microphone' }
+    ).then(function(permissionStatus){
+
+      console.log(permissionStatus.state); // granted, denied, prompt
+
+      permissionStatus.onchange = function(){
+          console.log("Permission changed to " + this.state);
+      }
+
+    })
   }
 
   const update = () => {
@@ -153,17 +165,7 @@ tuner.setup = async () => {
 tuner.revokePermission = () => {
 
 
-navigator.permissions.query(
-  { name: 'microphone' }
-).then(function(permissionStatus){
 
-  console.log(permissionStatus.state); // granted, denied, prompt
-
-  permissionStatus.onchange = function(){
-      console.log("Permission changed to " + this.state);
-  }
-
-})
 
 
 
