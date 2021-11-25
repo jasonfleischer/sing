@@ -165,7 +165,18 @@ navigator.permissions.query(
 
 })
 
-MediaDevices.getUserMedia.stop();
+navigator.getMedia(
+      { audio: true },
+      () => {
+        setMic(true);
+        console.log("Permission_", "Mic ON");
+      },
+      () => {
+        console.log("Permission_", "Mic OFF");
+      }
+    );
+
+//MediaDevices.getUserMedia.stop();
   //navigator.mediaDevices.getUserMedia().stop();
   //const microphone = navigator.permissions.query({ name: 'microphone' })
   //navigator.permissions.revoke(microphone)
