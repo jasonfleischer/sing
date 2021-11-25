@@ -11,6 +11,7 @@ const tuner = {
       optional: [],
     },
   },
+  stream,
   NOTES: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
   CONCERT_PITCH: 440, //frequency of a fixed note, which is used as a standard for tuning. It is usually a standard (also called concert) pitch of 440 Hz, which is called A440 or note A in the one-line (or fourth) octave (A4)
   MIDI: 69, // the MIDI note number of A4
@@ -111,7 +112,7 @@ tuner.setup = async () => {
   let callbacks = []
 
   const init = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia(
+    tuner.stream = await navigator.mediaDevices.getUserMedia(
       tuner.USER_MEDIA_CONSTRAINTS
     )
     audioContext = new AudioContext()
@@ -152,7 +153,7 @@ tuner.setup = async () => {
 
 tuner.revokePermission = () => {
 
-navigator.mediaDevices.getUserMedia(tuner.USER_MEDIA_CONSTRAINTS).stop();
+  tuner.stream.stop();
   //const microphone = navigator.permissions.query({ name: 'microphone' })
   //navigator.permissions.revoke(microphone)
 
