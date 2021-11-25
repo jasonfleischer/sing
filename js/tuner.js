@@ -121,7 +121,7 @@ tuner.setup = async () => {
     audioContext.createMediaStreamSource(stream).connect(analyser)
 
     navigator.permissions.query(
-      { name: 'microphone' }
+      { name: 'audio' }
     ).then(function(permissionStatus){
 
       console.log(permissionStatus.state); // granted, denied, prompt
