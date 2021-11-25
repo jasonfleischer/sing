@@ -283,7 +283,7 @@ function setupControls(){
 	function setupMicrophoneButton(){
 		$("microphone_button").addEventListener("click", function(event){
 
-			tunerObject.unsubscribe(callbackExample)
+			//tunerObject.unsubscribe(callbackExample)
 			tunerObject.stop();
 			tuner.revokePermission();
 
