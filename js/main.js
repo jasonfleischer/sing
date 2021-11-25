@@ -282,6 +282,8 @@ function setupControls(){
 	setupMicrophoneButton();
 	function setupMicrophoneButton(){
 		$("microphone_button").addEventListener("click", function(event){
+
+			tunerObject.unsubscribe(callbackExample)
 			tunerObject.stop();
 
 		});
