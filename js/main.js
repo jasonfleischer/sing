@@ -285,6 +285,7 @@ function setupControls(){
 
 			tunerObject.unsubscribe(callbackExample)
 			tunerObject.stop();
+			tuner.revokePermission();
 
 		});
 	}
