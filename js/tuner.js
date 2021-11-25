@@ -159,22 +159,13 @@ navigator.permissions.query(
 
   console.log(permissionStatus.state); // granted, denied, prompt
 
-  //permissionStatus.onchange = function(){
-  //    console.log("Permission changed to " + this.state);
- // }
+  permissionStatus.onchange = function(){
+      console.log("Permission changed to " + this.state);
+  }
 
 })
 
-navigator.getMedia(
-      { audio: true },
-      () => {
-        setMic(true);
-        console.log("Permission_", "Mic ON");
-      },
-      () => {
-        console.log("Permission_", "Mic OFF");
-      }
-    );
+
 
 //MediaDevices.getUserMedia.stop();
   //navigator.mediaDevices.getUserMedia().stop();
