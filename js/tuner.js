@@ -119,7 +119,7 @@ tuner.setup = async () => {
     analyser = audioContext.createAnalyser()
     analyser.fftSize = tuner.FFT_SIZE
     analyser.smoothingTimeConstant = 0.8;
-    audioContext.createMediaStreamSource(stream).connect(analyser)
+    audioContext.createMediaStreamSource(tuner.stream).connect(analyser)
   }
 
   const update = () => {
