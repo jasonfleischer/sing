@@ -120,8 +120,8 @@ tuner.setup = async () => {
     analyser.smoothingTimeConstant = 0.8;
     audioContext.createMediaStreamSource(stream).connect(analyser)
 
-    navigator.permissions.query(
-      { name: 'audio' }
+    /*navigator.permissions.query(
+      { name: 'microphone' }
     ).then(function(permissionStatus){
 
       console.log(permissionStatus.state); // granted, denied, prompt
@@ -130,7 +130,7 @@ tuner.setup = async () => {
           console.log("Permission changed to " + this.state);
       }
 
-    })
+    })*/
   }
 
   const update = () => {
