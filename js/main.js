@@ -52,6 +52,10 @@ const fretboardView = fretboardKit({
 //const freelizer = require("freelizer");
 //import { freelizer } from 'freelizer'
 
+let average_frequencies = [];
+let average_cents = [];
+let average_length = 10;
+
 const callbackExample = data => {
 
 
@@ -107,7 +111,7 @@ const callbackExample = data => {
 			$("note").innerHTML = data.note;
 			$("octave").innerHTML = data.octave;
 
-			centsView.drawCents(cents);
+			centsView.drawCents(cents, color);
 
 			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
@@ -129,11 +133,11 @@ const callbackExample = data => {
 
 ;(async function () {
     try {
-      const { start, subscribe } = await tuner.setup()
-      start()
+      const tunerObject = await tuner.setup()
+      tunerObject.start()
       //subscribe(console.log)
 
-      subscribe(callbackExample)
+      tunerObject.subscribe(callbackExample)
     } catch (error) {
       // Error handling goes here
     }
@@ -270,6 +274,14 @@ function setupControls(){
 		$("clear_button").addEventListener("click", function(event){
 			pianoView.clear();
 			fretboardView.clear();
+		});
+	}
+
+	setupMicrophoneButton();
+	function setupMicrophoneButton(){
+		$("microphone_button").addEventListener("click", function(event){
+			tuner.stop();
+
 		});
 	}
 }

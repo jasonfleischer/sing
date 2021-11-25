@@ -149,3 +149,13 @@ tuner.setup = async () => {
     unsubscribe: (fn) => (callbacks = callbacks.filter((el) => el !== fn)),
   }
 }
+
+tuner.stop = () => {
+
+
+  
+
+
+
+
+};

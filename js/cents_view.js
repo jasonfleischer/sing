@@ -72,13 +72,13 @@ class CentsView {
 		}
 	}
 
-	drawCents(cents) {
+	drawCents(cents, color="#00f") {
 		
 		let ctx = this.drawing_canvas.getContext("2d");
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 
 		ctx.beginPath();
-		ctx.strokeStyle = this.getCentsColor(cents);
+		ctx.strokeStyle = color;
 		ctx.lineWidth = 3;
 
 		let x = ((cents + 50) /100) * this.WIDTH;
@@ -96,23 +96,5 @@ class CentsView {
 			valueHexStr = "0" + valueHexStr;
 		}
 		return "#" + valueHexStr + valueHexStr + valueHexStr;
-	}
-
-	//duplicate
-	getCentsColor(cents) {
-
-		var c = Math.abs(parseInt(cents));
-		if (c <= 10) {
-			return "#00ff00";
-		} else if (c > 10 && c < 25) { // yellow to red (11 to 24)
-			let number = parseInt(255 * ((13-(c-11))/13));
-			var greenValueHexStr = number.toString(16);
-			if(greenValueHexStr.length < 2) {
-				greenValueHexStr = "0" + greenValueHexStr;
-			}
-			return "#ff" + greenValueHexStr+ "00";
-		} else { //c <= 25
-			return "red"
-		} 
 	}
 }
