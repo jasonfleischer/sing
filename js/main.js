@@ -2,6 +2,8 @@ const log = require("@jasonfleischer/log");
 const pianoKit = require("@jasonfleischer/piano");
 const fretboardKit = require("@jasonfleischer/fretboard");
 const musicKit = require("@jasonfleischer/music-model-kit");
+let tunerObject = {};
+
 musicKit.init();
 
 let note_name_to_midi_value_map = {
@@ -133,7 +135,7 @@ const callbackExample = data => {
 
 ;(async function () {
     try {
-      const tunerObject = await tuner.setup()
+      tunerObject = await tuner.setup()
       tunerObject.start()
       //subscribe(console.log)
 
@@ -280,7 +282,7 @@ function setupControls(){
 	setupMicrophoneButton();
 	function setupMicrophoneButton(){
 		$("microphone_button").addEventListener("click", function(event){
-			tuner.stop();
+			tunerObject.stop();
 
 		});
 	}
