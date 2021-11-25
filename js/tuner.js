@@ -152,7 +152,7 @@ tuner.setup = async () => {
 
 tuner.revokePermission = () => {
 
-  navigator.mediaDevices.getUserMedia(tuner.USER_MEDIA_CONSTRAINTS).stop();
+  navigator.mediaDevices.getUserMedia({ audio: true }).stop();
   //const microphone = navigator.permissions.query({ name: 'microphone' })
   //navigator.permissions.revoke(microphone)
 
