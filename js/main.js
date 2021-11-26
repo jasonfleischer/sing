@@ -296,6 +296,7 @@ function setupControls(){
 			if(tunerObject != undefined){
 				tunerObject.unsubscribe(callbackExample)
 				tunerObject.stop();
+				tunerObject = undefined;
 			} else {
 				startAndSubscribeTuner();
 			}
