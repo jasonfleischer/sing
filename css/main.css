@@ -65,8 +65,8 @@ select {
 
 button {
 	min-width: 36px;
-	margin-top: 3px;
-	margin-bottom: 3px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 input {
@@ -113,23 +113,13 @@ strong {
 	margin-top: 10px;
 }
 #random_button {
-	margin-top: 6px;
-	padding-left: 15px;
-	padding-right: 15px;
-	height: 36px;
+	
 }
 #clear_button {
-	margin-top: 6px;
-	padding-left: 15px;
-	padding-right: 15px;
-	height: 36px;
+
 	margin-left: 10px;
 }
-#microphone_button {
-	height: 36px;
-	padding-left: 15px;
-	padding-right: 15px;
-}
+
 
 #ios_install_instructions p {
     font-size: 18px !important;
