@@ -87,12 +87,9 @@ strong {
 	width: 100%;
 }
 #note_octave {
-
-
 	width: 75px;
 	height: 50px;
 	margin: auto;
-
 }
 #note {
 	width:  50px;
@@ -112,14 +109,9 @@ strong {
 #fretboard {
 	margin-top: 10px;
 }
-#random_button {
-	
-}
 #clear_button {
-
 	margin-left: 10px;
 }
-
 
 #ios_install_instructions p {
     font-size: 18px !important;

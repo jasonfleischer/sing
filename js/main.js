@@ -6,9 +6,11 @@ const musicKit = require("@jasonfleischer/music-model-kit");
 musicKit.init();
 
 const tunerView = new TunerView("tuner");
+const tunerView2 = new TunerView("tuner2");
 let tunerObject = undefined;
 
 const centsView = new CentsView("cents");
+const centsView2 = new CentsView("cents2");
 const volumeView = new VolumeView("volume");
 
 /*let note_name_to_midi_value_map = {
@@ -333,9 +335,11 @@ function windowResizedEnd(){
 
 	let tunerPaddingLeftRight = 60;
 	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
+	tunerView2.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 
 	let centsPaddingLeftRight = 60;
 	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
+	centsView2.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 
 	let volumePaddingLeftRight = 60;
 	volumeView.resize(Math.min(contentWidth-volumePaddingLeftRight, 1000));
