@@ -146,11 +146,8 @@ function startAndSubscribeTuner() {
       tunerObject.start()
       tunerObject.subscribe(callbackExample);
       $("microphone_button").innerHTML = "Stop microphone";
-
-
     } catch (error) {
-    	tunerObject = nil;
-      // Error handling goes here
+    	tunerObject = undefined;
     }
 	})()
 }
