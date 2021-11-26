@@ -133,7 +133,15 @@ const callbackExample = data => {
 	}
 }
 
-;(async function () {
+
+
+
+
+
+
+
+function startAndSubscribeTuner() {
+	;(async function () {
     try {
       tunerObject = await tuner.setup()
       tunerObject.start()
@@ -143,8 +151,10 @@ const callbackExample = data => {
     } catch (error) {
       // Error handling goes here
     }
-})()
+	})()
+}
 
+startAndSubscribeTuner();
 
 
 
@@ -283,9 +293,13 @@ function setupControls(){
 	function setupMicrophoneButton(){
 		$("microphone_button").addEventListener("click", function(event){
 
-			tunerObject.unsubscribe(callbackExample)
-			tunerObject.stop();
-			tuner.revokePermission();
+			if(tunerObject != undefined){
+				tunerObject.unsubscribe(callbackExample)
+				tunerObject.stop();
+			} else {
+				startAndSubscribeTuner();
+			}
+			//tuner.revokePermission();
 
 		});
 	}
