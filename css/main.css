@@ -127,6 +127,8 @@ strong {
 }
 #microphone_button {
 	height: 36px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 #ios_install_instructions p {
