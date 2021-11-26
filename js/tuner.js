@@ -161,20 +161,3 @@ tuner.setup = async () => {
     unsubscribe: (fn) => (callbacks = callbacks.filter((el) => el !== fn)),
   }
 }
-
-tuner.revokePermission = () => {
-
-
-
-
-
-
-//MediaDevices.getUserMedia.stop();
-  //navigator.mediaDevices.getUserMedia().stop();
-  //const microphone = navigator.permissions.query({ name: 'microphone' })
-  //navigator.permissions.revoke(microphone)
-
-
-
-
-};

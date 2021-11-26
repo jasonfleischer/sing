@@ -2,11 +2,16 @@ const log = require("@jasonfleischer/log");
 const pianoKit = require("@jasonfleischer/piano");
 const fretboardKit = require("@jasonfleischer/fretboard");
 const musicKit = require("@jasonfleischer/music-model-kit");
-let tunerObject = undefined;
 
 musicKit.init();
 
-let note_name_to_midi_value_map = {
+const tunerView = new TunerView("tuner");
+let tunerObject = undefined;
+
+const centsView = new CentsView("cents");
+const volumeView = new VolumeView("volume");
+
+/*let note_name_to_midi_value_map = {
 	"C": 60,
 	"C# / Db": 61,
 	"D": 62,
@@ -19,11 +24,9 @@ let note_name_to_midi_value_map = {
 	"A": 69,
 	"A# / Bb": 70,
 	"B": 71
-};
+};*/
 
-const tunerView = new TunerView("tuner");
-const centsView = new CentsView("cents");
-const volumeView = new VolumeView("volume");
+
 
 const pianoView = pianoKit({
 	id: 'piano',
@@ -49,10 +52,6 @@ const fretboardView = fretboardKit({
 	darkMode: true
 });
 
-
-
-//const freelizer = require("freelizer");
-//import { freelizer } from 'freelizer'
 
 let average_frequencies = [];
 let average_cents = [];
@@ -145,10 +144,12 @@ function startAndSubscribeTuner() {
     try {
       tunerObject = await tuner.setup()
       tunerObject.start()
-      //subscribe(console.log)
+      tunerObject.subscribe(callbackExample);
+      $("microphone_button").innerHTML = "Stop microphone";
 
-      tunerObject.subscribe(callbackExample)
+
     } catch (error) {
+    	tunerObject = nil;
       // Error handling goes here
     }
 	})()
@@ -297,6 +298,7 @@ function setupControls(){
 				tunerObject.unsubscribe(callbackExample)
 				tunerObject.stop();
 				tunerObject = undefined;
+				$("microphone_button").innerHTML = "Start microphone";
 			} else {
 				startAndSubscribeTuner();
 			}
