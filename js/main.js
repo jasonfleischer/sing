@@ -140,7 +140,7 @@ const callbackExample = data => {
 
 	//log.e(average_frequencies.length());
 	if(average_frequencies.length() == average_length){
-		let frequency = getAverage(average_frequencies);
+		let frequency = getAverage(average_frequencies.toArray());
 
 		log.e(frequency);
 		tunerView2.draw(frequency);
@@ -150,7 +150,7 @@ const callbackExample = data => {
 	}
 
 	if(average_cents.length() == average_length){
-		let cents = getAverage(average_cents);
+		let cents = getAverage(average_cents.toArray());
 		let color = getCentsColor(cents);
 		centsView.drawCents(cents, color);
 
