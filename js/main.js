@@ -118,7 +118,7 @@ const callbackExample = data => {
 
 			//centsView.drawCents(cents, color);
 
-			//pianoView.clearHover();
+			pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
 		
 			fretboardView.clearHover();
