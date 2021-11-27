@@ -105,7 +105,9 @@ const callbackExample = data => {
 		volumeView.drawVolume(data.volume);
 
 		var note = findNote(data.note, data.octave);
-		if (note !== undefined || data.volume > model.threshold ) {
+
+
+		if (note !== undefined && data.volume > model.threshold ) {
 
 			var cents = data.cents;
 
