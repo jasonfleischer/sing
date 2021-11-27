@@ -11,7 +11,7 @@ let tunerObject = undefined;
 
 //const centsView = new CentsView("cents");
 const centsView2 = new CentsView("cents2");
-const volumeView = new VolumeView("volume");
+const volumeView = new VolumeView("volume", model.threshold);
 
 /*let note_name_to_midi_value_map = {
 	"C": 60,
@@ -105,7 +105,7 @@ const callbackExample = data => {
 		volumeView.drawVolume(data.volume);
 
 		var note = findNote(data.note, data.octave);
-		if (note !== undefined) {
+		if (note !== undefined || data.volume > model.threshold ) {
 
 			var cents = data.cents;
 

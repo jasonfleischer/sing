@@ -1,4 +1,6 @@
 model = {
 	selected_root_note: 0,
-	selected_scale_type: ""
+	selected_scale_type: "",
+
+	threshold: 0.2
 }

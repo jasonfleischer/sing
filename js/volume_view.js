@@ -1,6 +1,6 @@
 class VolumeView {
 
-	constructor(id = "volume_view_id", width = 1000, threshold=0.2, clip=0.9) {
+	constructor(id = "volume_view_id", threshold=0.2, width = 1000, clip=0.9) {
 
 	  	this.id = id;
 	  	this.threshold = threshold;
