@@ -116,7 +116,7 @@ const callbackExample = data => {
 			$("note").innerHTML = data.note;
 			$("octave").innerHTML = data.octave;
 
-			centsView.drawCents(cents, color);
+			//centsView.drawCents(cents, color);
 
 			//pianoView.clearHover();
 			pianoView.drawHoverNote(note, color);
