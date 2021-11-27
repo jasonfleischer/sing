@@ -61,6 +61,8 @@ class VolumeView {
 		ctx.rect(0, 0, this.WIDTH, this.HEIGHT);
 		ctx.fill();
 		//ctx.stroke();
+
+		drawThreholdMarker(this.threshold);
 	}
 
 	drawVolume(volumePercent) {
@@ -74,6 +76,19 @@ class VolumeView {
 		ctx.rect(0, 0, this.WIDTH*volumePercent, this.HEIGHT);
 		ctx.fill();
 	}	
+
+	drawThreholdMarker(threshold){
+		let ctx = this.canvas.getContext("2d");
+		ctx.beginPath();
+		let x = this.WIDTH * triangle
+
+		ctx.moveTo(x, 0);
+		ctx.lineTo(x+this.HEIGHT, this.HEIGHT);
+		ctx.lineTo(x-this.HEIGHT, this.HEIGHT);
+		ctx.lineTo(x, 0);
+		ctx.closePath();
+		ctx.stroke();
+	}
 
 	getBarColor(volumePercent) {
 		if(volumePercent >= this.clip){
