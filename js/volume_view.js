@@ -18,6 +18,8 @@ class VolumeView {
 
 		this.canvas = this.buildCanvas("volume_canvas_"+this.id);
 		this.drawing_canvas = this.buildCanvas("volume_drawing_canvas_"+this.id);
+		this.threshold_canvas = this.buildCanvas("volume_drawing_canvas_"+this.id);
+
 	
 		this.draw();
 		this.resize(width);
@@ -43,7 +45,7 @@ class VolumeView {
 		var newWidth = Math.min(newWidth, this.WIDTH);
 		let newHeight = newWidth * (this.HEIGHT/this.WIDTH);
 
-		let views = [this.root_view, this.canvas, this.drawing_canvas];
+		let views = [this.root_view, this.canvas, this.drawing_canvas, this.threshold_canvas];
 		for (let i = 0; i < views.length; i++) {
 			let view = views[i];
 			view.style.height = newHeight + "px";
@@ -78,7 +80,7 @@ class VolumeView {
 	}	
 
 	drawThresholdMarker(threshold){
-		let ctx = this.canvas.getContext("2d");
+		let ctx = this.threshold_canvas.getContext("2d");
 		ctx.beginPath();
 		ctx.fillStyle = "#555";
 		let x = this.WIDTH * threshold;
