@@ -141,28 +141,30 @@ const callbackExample = data => {
 	}
 
 
+	if(data.volume > model.threshold) {
 	//log.e(average_frequencies.length());
-	if(average_frequencies.length() == average_frequency_length){
-		let frequency = getAverage(average_frequencies.toArray());
+		if(average_frequencies.length() == average_frequency_length){
+			let frequency = getAverage(average_frequencies.toArray());
 
-		
-		tunerView2.draw(frequency);
+			
+			tunerView2.draw(frequency);
 
-		average_frequencies.dequeue();
-		//average_frequencies.clear();
-	}
+			average_frequencies.dequeue();
+			//average_frequencies.clear();
+		}
 
-	if(average_cents.length() == average_cents_length){
+		if(average_cents.length() == average_cents_length){
 
 
-		let cents = getAverage(average_cents.toArray());
-		let color = getCentsColor(cents);
-		
+			let cents = getAverage(average_cents.toArray());
+			let color = getCentsColor(cents);
+			
 
-		centsView2.drawCents(cents, color);
+			centsView2.drawCents(cents, color);
 
-		average_cents.dequeue();
-		//average_cents.clear();
+			average_cents.dequeue();
+			//average_cents.clear();
+		}
 	}
 
 
