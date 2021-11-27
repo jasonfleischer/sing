@@ -80,6 +80,7 @@ class VolumeView {
 	drawThresholdMarker(threshold){
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
+		ctx.fillStyle = "#555";
 		let x = this.WIDTH * threshold;
 
 		ctx.moveTo(x, 0);
@@ -87,7 +88,7 @@ class VolumeView {
 		ctx.lineTo(x-this.HEIGHT, this.HEIGHT);
 		ctx.lineTo(x, 0);
 		ctx.closePath();
-		ctx.stroke();
+		ctx.fill();
 	}
 
 	getBarColor(volumePercent) {
