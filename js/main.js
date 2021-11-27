@@ -96,8 +96,7 @@ const callbackExample = data => {
 
 	if (data.frequency !== undefined) {
 
-		average_frequencies.enqueue(data.frequency);
-		average_cents.enqueue(data.cents);
+		
 
 		//$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
 			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
@@ -108,6 +107,9 @@ const callbackExample = data => {
 
 
 		if (note !== undefined && data.volume > model.threshold ) {
+
+			average_frequencies.enqueue(data.frequency);
+			average_cents.enqueue(data.cents);
 
 			var cents = data.cents;
 
@@ -130,10 +132,12 @@ const callbackExample = data => {
 			}
 
 			//tunerView.draw(data.frequency);
+		} else {
+
 		}
 	} else {
-		average_frequencies.enqueue(0);
-		average_cents.enqueue(0);
+		//average_frequencies.enqueue(0);
+		//average_cents.enqueue(0);
 
 		pianoView.clearHover();
 		fretboardView.clearHover();
