@@ -80,7 +80,7 @@ class VolumeView {
 	drawThresholdMarker(threshold){
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
-		let x = this.WIDTH * triangle
+		let x = this.WIDTH * threshold;
 
 		ctx.moveTo(x, 0);
 		ctx.lineTo(x+this.HEIGHT, this.HEIGHT);
