@@ -62,7 +62,7 @@ class VolumeView {
 		ctx.fill();
 		//ctx.stroke();
 
-		drawThreholdMarker(this.threshold);
+		this.drawThresholdMarker(this.threshold);
 	}
 
 	drawVolume(volumePercent) {
@@ -77,7 +77,7 @@ class VolumeView {
 		ctx.fill();
 	}	
 
-	drawThreholdMarker(threshold){
+	drawThresholdMarker(threshold){
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
 		let x = this.WIDTH * triangle
