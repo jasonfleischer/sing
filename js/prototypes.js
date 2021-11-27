@@ -28,3 +28,12 @@ function isFromHomeScreen() {
 function randomInteger(min, max) { // min and max included 
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+function getAverage(numberArray){
+	let sum = 0;
+	var i;
+	for (i = 0; i < numberArray.length; i++) {
+		sum += numberArray[i];
+	}
+	return sum / numberArray.length;
+}

@@ -55,8 +55,8 @@ const fretboardView = fretboardKit({
 });
 
 
-let average_frequencies = [];
-let average_cents = [];
+let average_frequencies = new Queue();
+let average_cents = new Queue();
 let average_length = 10;
 
 const callbackExample = data => {
@@ -95,7 +95,8 @@ const callbackExample = data => {
 
 	if (data.frequency !== undefined) {
 
-		
+		average_frequencies.enqueue(data.frequency);
+		average_cents.enqueue(data.cents);
 
 		//$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
 			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
@@ -128,10 +129,37 @@ const callbackExample = data => {
 			tunerView.draw(data.frequency);
 		}
 	} else {
+		average_frequencies.enqueue(0);
+		average_cents.enqueue(0);
+
 		pianoView.clearHover();
 		fretboardView.clearHover();
 		volumeView.drawVolume(0);
 	}
+
+
+	if(average_frequencies.length > average_length){
+		average_frequencies.dequeue();
+	}
+	if(average_cents.length > average_length){
+		average_cents.dequeue();
+	}
+
+
+	if(average_frequencies.length == average_length){
+		let frequency = getAverage(average_frequencies);
+		tunerView2.draw(frequency);
+		//average_frequencies.clear();
+	}
+
+	if(average_cents.length == average_length){
+		let cents = getAverage(average_cents);
+		let color = getCentsColor(cents);
+		centsView.drawCents(cents, color);
+		//average_cents.clear();
+	}
+
+
 }
 
 
