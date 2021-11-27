@@ -138,17 +138,12 @@ const callbackExample = data => {
 	}
 
 
-	if(average_frequencies.length > average_length){
-		average_frequencies.dequeue();
-	}
-	if(average_cents.length > average_length){
-		average_cents.dequeue();
-	}
-
 
 	if(average_frequencies.length == average_length){
 		let frequency = getAverage(average_frequencies);
 		tunerView2.draw(frequency);
+
+		average_frequencies.dequeue();
 		//average_frequencies.clear();
 	}
 
@@ -156,6 +151,8 @@ const callbackExample = data => {
 		let cents = getAverage(average_cents);
 		let color = getCentsColor(cents);
 		centsView.drawCents(cents, color);
+
+		average_cents.dequeue();
 		//average_cents.clear();
 	}
 
