@@ -57,7 +57,8 @@ const fretboardView = fretboardKit({
 
 let average_frequencies = new Queue();
 let average_cents = new Queue();
-let average_length = 10;
+let average_frequency_length = 10;
+let average_cents_length = 40;
 
 const callbackExample = data => {
 
@@ -139,7 +140,7 @@ const callbackExample = data => {
 
 
 	//log.e(average_frequencies.length());
-	if(average_frequencies.length() == average_length){
+	if(average_frequencies.length() == average_frequency_length){
 		let frequency = getAverage(average_frequencies.toArray());
 
 		
@@ -149,7 +150,7 @@ const callbackExample = data => {
 		//average_frequencies.clear();
 	}
 
-	if(average_cents.length() == average_length){
+	if(average_cents.length() == average_cents_length){
 
 
 		let cents = getAverage(average_cents.toArray());
