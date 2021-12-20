@@ -84,7 +84,7 @@ strong {
 }
 
 #tune_indicator {
-	width: 70px;
+	
 	display: flex;
 }
 #flat, #intune, #sharp {
