@@ -84,27 +84,14 @@ strong {
 }
 
 #tune_indicator {
-	
 	display: flex;
 }
 #flat, #intune, #sharp {
 	width: 20px;
 	height: 20px;
 	border-radius: 10px;
-
 	margin: 10px;
-}
-
-#flat {
-	background-color: red;
-}
-
-#intune {
-	background-color: green;
-}
-
-#sharp {
-	background-color: red;
+	background-color: var(--tertiary-background-color);
 }
 
 #note_display {
