@@ -4,7 +4,7 @@ const dronePianoView = pianoKit({
 	id: 'drone_piano',
 	onClick: function(note, isOn) {
 
-log.e("note" + note + ' ' + isOn)
+		log.e("note" + note + ' ' + isOn)
 
 		if(isOn) {
 			playDrone(note.frequency);
@@ -69,7 +69,7 @@ function setupAudioChain(){
 function stopDrone(frequency){
 	log.e("stopDrone")
 
-	gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
+	gainNodesDict[frequency].gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
 	oscillatorsDict[frequency].stop(audioCtx.currentTime + 0.03)
 
 }
