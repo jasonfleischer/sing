@@ -25,6 +25,8 @@ var drones = [];
 var gainNode;
 
 function playDrone(frequency){
+
+	log.E("playDrone")
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 	const oscillator = audioCtx.createOscillator();
