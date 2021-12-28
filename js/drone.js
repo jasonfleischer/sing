@@ -26,7 +26,7 @@ log.e("note" + note + ' ' + isOn)
 
 
 var oscillatorsDict = {};
-const audioCtx;
+var audioCtx;
 var gainNode;
 
 
