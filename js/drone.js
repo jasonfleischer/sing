@@ -60,9 +60,10 @@ function playDrone(frequency){
 function setupAudioChain(){
 
 	audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-	gainNode = audioCtx.createGain();
-	gainNode.connect(audioCtx.destination);
+	masterGainNode = audioCtx.createGain();
+	masterGainNode.connect(audioCtx.destination);
 	oscillatorsDict = {};
+	gainNodesDict = {};
 }
 
 function stopDrone(frequency){
