@@ -5,15 +5,18 @@ const dronePianoView = pianoKit({
 	onClick: function(note, isOn) {
 		if(isOn) {
 			stopDrone(note.frequency);
+			dronePianoView.clearNote(note);
 		} else {
 			playDrone(note.frequency);
+			let color = note.note_name.is_sharp_or_flat ? "#777" : "#aaa";
+            dronePianoView.drawNoteWithColor(note, color);	
 		}
 	},
 	range: {
-    min: 48,
-    max: 60
-  },
-  width: 340,
+    	min: 48,
+    	max: 60
+  	},
+  	width: 340,
 	hover: true
 });
 
