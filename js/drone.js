@@ -6,7 +6,7 @@ const dronePianoView = pianoKit({
 
 log.e("note" + note + ' ' + isOn)
 
-		if(isOn) {
+		if(!isOn) {
 			stopDrone(note.frequency);
 			dronePianoView.clearNote(note);
 		} else {
