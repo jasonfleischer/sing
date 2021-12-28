@@ -57,6 +57,8 @@ function setupAudioChain(){
 function stopDrone(frequency){
 	log.e("stopDrone")
 
-	oscillatorsDict[frequency].stop()
+	gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
+
+	oscillatorsDict[frequency].stop(audioCtx.currentTime + 0.03)
 
 }
