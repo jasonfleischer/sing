@@ -26,8 +26,9 @@ log.e("note" + note + ' ' + isOn)
 
 
 var oscillatorsDict = {};
+var gainNodesDict = {};
 var audioCtx;
-var gainNode;
+var masterGainNode;
 
 
 function playDrone(frequency){
@@ -36,14 +37,24 @@ function playDrone(frequency){
 	if(audioCtx == undefined) {
 		setupAudioChain()
 	}
-	
-	const oscillator = audioCtx.createOscillator();
-	oscillator.type = 'sine';
-	oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-	oscillator.connect(gainNode);
-	oscillator.start();
 
-	oscillatorsDict[frequency] = oscillator;
+	if(oscillatorsDict[frequency] == undefined) {
+		const oscillator = audioCtx.createOscillator();
+		const gainNode = audioCtx.createGain();
+		oscillator.type = 'sine';
+		oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+		oscillator.connect(gainNode);
+		gainNode.connect(masterGainNode);
+		oscillator.start();
+
+		oscillatorsDict[frequency] = oscillator;
+		gainNodesDict[frequency] = gainNode;
+	} else {
+		oscillatorsDict[frequency].start();
+		gainNodesDict[frequency].gain.exponentialRampToValueAtTime(1.0, audioCtx.currentTime + 0.03);
+	}
+	
+	
 }
 
 function setupAudioChain(){
@@ -58,7 +69,6 @@ function stopDrone(frequency){
 	log.e("stopDrone")
 
 	gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
-
 	oscillatorsDict[frequency].stop(audioCtx.currentTime + 0.03)
 
 }
