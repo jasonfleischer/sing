@@ -48,7 +48,13 @@ function playDrone(frequency){
 
 		oscillator.connect(gainNode);
 
-		gainNode.connect(masterGainNode);
+		if(lastAddedOscillators == undefined){
+			gainNode.connect(masterGainNode);
+		} else {
+			gainNode.connect(lastAddedOscillators);
+		}
+		lastAddedOscillators = oscillator;
+		
 		oscillator.start();
 
 		oscillatorsDict[frequency] = oscillator;
