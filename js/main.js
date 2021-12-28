@@ -41,6 +41,22 @@ const pianoView = pianoKit({
 	hover: true
 });
 
+const dronePianoView = pianoKit({
+	id: 'drone_piano',
+	onClick: function(note, isOn) {
+		/*let midi_value = note_name_to_midi_value_map[note.note_name.type];
+		$("note_type_select").value = midi_value;
+		model.selected_root_note = midi_value;
+		updateUI();*/
+	},
+	range: {
+    min: 48,
+    max: 60
+  },
+  width: 340,
+	hover: true
+});
+
 const fretboardView = fretboardKit({
 	id: 'fretboard',
 	onClick: function(note, isOn) {
@@ -394,6 +410,13 @@ function updateUI() {
 
 	fretboardView.drawScale(scale);
 	pianoView.drawScale(scale);
+}
+
+function updateUITuneIndicator(cents) {
+	$("flat").style.backgroundColor = "#000"
+	$("intune").style.backgroundColor = "#000"
+	$("sharp").style.backgroundColor = "#000"
+
 }
 
 
