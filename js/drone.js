@@ -43,7 +43,7 @@ function playDrone(frequency){
 	oscillator.connect(gainNode);
 	oscillator.start();
 
-	oscillators[frequency] = oscillator;
+	oscillatorsDict[frequency] = oscillator;
 }
 
 function setupAudioChain(){
@@ -51,12 +51,12 @@ function setupAudioChain(){
 	audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 	gainNode = audioCtx.createGain();
 	gainNode.connect(audioCtx.destination);
-	oscillators = []
+	oscillatorsDict = {};
 }
 
 function stopDrone(frequency){
 	log.e("stopDrone")
 
-	oscillators[frequency].stop()
+	oscillatorsDict[frequency].stop()
 
 }
