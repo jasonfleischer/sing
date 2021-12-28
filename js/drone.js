@@ -7,12 +7,13 @@ const dronePianoView = pianoKit({
 log.e("note" + note + ' ' + isOn)
 
 		if(!isOn) {
-			stopDrone(note.frequency);
-			dronePianoView.clearNote(note);
-		} else {
 			playDrone(note.frequency);
 			let color = note.note_name.is_sharp_or_flat ? "#777" : "#aaa";
             dronePianoView.drawNoteWithColor(note, color);	
+			
+		} else {
+			stopDrone(note.frequency);
+			dronePianoView.clearNote(note);
 		}
 	},
 	range: {
@@ -24,27 +25,38 @@ log.e("note" + note + ' ' + isOn)
 });
 
 
-var drones = [];
+var oscillatorsDict = {};
+const audioCtx;
 var gainNode;
+
 
 function playDrone(frequency){
 
 	log.e("playDrone")
-	const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
+	if(audioCtx == undefined) {
+		setupAudioChain()
+	}
+	
 	const oscillator = audioCtx.createOscillator();
-	gainNode = audioCtx.createGain();
-
 	oscillator.type = 'sine';
-	oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime); // value in hertz
+	oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
 	oscillator.connect(gainNode);
-	gainNode.connect(audioCtx.destination);
 	oscillator.start();
 
-	drones.push(oscillator);
+	oscillators[frequency] = oscillator;
+}
+
+function setupAudioChain(){
+
+	audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+	gainNode = audioCtx.createGain();
+	gainNode.connect(audioCtx.destination);
+	oscillators = []
 }
 
 function stopDrone(frequency){
 	log.e("stopDrone")
+
+	oscillators[frequency].stop()
 
 }
