@@ -22,9 +22,21 @@ const dronePianoView = pianoKit({
 
 
 var drones = [];
+var gainNode;
 
 function playDrone(frequency){
+	const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
+	const oscillator = audioCtx.createOscillator();
+	gainNode = audioCtx.createGain();
+
+	oscillator.type = 'sine';
+	oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime); // value in hertz
+	oscillator.connect(gainNode);
+	gainNode.connect(audioCtx.destination);
+	oscillator.start();
+
+	drones.push(oscillator);
 }
 
 function stopDrone(frequency){
