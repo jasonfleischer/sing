@@ -42,5 +42,6 @@ function playDrone(frequency){
 }
 
 function stopDrone(frequency){
+	log.E("stopDrone")
 
 }
