@@ -26,6 +26,7 @@ const dronePianoView = pianoKit({
 
 
 var oscillatorsDict = {};
+var lastAddedOscillators = undefined;
 var gainNodesDict = {};
 var audioCtx;
 var masterGainNode;
@@ -43,7 +44,10 @@ function playDrone(frequency){
 		const gainNode = audioCtx.createGain();
 		oscillator.type = 'sine';
 		oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+		
+
 		oscillator.connect(gainNode);
+
 		gainNode.connect(masterGainNode);
 		oscillator.start();
 
@@ -51,7 +55,7 @@ function playDrone(frequency){
 		gainNodesDict[frequency] = gainNode;
 	} else {
 		//oscillatorsDict[frequency].start();
-		gainNodesDict[frequency].gain.setValueAtTime(0.001, audioCtx.currentTime); 
+		gainNodesDict[frequency].gain.setValueAtTime(0.0001, audioCtx.currentTime); 
 		gainNodesDict[frequency].gain.exponentialRampToValueAtTime(1.0, audioCtx.currentTime + 0.03);
 	}
 	
