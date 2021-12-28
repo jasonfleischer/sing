@@ -57,6 +57,6 @@ function setupAudioChain(){
 function stopDrone(frequency){
 	log.e("stopDrone")
 
-	oscillatorsDict[frequency].stop()
+	oscillatorsDict[frequency].stop(audioCtx.currentTime + 1)
 
 }
