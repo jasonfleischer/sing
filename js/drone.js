@@ -51,6 +51,7 @@ function playDrone(frequency){
 		gainNodesDict[frequency] = gainNode;
 	} else {
 		//oscillatorsDict[frequency].start();
+		gainNodesDict[frequency].gain.setValueAtTime(0.001, audioCtx.currentTime); 
 		gainNodesDict[frequency].gain.exponentialRampToValueAtTime(1.0, audioCtx.currentTime + 0.03);
 	}
 	
