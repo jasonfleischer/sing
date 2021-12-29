@@ -74,7 +74,7 @@ function setupAudioChain(){
 }
 
 function stopDrone(frequency){
-	oscillatorsDict[frequency].stop(0.5);
+	oscillatorsDict[frequency].stop();
 
 	oscillatorsDict.delete(frequency);
 }

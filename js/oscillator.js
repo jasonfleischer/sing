@@ -25,7 +25,7 @@ Oscillator = class Oscillator {
 		}
 	}
 
-	stop(delayTime) {
+	stop(delayTime=0.5) {
 		if (this.playing) {
 			var time = this.audioContext.currentTime;
 			this.playing = false;
