@@ -408,7 +408,7 @@ function updateUITuneIndicator(cents, color) {
 		$("flat").style.backgroundColor = color
 		$("intune").style.backgroundColor = "#000"
 		$("sharp").style.backgroundColor = "#000"
-	} else if (c >= 10) { // yellow to red (11 to 24)
+	} else if (cents >= 10) { // yellow to red (11 to 24)
 		$("flat").style.backgroundColor = "#000"
 		$("intune").style.backgroundColor = "#000"
 		$("sharp").style.backgroundColor = color

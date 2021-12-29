@@ -33,7 +33,6 @@ var compressorNode;
 
 function playDrone(frequency){
 
-	log.e("playDrone")
 	if(audioCtx == undefined) {
 		setupAudioChain();
 	}
