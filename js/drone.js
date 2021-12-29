@@ -48,12 +48,12 @@ function playDrone(frequency){
 
 		oscillator.connect(gainNode);
 
-		if(lastAddedOscillators == undefined){
+		//if(lastAddedOscillators == undefined){
 			gainNode.connect(masterGainNode);
-		} else {
-			gainNode.connect(lastAddedOscillators);
-		}
-		lastAddedOscillators = oscillator;
+		//} else {
+		//	gainNode.connect(lastAddedOscillators);
+		//}
+		//lastAddedOscillators = oscillator;
 		
 		oscillator.start();
 
@@ -62,7 +62,7 @@ function playDrone(frequency){
 	} else {
 		//oscillatorsDict[frequency].start();
 		gainNodesDict[frequency].gain.setValueAtTime(0.0001, audioCtx.currentTime); 
-		gainNodesDict[frequency].gain.exponentialRampToValueAtTime(1.0, audioCtx.currentTime + 0.03);
+		gainNodesDict[frequency].gain.linearRampToValueAtTime(1.0, audioCtx.currentTime + 0.03);
 	}
 	
 	
@@ -81,7 +81,7 @@ function stopDrone(frequency){
 	log.e("stopDrone")
 
 	gainNodesDict[frequency].gain.setValueAtTime(1.0, audioCtx.currentTime); 
-	gainNodesDict[frequency].gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
+	gainNodesDict[frequency].gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 0.03);
 	//oscillatorsDict[frequency].stop(audioCtx.currentTime + 0.03)
 
 }
