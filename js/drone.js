@@ -73,6 +73,7 @@ function setupAudioChain(){
 	audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 	masterGainNode = audioCtx.createGain();
 	masterGainNode.connect(audioCtx.destination);
+	masterGainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); 
 	oscillatorsDict = {};
 	gainNodesDict = {};
 }
