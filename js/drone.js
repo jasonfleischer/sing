@@ -77,7 +77,7 @@ function setupAudioChain(){
 	audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 
-	compressorNode = ctx.createDynamicsCompressor();
+	compressorNode = audioCtx.createDynamicsCompressor();
 		compressorNode.threshold.setValueAtTime(-20, ctx.currentTime);
 		compressorNode.knee.setValueAtTime(40, ctx.currentTime);
 		compressorNode.ratio.setValueAtTime(12, ctx.currentTime);
