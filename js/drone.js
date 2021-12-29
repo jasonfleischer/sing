@@ -25,7 +25,7 @@ const dronePianoView = pianoKit({
 });
 
 
-var oscillatorsDict = {};
+var oscillatorsDict = new Map();
 var audioCtx;
 var masterGainNode;
 var compressorNode;
@@ -35,16 +35,21 @@ function playDrone(frequency){
 
 	log.e("playDrone")
 	if(audioCtx == undefined) {
-		setupAudioChain()
+		setupAudioChain();
 	}
 
-	var time = audioCtx.currentTime;
-	if(oscillatorsDict[frequency] == undefined) {
-		const oscillator = new Oscillator(audioCtx, frequency, 1.0, 'sine');
-		oscillatorsDict[frequency] = oscillator;
+	if(oscillatorsDict.has(frequency)) {
 		
-	} 
-	oscillatorsDict[frequency].play();
+		var oscillator = oscillatorsDict.get(frequency);
+		if(oscillator.playing){
+			oscillator.stop();
+		}
+		oscillatorsDict.delete(frequency);
+	}
+
+	const oscillator = new Oscillator(audioCtx, frequency, 1.0, 'sine');
+	oscillatorsDict.set(frequency, oscillator);
+	oscillator.play();
 }
 
 function setupAudioChain(){
@@ -65,9 +70,11 @@ function setupAudioChain(){
 	compressorNode.connect(masterGainNode);
 	masterGainNode.connect(audioCtx.destination);
 	
-	oscillatorsDict = {};
+	oscillatorsDict = new Map();
 }
 
 function stopDrone(frequency){
 	oscillatorsDict[frequency].stop(0.5);
+
+	oscillatorsDict.delete(frequency);
 }
