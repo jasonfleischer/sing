@@ -87,7 +87,7 @@ strong {
 	display: flex;
 }
 #flat, #intune, #sharp {
-	width: 25px;
+	width: 120px;
 	height: 10px;
 	border-radius: 1px;
 	margin-top: 10px;
