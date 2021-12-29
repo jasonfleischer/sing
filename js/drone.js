@@ -30,6 +30,7 @@ var lastAddedOscillators = undefined;
 var gainNodesDict = {};
 var audioCtx;
 var masterGainNode;
+var compressorNode;
 
 
 function playDrone(frequency){
@@ -49,7 +50,7 @@ function playDrone(frequency){
 		oscillator.connect(gainNode);
 
 		//if(lastAddedOscillators == undefined){
-			gainNode.connect(masterGainNode);
+			gainNode.connect(compressorNode);
 
 			gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); 
 
@@ -74,9 +75,21 @@ function playDrone(frequency){
 function setupAudioChain(){
 
 	audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+
+	compressorNode = ctx.createDynamicsCompressor();
+		compressorNode.threshold.setValueAtTime(-20, ctx.currentTime);
+		compressorNode.knee.setValueAtTime(40, ctx.currentTime);
+		compressorNode.ratio.setValueAtTime(12, ctx.currentTime);
+		compressorNode.attack.setValueAtTime(0, ctx.currentTime);
+		compressorNode.release.setValueAtTime(0.25, ctx.currentTime);
+
 	masterGainNode = audioCtx.createGain();
-	masterGainNode.connect(audioCtx.destination);
 	masterGainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); 
+
+	compressorNode.connect(masterGainNode);
+	masterGainNode.connect(audioCtx.destination);
+	
 	oscillatorsDict = {};
 	gainNodesDict = {};
 }
