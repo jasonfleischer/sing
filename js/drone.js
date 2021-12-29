@@ -51,7 +51,7 @@ function playDrone(frequency){
 
 		//if(lastAddedOscillators == undefined){
 			gainNode.connect(compressorNode);
-			gainNode.gain.value = 0;
+			gainNode.gain.value = 1.0;
 
 
 		//} else {
@@ -85,7 +85,7 @@ function setupAudioChain(){
 	compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
 
 	masterGainNode = audioCtx.createGain();
-	masterGainNode.gain.value = 1.0; 
+	masterGainNode.gain.value = 0.6; 
 
 	compressorNode.connect(masterGainNode);
 	masterGainNode.connect(audioCtx.destination);
