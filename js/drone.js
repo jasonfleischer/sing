@@ -40,9 +40,9 @@ function playDrone(frequency){
 
 	if(oscillatorsDict.has(frequency)) {
 		
-		var oscillator = oscillatorsDict.get(frequency);
-		if(oscillator.playing){
-			oscillator.stop();
+		var osc = oscillatorsDict.get(frequency);
+		if(osc.playing){
+			osc.stop();
 		}
 		oscillatorsDict.delete(frequency);
 	}
