@@ -51,8 +51,8 @@ function playDrone(frequency){
 
 		//if(lastAddedOscillators == undefined){
 			gainNode.connect(compressorNode);
+			gainNode.gain.value = 0;
 
-			gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); 
 
 		//} else {
 		//	gainNode.connect(lastAddedOscillators);
