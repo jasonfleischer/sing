@@ -404,24 +404,25 @@ function updateUI() {
 
 function updateUITuneIndicator(cents, color) {
 
+
 	if (cents <= -10) {
 		$("flat").style.backgroundColor = color
-		$("intune").style.backgroundColor = "#000"
-		$("sharp").style.backgroundColor = "#000"
+		$("intune").style.backgroundColor = "#494949"
+		$("sharp").style.backgroundColor = "#494949"
 	} else if (cents >= 10) { // yellow to red (11 to 24)
-		$("flat").style.backgroundColor = "#000"
-		$("intune").style.backgroundColor = "#000"
+		$("flat").style.backgroundColor = "#494949"
+		$("intune").style.backgroundColor = "#494949"
 		$("sharp").style.backgroundColor = color
 	} else { 
-		$("flat").style.backgroundColor = "#000"
+		$("flat").style.backgroundColor = "#494949"
 		$("intune").style.backgroundColor = color
-		$("sharp").style.backgroundColor = "#000"
+		$("sharp").style.backgroundColor = "#494949"
 	} 
 }
 function  clearUITuneIndicator() {
-	$("flat").style.backgroundColor = "#000"
-	$("intune").style.backgroundColor = "#000"
-	$("sharp").style.backgroundColor = "#000"
+	$("flat").style.backgroundColor = "#494949"
+	$("intune").style.backgroundColor = "#494949"
+	$("sharp").style.backgroundColor = "#494949"
 }
 
 
