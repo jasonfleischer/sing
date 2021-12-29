@@ -50,6 +50,9 @@ function playDrone(frequency){
 
 		//if(lastAddedOscillators == undefined){
 			gainNode.connect(masterGainNode);
+
+			gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); 
+
 		//} else {
 		//	gainNode.connect(lastAddedOscillators);
 		//}
