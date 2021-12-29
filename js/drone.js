@@ -78,11 +78,11 @@ function setupAudioChain(){
 
 
 	compressorNode = audioCtx.createDynamicsCompressor();
-		compressorNode.threshold.setValueAtTime(-20, ctx.currentTime);
-		compressorNode.knee.setValueAtTime(40, ctx.currentTime);
-		compressorNode.ratio.setValueAtTime(12, ctx.currentTime);
-		compressorNode.attack.setValueAtTime(0, ctx.currentTime);
-		compressorNode.release.setValueAtTime(0.25, ctx.currentTime);
+		compressorNode.threshold.setValueAtTime(-20, audioCtx.currentTime);
+		compressorNode.knee.setValueAtTime(40, audioCtx.currentTime);
+		compressorNode.ratio.setValueAtTime(12, audioCtx.currentTime);
+		compressorNode.attack.setValueAtTime(0, audioCtx.currentTime);
+		compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
 
 	masterGainNode = audioCtx.createGain();
 	masterGainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); 
