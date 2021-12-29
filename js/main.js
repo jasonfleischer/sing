@@ -118,6 +118,8 @@ const callbackExample = data => {
 			let color = getCentsColor(cents);
 			let midiValue = note.midi_value
 
+			updateUITuneIndicator(cents, color)
+
 
 			$("note").innerHTML = data.note;
 			$("octave").innerHTML = data.octave;
@@ -144,6 +146,8 @@ const callbackExample = data => {
 		pianoView.clearHover();
 		fretboardView.clearHover();
 		volumeView.drawVolume(0);
+
+		clearUITuneIndicator()
 	}
 
 
@@ -398,11 +402,26 @@ function updateUI() {
 	pianoView.drawScale(scale);
 }
 
-function updateUITuneIndicator(cents) {
+function updateUITuneIndicator(cents, color) {
+
+	if (cents <= -10) {
+		$("flat").style.backgroundColor = color
+		$("intune").style.backgroundColor = "#000"
+		$("sharp").style.backgroundColor = "#000"
+	} else if (c >= 10) { // yellow to red (11 to 24)
+		$("flat").style.backgroundColor = "#000"
+		$("intune").style.backgroundColor = "#000"
+		$("sharp").style.backgroundColor = color
+	} else { 
+		$("flat").style.backgroundColor = "#000"
+		$("intune").style.backgroundColor = color
+		$("sharp").style.backgroundColor = "#000"
+	} 
+}
+function  clearUITuneIndicator() {
 	$("flat").style.backgroundColor = "#000"
 	$("intune").style.backgroundColor = "#000"
 	$("sharp").style.backgroundColor = "#000"
-
 }
 
 
