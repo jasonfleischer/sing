@@ -65,7 +65,7 @@ function setupAudioChain(){
 	compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
 
 	masterGainNode = audioCtx.createGain();
-	masterGainNode.gain.value = 0.6; 
+	masterGainNode.gain.value = 0.3; 
 
 	compressorNode.connect(masterGainNode);
 	masterGainNode.connect(audioCtx.destination);
