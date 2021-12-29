@@ -60,16 +60,18 @@ function playDrone(frequency){
 		//}
 		//lastAddedOscillators = oscillator;
 		
-		oscillator.start(audioCtx.currentTime);
+		//oscillator.start(audioCtx.currentTime);
 
 		oscillatorsDict[frequency] = oscillator;
 		gainNodesDict[frequency] = gainNode;
-	} else {
+	} 
+
+
 		oscillatorsDict[frequency].start(time);
 		gainNodesDict[frequency].gain.setValueAtTime(0.00001, time); 
 		gainNodesDict[frequency].gain.exponentialRampToValueAtTime(1.0, time + 0.5);
 
-	}
+	
 	
 	
 }
@@ -100,8 +102,9 @@ function stopDrone(frequency){
 	log.e("stopDrone")
 
 	var time = audioCtx.currentTime;
+	var delayTime = 0.5;
 	gainNodesDict[frequency].gain.setValueAtTime(1.0, time); 
-	gainNodesDict[frequency].gain.exponentialRampToValueAtTime(0.00001, time + 0.5);
-	oscillatorsDict[frequency].stop(time + 0.5)
+	gainNodesDict[frequency].gain.exponentialRampToValueAtTime(0.00001, time + delayTime);
+	oscillatorsDict[frequency].stop(time + delayTime)
 
 }
