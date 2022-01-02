@@ -171,7 +171,7 @@ const callbackExample = data => {
 			let cents = getAverage(average_cents.toArray());
 			let color = getCentsColor(cents);
 			
-			log.e('avg cents '+cents + '   -> '+ average_cents);
+			log.e('avg cents '+cents + '   -> '+ average_cents.toArray());
 
 			centsView2.drawCents(cents, color);
 
