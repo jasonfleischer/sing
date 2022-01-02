@@ -389,6 +389,9 @@ function windowResizedEnd(){
 
 	let volumePaddingLeftRight = 60;
 	volumeView.resize(Math.min(contentWidth-volumePaddingLeftRight, 1000));
+
+
+	//$("tune_indicator").style.width = 
 }
 
 function updateUI() {
