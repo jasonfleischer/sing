@@ -156,6 +156,8 @@ const callbackExample = data => {
 		if(average_frequencies.length() == average_frequency_length){
 			let frequency = getAverage(average_frequencies.toArray());
 
+
+			log.e('avg freq '+frequency);
 			
 			tunerView2.draw(frequency);
 
