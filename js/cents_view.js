@@ -70,6 +70,8 @@ class CentsView {
 			ctx.stroke();
 			xPosition += spacing;
 		}
+
+		this.drawTriangle();
 	}
 
 	drawCents(cents, color="#00f") {
@@ -96,5 +98,19 @@ class CentsView {
 			valueHexStr = "0" + valueHexStr;
 		}
 		return "#" + valueHexStr + valueHexStr + valueHexStr;
+	}
+
+	drawTriangle(){
+		let ctx = this.canvas.getContext("2d");
+		ctx.beginPath();
+		ctx.fillStyle = "#555";
+		let x = this.WIDTH * 0.5;
+
+		ctx.moveTo(x, 0);
+		ctx.lineTo(x+this.HEIGHT, this.HEIGHT);
+		ctx.lineTo(x-this.HEIGHT, this.HEIGHT);
+		ctx.lineTo(x, 0);
+		ctx.closePath();
+		ctx.fill();
 	}
 }
