@@ -107,8 +107,8 @@ class CentsView {
 		let x = this.WIDTH * 0.5;
 
 		ctx.moveTo(x, this.HEIGHT*0.3);
-		ctx.lineTo(x+this.HEIGHT, 0);
-		ctx.lineTo(x-this.HEIGHT, 0);
+		ctx.lineTo(x+this.HEIGHT*0.3, 0);
+		ctx.lineTo(x-this.HEIGHT*0.3, 0);
 		ctx.lineTo(x, this.HEIGHT*0.3);
 		ctx.closePath();
 		ctx.fill();
