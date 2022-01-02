@@ -380,11 +380,11 @@ function windowResizedEnd(){
 	pianoView.resize(Math.min(contentWidth-pianoPaddingLeftRight, 1000));
 
 	let tunerPaddingLeftRight = 60;
-	//tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
+	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 	tunerView2.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 
 	let centsPaddingLeftRight = 60;
-	//centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
+	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 	centsView2.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 
 	let volumePaddingLeftRight = 60;
