@@ -98,7 +98,7 @@ class TunerView {
 		ctx.lineTo(this.WIDTH * 0.5, this.HEIGHT);
 		ctx.stroke();
 
-		drawTriangle();
+		this.drawTriangle();
 	}
 
 	drawTriangle(){
