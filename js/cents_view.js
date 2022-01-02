@@ -103,13 +103,14 @@ class CentsView {
 	drawTriangle(){
 		let ctx = this.canvas.getContext("2d");
 		ctx.beginPath();
-		ctx.fillStyle = "#555";
+		ctx.fillStyle = "#FFF";
 		let x = this.WIDTH * 0.5;
+		let size = this.HEIGHT*0.3;
 
-		ctx.moveTo(x, this.HEIGHT*0.3);
-		ctx.lineTo(x+this.HEIGHT*0.3, 0);
-		ctx.lineTo(x-this.HEIGHT*0.3, 0);
-		ctx.lineTo(x, this.HEIGHT*0.3);
+		ctx.moveTo(x, size);
+		ctx.lineTo(x+size, 0);
+		ctx.lineTo(x-size, 0);
+		ctx.lineTo(x, resize);
 		ctx.closePath();
 		ctx.fill();
 	}
