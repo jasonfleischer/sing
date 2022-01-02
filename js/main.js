@@ -59,8 +59,8 @@ const fretboardView = fretboardKit({
 
 let average_frequencies = new Queue();
 let average_cents = new Queue();
-let average_frequency_length = 10;
-let average_cents_length = 10;
+let average_frequency_length = 40;
+let average_cents_length = 40;
 
 const callbackExample = data => {
 
@@ -157,7 +157,7 @@ const callbackExample = data => {
 			let frequency = getAverage(average_frequencies.toArray());
 
 
-			log.e('avg freq '+frequency);
+			//log.e('avg freq '+frequency);
 			
 			tunerView2.draw(frequency);
 
@@ -171,6 +171,7 @@ const callbackExample = data => {
 			let cents = getAverage(average_cents.toArray());
 			let color = getCentsColor(cents);
 			
+			log.e('avg cents '+cents);
 
 			centsView2.drawCents(cents, color);
 
@@ -381,11 +382,11 @@ function windowResizedEnd(){
 	let pianoPaddingLeftRight = 30;
 	pianoView.resize(Math.min(contentWidth-pianoPaddingLeftRight, 1000));
 
-	let tunerPaddingLeftRight = 0;
+	let tunerPaddingLeftRight = 60;
 	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 	tunerView2.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 
-	let centsPaddingLeftRight = 0;
+	let centsPaddingLeftRight = 60;
 	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 	centsView2.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 
