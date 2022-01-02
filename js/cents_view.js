@@ -110,7 +110,7 @@ class CentsView {
 		ctx.moveTo(x, size);
 		ctx.lineTo(x+size, 0);
 		ctx.lineTo(x-size, 0);
-		ctx.lineTo(x, resize);
+		ctx.lineTo(x, size);
 		ctx.closePath();
 		ctx.fill();
 	}
