@@ -5,11 +5,11 @@ const musicKit = require("@jasonfleischer/music-model-kit");
 
 musicKit.init();
 
-//const tunerView = new TunerView("tuner");
+const tunerView = new TunerView("tuner");
 const tunerView2 = new TunerView("tuner2");
 let tunerObject = undefined;
 
-//const centsView = new CentsView("cents");
+const centsView = new CentsView("cents");
 const centsView2 = new CentsView("cents2");
 const volumeView = new VolumeView("volume", model.threshold);
 
