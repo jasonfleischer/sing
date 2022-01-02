@@ -97,5 +97,21 @@ class TunerView {
 		ctx.moveTo(this.WIDTH * 0.5, 0);
 		ctx.lineTo(this.WIDTH * 0.5, this.HEIGHT);
 		ctx.stroke();
+
+		drawTriangle();
+	}
+
+	drawTriangle(){
+		let ctx = this.canvas.getContext("2d");
+		ctx.beginPath();
+		ctx.fillStyle = "#555";
+		let x = this.WIDTH * 0.5;
+
+		ctx.moveTo(x, 0);
+		ctx.lineTo(x+this.HEIGHT, this.HEIGHT);
+		ctx.lineTo(x-this.HEIGHT, this.HEIGHT);
+		ctx.lineTo(x, 0);
+		ctx.closePath();
+		ctx.fill();
 	}
 }
