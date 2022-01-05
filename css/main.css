@@ -88,6 +88,7 @@ strong {
 	width: 100%;
 	margin-left: 29px;
 	margin-right: 29px;
+	max-width: 1000px;
 }
 #flat, #intune, #sharp {
 	width: 100%;
