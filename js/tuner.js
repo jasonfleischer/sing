@@ -84,7 +84,7 @@ tuner.getDataFromFrequency = (frequency) => {
     note: tuner.NOTES[noteIndex],
     noteFrequency: Fn,
     deviation: frequency - Fn,
-    cents,
+    tuner.adjustCentsError(cents, tuner.NOTES[noteIndex], octave),
     octave,
   }
 }
@@ -102,6 +102,10 @@ tuner.calculateCents = (f1, f2) => {
     return undefined;
   }
   return 1200 * Math.log2(f1/f2);
+}
+
+tuner.adjustCentsError = (cents, note, octave) => {
+  return cents;
 }
 
 tuner.setup = async () => {
