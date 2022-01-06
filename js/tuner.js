@@ -77,14 +77,15 @@ tuner.getDataFromFrequency = (frequency) => {
   const Fn = tuner.CONCERT_PITCH * tuner.A ** N // the frequency of the note n half steps away of concert pitch
   const noteIndex = (N + tuner.MIDI) % 12 // index of note letter from NOTES array
   const octave = Math.floor(Math.log2(Fn / tuner.C0_PITCH))
-  const cents = tuner.calculateCents(frequency, Fn);
+  var cents = tuner.calculateCents(frequency, Fn);
+  cents = tuner.adjustCentsError(cents, tuner.NOTES[noteIndex], octave);
 
   return {
     frequency,
     note: tuner.NOTES[noteIndex],
     noteFrequency: Fn,
     deviation: frequency - Fn,
-    tuner.adjustCentsError(cents, tuner.NOTES[noteIndex], octave),
+    cents,
     octave,
   }
 }
@@ -104,8 +105,36 @@ tuner.calculateCents = (f1, f2) => {
   return 1200 * Math.log2(f1/f2);
 }
 
+
+tuner.errorMap = {
+  0: {
+    'C': 0, 
+    'C#': 0,
+    'D': 0, 
+    'D#': 0, 
+    'E': 0, 
+    'F': 0, 
+    'F#': 0, 
+    'G': 0, 
+    'G#': 0, 
+    'A': 0, 
+    'A#': 0, 
+    'B': 0
+  },
+  1 : {
+
+  }
+
+};
+
 tuner.adjustCentsError = (cents, note, octave) => {
-  return cents;
+
+  var errorAmount = tuner.errorMap[octave][note];
+  if(errorAmount == 'undefined'){
+    return cents;
+  }else {
+    return cents + errorAmount;
+  }
 }
 
 tuner.setup = async () => {
