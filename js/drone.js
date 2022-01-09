@@ -27,9 +27,9 @@ const dronePianoView = pianoKit({
 
 var oscillatorsDict = new Map();
 var audioCtx;
-var masterGainNode;
+//var masterGainNode;
 var compressorNode;
-var droneVolume = 0.3;
+//var droneVolume = 0.3;
 
 const drone = {
   	oscillatorsDict: new Map(),
@@ -71,11 +71,11 @@ function setupAudioChain(){
 	compressorNode.attack.setValueAtTime(0, audioCtx.currentTime);
 	compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
 
-	masterGainNode = audioCtx.createGain();
-	masterGainNode.gain.value = drone.volume; 
+	drone.masterGainNode = audioCtx.createGain();
+	drone.masterGainNode.gain.value = drone.volume; 
 
-	compressorNode.connect(masterGainNode);
-	masterGainNode.connect(audioCtx.destination);
+	compressorNode.connect(drone.masterGainNode);
+	drone.masterGainNode.connect(audioCtx.destination);
 	
 	oscillatorsDict = new Map();
 }

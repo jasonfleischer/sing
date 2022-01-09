@@ -291,7 +291,7 @@ function setupControls(){
 				//storage.set_volume(drone.volume);
 				sliderText.innerHTML = "Volume: " + (drone.volume*100).toFixed() + "%";
 				//if (setup) {
-					masterGainNode.gain.setValueAtTime(drone.volume, ctx.currentTime);
+					drone.masterGainNode.gain.setValueAtTime(drone.volume, ctx.currentTime);
 				//}
 			}
 		}
