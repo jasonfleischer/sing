@@ -275,6 +275,21 @@ function setupControls(){
 			updateUI();
 		}
 
+
+		setupThresholdSlider();
+		function setupThresholdSlider() {
+			var slider = $("threshold_range");
+			slider.value = model.threshold;
+			var sliderText = $("threshold");
+			sliderText.innerHTML = "Threshold: " + (model.threshold).toFixed(1) + "%";
+			slider.oninput = function() {
+				drone.volume = Math.max(0.00001, this.value / 1000);
+				//storage.set_volume(drone.volume);
+				sliderText.innerHTML = "Threshold: " + (model.threshold).toFixed(1) + "%";
+
+			}
+		}
+
 		setupDroneVolumeSlider();
 		function setupDroneVolumeSlider() {
 			var slider = $("drone_volume_range");
@@ -286,7 +301,6 @@ function setupControls(){
 				//storage.set_volume(drone.volume);
 				sliderText.innerHTML = "Volume: " + (drone.volume*100).toFixed() + "%";
 				if (drone.setup) {
-					log.e("jknkjn")
 					drone.masterGainNode.gain.setValueAtTime(drone.volume, drone.audioCtx.currentTime);
 				}
 			}
