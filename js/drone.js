@@ -31,6 +31,13 @@ var masterGainNode;
 var compressorNode;
 var droneVolume = 0.3;
 
+const drone = {
+  	oscillatorsDict: new Map(),
+ 	audioCtx: {},
+	masterGainNode: {},
+	compressorNode: {},
+	volume: 0.3
+}
 
 function playDrone(frequency){
 
@@ -65,7 +72,7 @@ function setupAudioChain(){
 	compressorNode.release.setValueAtTime(0.25, audioCtx.currentTime);
 
 	masterGainNode = audioCtx.createGain();
-	masterGainNode.gain.value = droneVolume; 
+	masterGainNode.gain.value = drone.volume; 
 
 	compressorNode.connect(masterGainNode);
 	masterGainNode.connect(audioCtx.destination);
