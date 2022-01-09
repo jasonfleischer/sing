@@ -283,7 +283,7 @@ function setupControls(){
 			var sliderText = $("threshold");
 			sliderText.innerHTML = "Threshold: " + (model.threshold).toFixed(1) + "%";
 			slider.oninput = function() {
-				drone.volume = Math.max(0.00001, this.value / 1000);
+				model.threshold = this.value / 1000;
 				//storage.set_volume(drone.volume);
 				sliderText.innerHTML = "Threshold: " + (model.threshold).toFixed(1) + "%";
 
