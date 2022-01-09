@@ -281,11 +281,11 @@ function setupControls(){
 			var slider = $("threshold_range");
 			slider.value = model.threshold;
 			var sliderText = $("threshold");
-			sliderText.innerHTML = "Threshold: " + (model.threshold).toFixed(1) + "%";
+			sliderText.innerHTML = "Threshold: " + (model.threshold*100).toFixed() + "%";
 			slider.oninput = function() {
 				model.threshold = this.value / 1000;
 				//storage.set_volume(drone.volume);
-				sliderText.innerHTML = "Threshold: " + (model.threshold).toFixed(1) + "%";
+				sliderText.innerHTML = "Threshold: " + (model.threshold*100).toFixed() + "%";
 
 			}
 		}
