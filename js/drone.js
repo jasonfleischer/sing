@@ -79,7 +79,7 @@ function setupAudioChain(){
 	drone.masterGainNode.connect(audioCtx.destination);
 	
 	oscillatorsDict = new Map();
-	setup = true;
+	drone.setup = true;
 }
 
 function stopDrone(frequency){
