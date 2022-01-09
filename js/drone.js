@@ -36,6 +36,7 @@ const drone = {
  	audioCtx: {},
 	masterGainNode: {},
 	compressorNode: {},
+	setup: false,
 	volume: 0.3
 }
 
@@ -78,6 +79,7 @@ function setupAudioChain(){
 	drone.masterGainNode.connect(audioCtx.destination);
 	
 	oscillatorsDict = new Map();
+	setup = true;
 }
 
 function stopDrone(frequency){
