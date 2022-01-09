@@ -12,7 +12,7 @@ CWD=`pwd`
 
 uglifycss css/alert.css css/button.css css/header.css css/main.css css/root.css css/select.css css/slider.css > css/bundle.css
 
-uglifyjs js/prototypes.js js/model.js js/storage.js js/alert.js js/information.js js/tuner.js js/cents_view.js js/tuner_view.js js/volume_view.js js/queue.js js/drone.js js/main.js  js/oscillator.js js/install.js service_worker.js -o js/bundle.js
+uglifyjs js/prototypes.js js/model.js js/storage.js js/alert.js js/information.js js/tuner.js js/cents_view.js js/tuner_view.js js/volume_view.js js/queue.js js/main.js js/drone.js js/oscillator.js js/install.js service_worker.js -o js/bundle.js
 browserify js/bundle.js -o js/bundle.js
 uglifyjs js/bundle.js -o js/bundle.js
 
