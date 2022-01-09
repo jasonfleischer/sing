@@ -33,7 +33,7 @@ var compressorNode;
 
 const drone = {
   	oscillatorsDict: new Map(),
- 	audioCtx: {},
+ 	audioCtx: undefined,
 	masterGainNode: {},
 	compressorNode: {},
 	setup: false,
