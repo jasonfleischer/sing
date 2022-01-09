@@ -279,6 +279,22 @@ function setupControls(){
 			storage.setSelectedNote(model.selected_root_note);
 			updateUI();
 		}
+
+		setupDroneVolumeSlider();
+		function setupDroneVolumeSlider() {
+			var slider = $("drone_volume_range");
+			slider.value = droneVolume*1000;
+			var sliderText = $("drone_volume");
+			sliderText.innerHTML = "Volume: " + (droneVolume*100).toFixed() + "%";
+			slider.oninput = function() {
+				droneVolume = Math.max(0.00001, this.value / 1000);
+				storage.set_volume(droneVolume);
+				sliderText.innerHTML = "Volume: " + (droneVolume*100).toFixed() + "%";
+				if (setup) {
+					masterGainNode.gain.setValueAtTime(droneVolume, ctx.currentTime);
+				}
+			}
+		}
 	}
 
 	setupScaleTypeSelect();
