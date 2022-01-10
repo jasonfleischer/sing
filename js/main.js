@@ -427,7 +427,7 @@ function updateUI() {
 	let scale = new musicKit.Scale(note, model.selected_scale_type);
 
 	$("scale_structure").innerHTML = scale.getLabels().toString().replaceAll(',', ' ');
-	$("page_name").innerHTML = scale.toString()
+	//$("page_name").innerHTML = scale.toString()
 
 	fretboardView.drawScale(scale);
 	pianoView.drawScale(scale);
