@@ -217,7 +217,11 @@ tuner.errorMap = {
 };
 
 tuner.adjustCentsError = (cents, note, octave) => {
-  //return cents;
+
+  if(octave<0||octave>8){
+    return cents;
+  }
+  //
   var errorAmount = tuner.errorMap[octave][note];
   if(errorAmount == 'undefined'){
     return cents;
