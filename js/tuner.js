@@ -217,13 +217,13 @@ tuner.errorMap = {
 };
 
 tuner.adjustCentsError = (cents, note, octave) => {
-  return cents;
-  /*var errorAmount = tuner.errorMap[octave][note];
+  //return cents;
+  var errorAmount = tuner.errorMap[octave][note];
   if(errorAmount == 'undefined'){
     return cents;
   }else {
     return cents + errorAmount;
-  }*/
+  }
 }
 
 tuner.setup = async () => {
