@@ -52,6 +52,7 @@ table {
 }
 th {
 	font-size: 16px;
+	height: 30px;
 	text-align: left;
 }
 tr td {
