@@ -4,7 +4,7 @@ const dronePianoView = pianoKit({
 	id: 'drone_piano',
 	onClick: function(note, isOn) {
 
-		log.e("note" + note + ' ' + isOn)
+		log.e("note: " + note.frequency)
 
 		if(isOn) {
 			playDrone(note.frequency);
