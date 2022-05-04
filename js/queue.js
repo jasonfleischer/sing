@@ -30,4 +30,8 @@ class Queue{
 	toArray(){
 		return this.items;
 	}
+
+	clear() {
+		this.items.clear();
+	}
 }
