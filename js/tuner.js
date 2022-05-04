@@ -224,7 +224,7 @@ tuner.adjustCentsError = (cents, note, octave) => {
     return cents;
   }
   
-  var errorAmount = tuner.errorMap[octave][note];
+  var errorAmount = -1;//tuner.errorMap[octave][note];
   log.e('  '+ errorAmount)
   if(errorAmount == 'undefined'){
     return cents;
