@@ -165,7 +165,7 @@ const callbackExample = data => {
 		if(average_cents.length() == average_cents_length){
 
 
-			let cents = math.floor(getAverage(average_cents.toArray()));
+			let cents = Math.floor(getAverage(average_cents.toArray()));
 			let color = getCentsColor(cents);
 			
 			//log.e('avg cents '+cents + '   -> '+ average_cents.toArray());
