@@ -89,6 +89,21 @@ class CentsView {
 		ctx.stroke();
 	}
 
+	drawAverageCents(cents, color="#00f") {
+		
+		let ctx = this.drawing_canvas.getContext("2d");
+		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+
+		ctx.beginPath();
+		ctx.strokeStyle = color;
+		ctx.lineWidth = 6;
+
+		let x = ((cents + 50) /100) * this.WIDTH;
+		ctx.moveTo(x, 0);
+		ctx.lineTo(x, this.HEIGHT);
+		ctx.stroke();
+	}
+
 	clear() {
 		let ctx = this.drawing_canvas.getContext("2d");
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);

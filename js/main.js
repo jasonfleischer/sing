@@ -172,6 +172,8 @@ const callbackExample = data => {
 			let color = getCentsColor(cents);
 			
 			centsView2.drawCents(cents, color);
+
+			centsView.drawAverageCents(cents, color);
 			average_cents.dequeue();
 		}
 	}
