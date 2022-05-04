@@ -140,9 +140,12 @@ const callbackExample = data => {
 		//average_frequencies.enqueue(0);
 		//average_cents.enqueue(0);
 
+		average_frequencies.clearQueue();
+		average_cents.clearQueue();
 		pianoView.clearHover();
 		fretboardView.clearHover();
 		centsView.clear();
+		centsView2.clear();
 		volumeView.drawVolume(0);
 
 		clearUITuneIndicator()
