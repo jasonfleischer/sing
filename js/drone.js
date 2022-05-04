@@ -4,9 +4,12 @@ const dronePianoView = pianoKit({
 	id: 'drone_piano',
 	onClick: function(note, isOn) {
 
-		log.e("note: " + note.frequency)
+		
 
 		if(isOn) {
+
+			log.e("note: " + note);
+
 			playDrone(note.frequency);
 			let color = note.note_name.is_sharp_or_flat ? "#777" : "#aaa";
             dronePianoView.drawNoteWithColor(note, color);	

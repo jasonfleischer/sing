@@ -103,8 +103,6 @@ tuner.calculateCents = (f1, f2) => {
     return undefined;
   }
   return 1200 * Math.log2(f1/f2);
-  // try this 
-  //return Math.floor( 1200 * Math.log( f1 / f2) / Math.log(2) );
 }
 
 // A0 to C8
@@ -220,18 +218,19 @@ tuner.errorMap = {
 
 tuner.adjustCentsError = (cents, note, octave) => {
 
-  return cents;
+  //return cents;
 
-  /*if(octave<0||octave>8){
+  if(octave<0||octave>8){
     return cents;
   }
-  //
+  
   var errorAmount = tuner.errorMap[octave][note];
+  log.e('  '+ errorAmount)
   if(errorAmount == 'undefined'){
     return cents;
   }else {
     return cents + errorAmount;
-  }*/
+  }
 }
 
 tuner.setup = async () => {
