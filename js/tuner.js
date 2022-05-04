@@ -102,9 +102,9 @@ tuner.calculateCents = (f1, f2) => {
   if (f1 === undefined || f2 === undefined) {
     return undefined;
   }
-  //return 1200 * Math.log2(f1/f2);
+  return 1200 * Math.log2(f1/f2);
   // try this 
-  return Math.floor( 1200 * Math.log( f1 / f2) / Math.log(2) );
+  //return Math.floor( 1200 * Math.log( f1 / f2) / Math.log(2) );
 }
 
 // A0 to C8
