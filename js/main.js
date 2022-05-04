@@ -142,6 +142,7 @@ const callbackExample = data => {
 
 		pianoView.clearHover();
 		fretboardView.clearHover();
+		centsView.clear();
 		volumeView.drawVolume(0);
 
 		clearUITuneIndicator()

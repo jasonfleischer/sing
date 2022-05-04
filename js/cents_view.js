@@ -89,6 +89,11 @@ class CentsView {
 		ctx.stroke();
 	}
 
+	clear() {
+		let ctx = this.drawing_canvas.getContext("2d");
+		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
+	}
+
 
 	getLineColor(cents) {
 
