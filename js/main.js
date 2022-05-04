@@ -140,8 +140,8 @@ const callbackExample = data => {
 		//average_frequencies.enqueue(0);
 		//average_cents.enqueue(0);
 
-		average_frequencies.clearQueue();
-		average_cents.clearQueue();
+		average_frequencies.clear();
+		average_cents.clear();
 		pianoView.clearHover();
 		fretboardView.clearHover();
 		centsView.clear();
