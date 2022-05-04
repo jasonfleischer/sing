@@ -1,5 +1,5 @@
 const tuner = {
-  FFT_SIZE: 1024,//2048,
+  FFT_SIZE: 2048,
   USER_MEDIA_CONSTRAINTS: {
     audio: {
       mandatory: {
@@ -102,7 +102,9 @@ tuner.calculateCents = (f1, f2) => {
   if (f1 === undefined || f2 === undefined) {
     return undefined;
   }
-  return 1200 * Math.log2(f1/f2);
+  //return 1200 * Math.log2(f1/f2);
+  // try this 
+  return Math.floor( 1200 * Math.log( f1 / f2) / Math.log(2) );
 }
 
 // A0 to C8
@@ -218,7 +220,9 @@ tuner.errorMap = {
 
 tuner.adjustCentsError = (cents, note, octave) => {
 
-  if(octave<0||octave>8){
+  return cents;
+
+  /*if(octave<0||octave>8){
     return cents;
   }
   //
@@ -227,7 +231,7 @@ tuner.adjustCentsError = (cents, note, octave) => {
     return cents;
   }else {
     return cents + errorAmount;
-  }
+  }*/
 }
 
 tuner.setup = async () => {

@@ -32,6 +32,7 @@ const pianoView = pianoKit({
 		$("note_type_select").value = midi_value;
 		model.selected_root_note = midi_value;
 		updateUI();*/
+
 	},
 	hover: true
 });
@@ -45,6 +46,7 @@ const fretboardView = fretboardKit({
 		$("note_type_select").value = midi_value;
 		model.selected_root_note = midi_value;
 		updateUI();*/
+		logE(note.frequency);
 	},
 	hover: true,
 	showLabels: false,
