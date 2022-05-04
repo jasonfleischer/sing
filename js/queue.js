@@ -32,6 +32,6 @@ class Queue{
 	}
 
 	clear() {
-		this.items.clear();
+		this.items = [];
 	}
 }
