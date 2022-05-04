@@ -57,7 +57,7 @@ const fretboardView = fretboardKit({
 //let average_frequencies = new Queue();
 let average_cents = new Queue();
 //let average_frequency_length = 40;
-let average_cents_length = 40;
+let average_cents_length = 10;
 
 const callbackExample = data => {
 
