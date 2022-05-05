@@ -93,7 +93,7 @@ tuner.getDataFromFrequency = (frequency) => {
 tuner.getAverageVolume = (buf) => {
   let sum = 0;
   for (let i = 0; i < buf.length; ++i) {
-    sum += Math.abs(buf[i]);
+    sum += Math.abs(Math.log2(buf[i]));
   }
   return Math.sqrt(sum / buf.length);
 }
@@ -225,7 +225,7 @@ tuner.adjustCentsError = (cents, note, octave) => {
   }
   
   var errorAmount = 0;//tuner.errorMap[octave][note];
-  log.e('  '+ errorAmount)
+  log.e('error amount  '+ errorAmount)
   if(errorAmount == 'undefined'){
     return cents;
   }else {
@@ -267,12 +267,9 @@ tuner.setup = async () => {
     analyser.getFloatTimeDomainData(buffer)
     const frequency = tuner.autoCorrelate(buffer, audioContext.sampleRate)
 
-
-    const averageVolume = tuner.getAverageVolume(buffer);
-
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
-    data.volume = averageVolume;
+    data.volume = tuner.getAverageVolume(buffer);;
     
 
     callbacks.forEach((fn) =>
