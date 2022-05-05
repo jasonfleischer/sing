@@ -1,7 +1,6 @@
 
 
 const tunerView = new TunerView("tuner");
-//const tunerView2 = new TunerView("tuner2");
 let tunerObject = undefined;
 
 const centsView = new CentsView("cents");
@@ -43,6 +42,10 @@ let average_cents_length = 40;
 
 const callbackExample = data => {
 
+
+	if(data.volume < model.threshold) {
+		return;
+	}
 
 	function findNote(noteName, octave){
 		let notes = musicKit.all_notes;
@@ -87,7 +90,7 @@ const callbackExample = data => {
 		var note = findNote(data.note, data.octave);
 
 
-		if (note !== undefined && data.volume > model.threshold ) {
+		if (note !== undefined) {
 
 			//average_frequencies.enqueue(data.frequency);
 			average_cents.enqueue(data.cents);
@@ -115,12 +118,28 @@ const callbackExample = data => {
 			}
 
 			tunerView.draw(data.frequency);
-		} else {
-			if (note !== undefined){
-				log.e('note is undefined with freq' + data.frequency)
+
+			if(average_cents.length() == average_cents_length){
+
+				let cents = Math.floor(getAverage(average_cents.toArray()));
+				let color = getCentsColor(cents);
+				
+				centsView2.drawCents(cents, color);
+
+				centsView.drawAverageCents(cents, color);
+				average_cents.dequeue();
 			}
+
+		} else {
+			
+			log.e('note is undefined with freq' + data.frequency)
+			
 		}
 	} else {
+
+
+		log.e('freq is undefined, clearing state')
+
 		//average_frequencies.enqueue(0);
 		//average_cents.enqueue(0);
 
@@ -135,34 +154,7 @@ const callbackExample = data => {
 		clearUITuneIndicator()
 	}
 
-
-	if(data.volume > model.threshold) {
 	
-		/*if(average_frequencies.length() == average_frequency_length){
-			let frequency = getAverage(average_frequencies.toArray());
-
-
-			//log.e('avg freq '+frequency);
-			
-			//tunerView2.draw(frequency);
-
-			//average_frequencies.dequeue();
-		}*/
-
-		if(average_cents.length() == average_cents_length){
-
-
-			let cents = Math.floor(getAverage(average_cents.toArray()));
-			let color = getCentsColor(cents);
-			
-			centsView2.drawCents(cents, color);
-
-			centsView.drawAverageCents(cents, color);
-			average_cents.dequeue();
-		}
-	}
-
-
 }
 
 
