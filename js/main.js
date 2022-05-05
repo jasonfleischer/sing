@@ -5,24 +5,8 @@ const tunerView = new TunerView("tuner");
 let tunerObject = undefined;
 
 const centsView = new CentsView("cents");
-const centsView2 = new CentsView("cents2");
+const centsView2 = new CentsView("cents2"); // todo rm
 const volumeView = new VolumeView("volume", model.threshold);
-
-/*let note_name_to_midi_value_map = {
-	"C": 60,
-	"C# / Db": 61,
-	"D": 62,
-	"D# / Eb": 63,
-	"E": 64,
-	"F": 65,
-	"F# / Gb": 66,
-	"G": 67,
-	"G# / Ab": 68,
-	"A": 69,
-	"A# / Bb": 70,
-	"B": 71
-};*/
-
 
 
 const pianoView = pianoKit({
@@ -54,9 +38,7 @@ const fretboardView = fretboardKit({
 });
 
 
-//let average_frequencies = new Queue();
 let average_cents = new Queue();
-//let average_frequency_length = 40;
 let average_cents_length = 40;
 
 const callbackExample = data => {
@@ -134,7 +116,9 @@ const callbackExample = data => {
 
 			tunerView.draw(data.frequency);
 		} else {
-
+			if (note !== undefined){
+				log.e('note is undefined with freq' + data.frequency)
+			}
 		}
 	} else {
 		//average_frequencies.enqueue(0);
