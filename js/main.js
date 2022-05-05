@@ -43,9 +43,7 @@ let average_cents_length = 40;
 const callbackExample = data => {
 
 
-	if(data.volume < model.threshold) {
-		return;
-	}
+	
 
 	function findNote(noteName, octave){
 		let notes = musicKit.all_notes;
@@ -78,7 +76,7 @@ const callbackExample = data => {
 	}
 
 
-	if (data.frequency !== undefined) {
+	if (data.frequency !== undefined && data.volume >= model.threshold) {
 
 		
 
