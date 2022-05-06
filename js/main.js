@@ -91,7 +91,7 @@ const callbackExample = data => {
 
 		if (note !== undefined) {
 
-			log.i('note found with freq' + data.frequency);
+			log.i('note found with freq' + note.frequency + " --> "+ data.frequency);
 
 			//average_frequencies.enqueue(data.frequency);
 			average_cents.enqueue(data.cents);
