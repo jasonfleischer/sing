@@ -269,7 +269,8 @@ tuner.setup = async () => {
 
     let data = frequency ? tuner.getDataFromFrequency(frequency) : {}
 
-    data.volume = tuner.getAverageVolume(buffer);;
+    data.volume = tuner.getAverageVolume(buffer);
+    data.decibels = 20 * Math.log(data.volume);
     
 
     callbacks.forEach((fn) =>
