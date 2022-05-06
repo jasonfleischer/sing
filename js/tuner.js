@@ -246,7 +246,7 @@ tuner.setup = async () => {
     audioContext = new AudioContext()
     analyser = audioContext.createAnalyser()
     analyser.fftSize = tuner.FFT_SIZE
-    analyser.smoothingTimeConstant = 0.8;
+    analyser.smoothingTimeConstant = 0.4;
     audioContext.createMediaStreamSource(stream).connect(analyser)
 
     /*navigator.permissions.query(
