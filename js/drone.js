@@ -20,10 +20,10 @@ const dronePianoView = pianoKit({
 		}
 	},
 	range: {
-    	min: 36,
-    	max: 72
+    	min: 48,
+    	max: 84
   	},
-  	width: 340,
+  	width: 335,
 	hover: true
 });
 
