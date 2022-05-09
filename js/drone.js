@@ -19,10 +19,10 @@ const dronePianoView = pianoKit({
 			dronePianoView.clearNote(note);
 		}
 	},
-	/*range: {
+	range: {
     	min: 48,
     	max: 60
-  	},*/
+  	},
   	width: 1000,//340,
 	hover: true
 });
