@@ -5,7 +5,6 @@
 }
 
 html, body {
-   
     margin: 0px;
     padding: 0px;
     top: 0;
@@ -135,4 +134,8 @@ strong {
     width: 25px;
     height: 25px;
     vertical-align: text-bottom
+}
+
+input[type=range] {
+    width: 100%;
 }
