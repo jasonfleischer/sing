@@ -5,7 +5,7 @@ const tunerView = new TunerView("tuner");
 let tunerObject = undefined;
 
 const centsView = new CentsView("cents");
-const centsView2 = new CentsView("cents2"); // todo rm
+//const centsView2 = new CentsView("cents2"); // todo rm
 const volumeView = new VolumeView("volume", model.threshold);
 
 
@@ -125,7 +125,7 @@ const callbackExample = data => {
 				let cents = Math.floor(getAverage(average_cents.toArray()));
 				let color = getCentsColor(cents);
 				
-				centsView2.drawCents(cents, color);
+				//centsView2.drawCents(cents, color);
 
 				centsView.drawAverageCents(cents, color);
 				average_cents.dequeue();
@@ -149,7 +149,7 @@ const callbackExample = data => {
 		pianoView.clearHover();
 		fretboardView.clearHover();
 		centsView.clear();
-		centsView2.clear();
+		//centsView2.clear();
 		volumeView.drawVolume(0);
 
 		clearUITuneIndicator()
@@ -393,7 +393,7 @@ function windowResizedEnd(){
 
 	let centsPaddingLeftRight = 60;
 	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
-	centsView2.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
+	//centsView2.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 
 	let volumePaddingLeftRight = 60;
 	volumeView.resize(Math.min(contentWidth-volumePaddingLeftRight, 1000));

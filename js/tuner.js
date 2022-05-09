@@ -16,7 +16,6 @@ const tuner = {
   MIDI: 69, // the MIDI note number of A4
   A: 2 ** (1 / 12), // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
   C0_PITCH: 16.35, // frequency of lowest note: C0
-
   THRES: 0.02
 };
 
@@ -223,19 +222,18 @@ tuner.errorMap = {
 
 tuner.adjustCentsError = (cents, note, octave) => {
 
-  //return cents;
+  return cents;
 
-  if(octave<0||octave>8){
+  /*if(octave<0||octave>8){
     return cents;
   }
   
-  var errorAmount = 0;//tuner.errorMap[octave][note];
- // log.e('error amount  '+ errorAmount)
+  var errorAmount = tuner.errorMap[octave][note];
   if(errorAmount == 'undefined'){
     return cents;
   }else {
     return cents + errorAmount;
-  }
+  }*/
 }
 
 tuner.setup = async () => {
