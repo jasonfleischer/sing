@@ -1,37 +1,17 @@
 
-
-
-const tunerView = new TunerView("tuner");
 let tunerObject = undefined;
 
+const tunerView = new TunerView("tuner");
 const centsView = new CentsView("cents");
-//const centsView2 = new CentsView("cents2"); // todo rm
 const volumeView = new VolumeView("volume", model.threshold);
-
-
 const pianoView = pianoKit({
 	id: 'piano',
-	onClick: function(note, isOn) {
-		/*let midi_value = note_name_to_midi_value_map[note.note_name.type];
-		$("note_type_select").value = midi_value;
-		model.selected_root_note = midi_value;
-		updateUI();*/
-
-	},
+	onClick: function(note, isOn) {},
 	hover: true
 });
-
-
-
 const fretboardView = fretboardKit({
 	id: 'fretboard',
-	onClick: function(note, isOn) {
-		/*let midi_value = note_name_to_midi_value_map[note.note_name.type];
-		$("note_type_select").value = midi_value;
-		model.selected_root_note = midi_value;
-		updateUI();*/
-		//logE(note.frequency);
-	},
+	onClick: function(note, isOn) {},
 	hover: true,
 	showLabels: false,
 	darkMode: true
@@ -42,9 +22,6 @@ let average_cents = new Queue();
 let average_cents_length = 40;
 
 const callbackExample = data => {
-
-
-	
 
 	function findNote(noteName, octave){
 		let notes = musicKit.all_notes;
@@ -124,9 +101,6 @@ const callbackExample = data => {
 
 				let cents = Math.floor(getAverage(average_cents.toArray()));
 				let color = getCentsColor(cents);
-				
-				//centsView2.drawCents(cents, color);
-
 				centsView.drawAverageCents(cents, color);
 				average_cents.dequeue();
 			}
@@ -141,29 +115,15 @@ const callbackExample = data => {
 
 		log.e('freq is undefined, clearing state')
 
-		//average_frequencies.enqueue(0);
-		//average_cents.enqueue(0);
-
-		//average_frequencies.clear();
 		average_cents.clear();
 		pianoView.clearHover();
 		fretboardView.clearHover();
 		centsView.clear();
-		//centsView2.clear();
 		volumeView.drawVolume(0);
 
 		clearUITuneIndicator()
-	}
-
-	
+	}	
 }
-
-
-
-
-
-
-
 
 function startAndSubscribeTuner() {
 	;(async function () {
@@ -179,25 +139,6 @@ function startAndSubscribeTuner() {
 }
 
 startAndSubscribeTuner();
-
-
-
-
-
-
-// add a midi listener
-/*new musicKit.MidiListener(
-	function (midiValue, channel, velocity) { // note on
-		let note = musicKit.all_notes[midiValue];
-		let color = note.note_name.is_sharp_or_flat ? "#777": "#aaa";
-		startNote(note.frequency);
-		pianoView.drawNoteWithColor(note, color);
-	},
-	function (midiValue, channel, velocity) { // note off
-		let note = musicKit.all_notes[midiValue];
-		startNote(note.frequency);
-		pianoView.clearNote(note);
-	});*/
 
 kofi = function(){
 	window.open("https://ko-fi.com/jasonfleischer", "_blank");
@@ -219,14 +160,9 @@ init = function() {
 	if (isSafariMobile && !isFromHomeScreen()){
 		install.showAlert();
 	}
-
-	//model.note_range = musicKit.guitar_range;
 	setupControls();
 	windowResizedEnd();
-	//updateUI();
 	musicKit.changeNoteColors();
-
-
 }
 
 function setupControls(){
@@ -386,20 +322,17 @@ function windowResizedEnd(){
 	fretboardView.resize(Math.min(contentWidth-fretboardPaddingLeftRight, 1000));
 	let pianoPaddingLeftRight = 30;
 	pianoView.resize(Math.min(contentWidth-pianoPaddingLeftRight, 1000));
+	dronePianoView.resize(Math.min(contentWidth-pianoPaddingLeftRight, 1000));
 
 	let tunerPaddingLeftRight = 60;
 	tunerView.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
-	//tunerView2.resize(Math.min(contentWidth-tunerPaddingLeftRight, 1000));
 
 	let centsPaddingLeftRight = 60;
 	centsView.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
-	//centsView2.resize(Math.min(contentWidth-centsPaddingLeftRight, 1000));
 
 	let volumePaddingLeftRight = 60;
 	volumeView.resize(Math.min(contentWidth-volumePaddingLeftRight, 1000));
 
-
-	//$("tune_indicator").style.width = 
 }
 
 function updateUI() {
