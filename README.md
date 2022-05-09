@@ -1,6 +1,6 @@
-## Sing Helper Webpage
+## Tuner Webpage
 
 # Description
-Website for practicing singing
+Website for tuning visualizations
 
-[https://jasonfleischer.github.io/sing/](https://jasonfleischer.github.io/sing/)
+[https://jasonfleischer.github.io/tuner/](https://jasonfleischer.github.io/tuner/)
