@@ -42,7 +42,7 @@ aside {
 
 article {
 	min-width: 340px;
-	margin: 10px;
+	margin: 20px;
 }
 
 table {
@@ -134,8 +134,4 @@ strong {
     width: 25px;
     height: 25px;
     vertical-align: text-bottom
-}
-
-input[type=range] {
-    
 }
