@@ -25,9 +25,6 @@ tuner.autoCorrelate = (buf, sampleRate) => {
   // Not enough signal check
   const RMS = Math.sqrt(buf.reduce((acc, el) => acc + el ** 2, 0) / buf.length)
   if (RMS < 0.01)  {
-
-    log.e("Not enough signal check" + buf.length + " sample rate" + sampleRate)
-
     return NaN
   }
 

@@ -131,7 +131,6 @@ function startAndSubscribeTuner() {
       tunerObject = await tuner.setup()
       tunerObject.start()
       tunerObject.subscribe(callbackExample);
-      $("microphone_button").innerHTML = "Stop microphone";
     } catch (error) {
     	tunerObject = undefined;
     }
@@ -276,23 +275,6 @@ function setupControls(){
 		$("clear_button").addEventListener("click", function(event){
 			pianoView.clear();
 			fretboardView.clear();
-		});
-	}
-
-	setupMicrophoneButton();
-	function setupMicrophoneButton(){
-		$("microphone_button").addEventListener("click", function(event){
-
-			if(tunerObject != undefined){
-				tunerObject.unsubscribe(callbackExample)
-				tunerObject.stop();
-				tunerObject = undefined;
-				$("microphone_button").innerHTML = "Start microphone";
-			} else {
-				startAndSubscribeTuner();
-			}
-			//tuner.revokePermission();
-
 		});
 	}
 }
