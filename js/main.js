@@ -21,6 +21,8 @@ const fretboardView = fretboardKit({
 let average_cents = new Queue();
 let average_cents_length = 40;
 
+let uiCleared = false;
+
 const callbackExample = data => {
 
 	function findNote(noteName, octave){
@@ -56,7 +58,7 @@ const callbackExample = data => {
 
 	if (data.frequency !== undefined && data.volume >= model.threshold) {
 
-		
+		uiCleared = false;
 
 		//$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
 			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
@@ -112,16 +114,18 @@ const callbackExample = data => {
 		}
 	} else {
 
+		if(uiCleared){
+			log.i('freq is undefined, clearing state')
 
-		log.e('freq is undefined, clearing state')
+			average_cents.clear();
+			pianoView.clearHover();
+			fretboardView.clearHover();
+			centsView.clear();
+			volumeView.drawVolume(0);
 
-		average_cents.clear();
-		pianoView.clearHover();
-		fretboardView.clearHover();
-		centsView.clear();
-		volumeView.drawVolume(0);
-
-		clearUITuneIndicator()
+			clearUITuneIndicator()
+			uiCleared = true;
+		}
 	}	
 }
 
