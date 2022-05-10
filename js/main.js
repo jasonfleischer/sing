@@ -114,7 +114,7 @@ const callbackExample = data => {
 		}
 	} else {
 
-		if(uiCleared){
+		if(!uiCleared){
 			log.i('freq is undefined, clearing state')
 
 			average_cents.clear();
