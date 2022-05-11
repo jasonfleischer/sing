@@ -3,14 +3,14 @@ let prompt;
 
 if ('serviceWorker' in navigator) {
 	
-  	navigator.serviceWorker.register('/sing/service_worker.js', { scope: '/sing/' }).then(function(reg) {
+  	navigator.serviceWorker.register('/tuner/service_worker.js', { scope: '/tuner/' }).then(function(reg) {
 
 	    if(reg.installing) {
-	      console.log('sing: Service worker installing');
+	      console.log('tuner: Service worker installing');
 	    } else if(reg.waiting) {
-	      console.log('sing: Service worker installed');
+	      console.log('tuner: Service worker installed');
 	    } else if(reg.active) {
-	      console.log('sing: Service worker active');
+	      console.log('tuner: Service worker active');
 	    }
 
 	}).catch(function(error) { // registration failed

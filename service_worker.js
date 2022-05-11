@@ -1,12 +1,12 @@
 const CACHE_NAME = 'v2.0';
 const CACHE = [
-        '/sing/index.html',
-        '/sing/css/bundle.css',
-        '/sing/js/bundle.js'
+        '/tuner/index.html',
+        '/tuner/css/bundle.css',
+        '/tuner/js/bundle.js'
       ];
 	
 self.addEventListener('install', function(event) {
-    console.log('sing: install');
+    console.log('tuner: install');
     event.waitUntil(
         caches.open(CACHE_NAME).then(function(cache) {
             return cache.addAll(CACHE);
@@ -15,7 +15,7 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    console.log('sing: fetch');
+    console.log('tuner: fetch');
     event.respondWith(
         caches.open(CACHE_NAME).then(function(cache) {
             return cache.match(event.request).then(function(response) {
@@ -29,7 +29,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function activator(event) {
-    console.log('sing: activate');
+    console.log('tuner: activate');
     event.waitUntil(
         caches.keys().then(function(keys) {
             return Promise.all(keys
