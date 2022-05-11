@@ -5,7 +5,7 @@ storage.load = function(){
 	model.selected_scale_type = storage.getSelectedScaleType("Major pentatonic");
 };
 
-storage.SELECTED_NOTE = "SING_SELECTED_NOTE";
+storage.SELECTED_NOTE = "TUNER_SELECTED_NOTE";
 storage.getSelectedNote = function(default_value){
 	return storage.get(storage.SELECTED_NOTE, default_value);
 };
@@ -13,7 +13,7 @@ storage.setSelectedNote = function(value){
 	localStorage.setItem(storage.SELECTED_NOTE, value);
 };
 
-storage.SELECTED_SCALE_TYPE = "SING_SELECTED_SCALE_TYPE";
+storage.SELECTED_SCALE_TYPE = "TUNER_SELECTED_SCALE_TYPE";
 storage.getSelectedScaleType = function(default_value){
 	return storage.get(storage.SELECTED_SCALE_TYPE, default_value);
 };

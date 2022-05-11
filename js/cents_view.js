@@ -109,7 +109,6 @@ class CentsView {
 		ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT);
 	}
 
-
 	getLineColor(cents) {
 
 		let number = Math.max(0, parseInt(255 * ((50-Math.abs(cents))/50)));

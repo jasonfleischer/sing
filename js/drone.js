@@ -1,15 +1,9 @@
-
-
 const dronePianoView = pianoKit({
 	id: 'drone_piano',
 	onClick: function(note, isOn) {
 
-		
-
 		if(isOn) {
-
 			log.i("note: " + note);
-
 			playDrone(note.frequency);
 			let color = note.note_name.is_sharp_or_flat ? "#777" : "#aaa";
             dronePianoView.drawNoteWithColor(note, color);	
@@ -27,13 +21,6 @@ const dronePianoView = pianoKit({
 	hover: true
 });
 
-
-var oscillatorsDict = new Map();
-//var audioCtx;
-//var masterGainNode;
-var compressorNode;
-//var droneVolume = 0.3;
-
 const drone = {
   	oscillatorsDict: new Map(),
  	audioCtx: undefined,
@@ -49,17 +36,17 @@ function playDrone(frequency){
 		setupAudioChain();
 	}
 
-	if(oscillatorsDict.has(frequency)) {
+	if(drone.oscillatorsDict.has(frequency)) {
 		
-		var osc = oscillatorsDict.get(frequency);
+		var osc = drone.oscillatorsDict.get(frequency);
 		if(osc.playing){
 			osc.stop();
 		}
-		oscillatorsDict.delete(frequency);
+		drone.oscillatorsDict.delete(frequency);
 	}
 
 	const oscillator = new Oscillator(drone.audioCtx, frequency, 1.0, 'sine');
-	oscillatorsDict.set(frequency, oscillator);
+	drone.oscillatorsDict.set(frequency, oscillator);
 	oscillator.play();
 }
 
@@ -67,25 +54,24 @@ function setupAudioChain(){
 
 	drone.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-
-	compressorNode = drone.audioCtx.createDynamicsCompressor();
-	compressorNode.threshold.setValueAtTime(-20, drone.audioCtx.currentTime);
-	compressorNode.knee.setValueAtTime(40, drone.audioCtx.currentTime);
-	compressorNode.ratio.setValueAtTime(12, drone.audioCtx.currentTime);
-	compressorNode.attack.setValueAtTime(0, drone.audioCtx.currentTime);
-	compressorNode.release.setValueAtTime(0.25, drone.audioCtx.currentTime);
+	drone.compressorNode = drone.audioCtx.createDynamicsCompressor();
+	drone.compressorNode.threshold.setValueAtTime(-20, drone.audioCtx.currentTime);
+	drone.compressorNode.knee.setValueAtTime(40, drone.audioCtx.currentTime);
+	drone.compressorNode.ratio.setValueAtTime(12, drone.audioCtx.currentTime);
+	drone.compressorNode.attack.setValueAtTime(0, drone.audioCtx.currentTime);
+	drone.compressorNode.release.setValueAtTime(0.25, drone.audioCtx.currentTime);
 
 	drone.masterGainNode = drone.audioCtx.createGain();
 	drone.masterGainNode.gain.value = drone.volume; 
 
-	compressorNode.connect(drone.masterGainNode);
+	drone.compressorNode.connect(drone.masterGainNode);
 	drone.masterGainNode.connect(drone.audioCtx.destination);
 	
-	oscillatorsDict = new Map();
+	drone.oscillatorsDict = new Map();
 	drone.setup = true;
 }
 
 function stopDrone(frequency){
-	oscillatorsDict.get(frequency).stop();
-	oscillatorsDict.delete(frequency);
+	drone.oscillatorsDict.get(frequency).stop();
+	drone.oscillatorsDict.delete(frequency);
 }

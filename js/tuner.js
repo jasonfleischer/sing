@@ -111,128 +111,13 @@ tuner.calculateCents = (f1, f2) => {
   return Math.floor(1200 * Math.log2(f1/f2));
 }
 
-// A0 to C8
-tuner.errorMap = {
-  0: {
-    'A': 0, 
-    'A#': 0, 
-    'B': 0
-  },
-  1 : {
-    'C': 0, 
-    'C#': 0,
-    'D': 0, 
-    'D#': 0, 
-    'E': 0, 
-    'F': 0, 
-    'F#': 0, 
-    'G': 0, 
-    'G#': 0, 
-    'A': 0, 
-    'A#': 0, 
-    'B': 0
-  },
-  2 : {
-    'C': 0, 
-    'C#': 0,
-    'D': 0, 
-    'D#': 0, 
-    'E': 0, 
-    'F': 0, 
-    'F#': 0, 
-    'G': 0, 
-    'G#': 0, 
-    'A': 0, 
-    'A#': 0, 
-    'B': 0
-  },
-  3 : {
-    'C': 1, 
-    'C#': 1,
-    'D': 1, 
-    'D#': 1, 
-    'E': 1, 
-    'F': 1, 
-    'F#': 1, 
-    'G': 1, 
-    'G#': 1, 
-    'A': 1, 
-    'A#': 1, 
-    'B': 0
-  },
-  4 : {
-    'C': 1, 
-    'C#': 1,
-    'D': 1, 
-    'D#': 1, 
-    'E': 1, 
-    'F': 1, 
-    'F#': 1, 
-    'G': 1, 
-    'G#': 1, 
-    'A': 1, 
-    'A#': 1, 
-    'B': 1
-  },
-  5 : {
-    'C': 0, 
-    'C#': 1,
-    'D': 1, 
-    'D#': 1, 
-    'E': 1, 
-    'F': 1, 
-    'F#': 1, 
-    'G': 0.5, 
-    'G#': 1, 
-    'A': 1, 
-    'A#': 1, 
-    'B': 1
-  },
-  6 : {
-    'C': 1, 
-    'C#': 0,
-    'D': 0, 
-    'D#': 0, 
-    'E': 0, 
-    'F': 0, 
-    'F#': 0, 
-    'G': 0, 
-    'G#': 0, 
-    'A': 0, 
-    'A#': 0, 
-    'B': 0
-  },
-  7 : {
-    'C': 0, 
-    'C#': 0,
-    'D': 0, 
-    'D#': 0, 
-    'E': 0, 
-    'F': 0, 
-    'F#': 0, 
-    'G': 0, 
-    'G#': 0, 
-    'A': 0, 
-    'A#': 0, 
-    'B': 0
-  },
-  8 : {
-    'C': 0
-  }
-};
-
 tuner.adjustCentsError = (cents, note, octave) => {
 
   if(octave<0||octave>8){
     return cents;
   }
-  
-  var errorAmount = tuner.errorMap[octave][note];
-  if(errorAmount == 'undefined'){
-    return cents;
-  }else {
-    return cents + errorAmount;
-  }
+  var errorAmount = tunerErrorMap[octave][note];
+  return (errorAmount == 'undefined') ? cents : cents + errorAmount;
 }
 
 tuner.setup = async () => {
