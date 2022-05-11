@@ -387,7 +387,7 @@ tuner.startAndSubscribeTuner = () => {
     try {
       tuner.tunerObject = await tuner.setup()
       tuner.tunerObject.start()
-      tuner.tunerObject.subscribe(tunerCallback);
+      tuner.tunerObject.subscribe(tuner.callback);
     } catch (error) {
       tuner.tunerObject = undefined;
     }
