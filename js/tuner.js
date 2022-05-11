@@ -18,8 +18,10 @@ const tuner = {
   C0_PITCH: 16.35, // frequency of lowest note: C0
   THRES: 0.02,
 
-
-
+  tunerObject: {},
+  average_cents: {},
+  average_cents_length: 40,
+  uiCleared: false
 };
 
 // Implements modified ACF2+ algorithm
@@ -217,7 +219,6 @@ tuner.errorMap = {
   8 : {
     'C': 0
   }
-
 };
 
 tuner.adjustCentsError = (cents, note, octave) => {
@@ -278,11 +279,6 @@ tuner.setup = async () => {
   }
 }
 
-tuner.tunerObject = undefined;
-tuner.average_cents = {};
-tuner.average_cents_length = 40;
-tuner.uiCleared = false;
-
 tuner.callback = (data) => {
 
   function findNote(noteName, octave){
@@ -320,13 +316,9 @@ tuner.callback = (data) => {
 
     tuner.uiCleared = false;
 
-    //$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
-      //data.noteFrequency + " " + data.frequency + " " + data.deviation;
-
     volumeView.drawVolume(data.volume);
 
     var note = findNote(data.note, data.octave);
-
 
     if (note !== undefined) {
 
@@ -388,7 +380,7 @@ tuner.callback = (data) => {
   } 
 }
 
-startAndSubscribeTuner = () => {
+tuner.startAndSubscribeTuner = () => {
 
   tuner.average_cents = new Queue();
   ;(async function () {

@@ -14,19 +14,6 @@ const fretboardView = fretboardKit({
 	darkMode: true
 });
 
-startAndSubscribeTuner();
-
-kofi = function(){
-	window.open("https://ko-fi.com/jasonfleischer", "_blank");
-}
-
-info = function(){
-	information.showAlert();
-}
-dismissInfo = function(){
-	information.dismissAlert();
-}
-
 init = function() {
 
 	storage.load();
@@ -39,6 +26,8 @@ init = function() {
 	setupControls();
 	windowResizedEnd();
 	musicKit.changeNoteColors();
+
+	tuner.startAndSubscribeTuner();
 }
 
 function setupControls(){
@@ -194,12 +183,21 @@ function windowResizedEnd(){
 
 }
 
+kofi = function(){
+	window.open("https://ko-fi.com/jasonfleischer", "_blank");
+}
+info = function(){
+	information.showAlert();
+}
+dismissInfo = function(){
+	information.dismissAlert();
+}
+
 function updateUI() {
 	let note = musicKit.all_notes[model.selected_root_note];
 	let scale = new musicKit.Scale(note, model.selected_scale_type);
 
 	$("scale_structure").innerHTML = scale.getLabels().toString().replaceAll(',', ' ');
-	//$("page_name").innerHTML = scale.toString()
 
 	fretboardView.drawScale(scale);
 	pianoView.drawScale(scale);
@@ -220,7 +218,7 @@ function updateUITuneIndicator(cents, color) {
 		$("sharp").style.backgroundColor = "#494949"
 	} 
 }
-function  clearUITuneIndicator() {
+function clearUITuneIndicator() {
 	$("flat").style.backgroundColor = "#494949"
 	$("intune").style.backgroundColor = "#494949"
 	$("sharp").style.backgroundColor = "#494949"
