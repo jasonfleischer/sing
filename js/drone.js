@@ -46,6 +46,7 @@ function playDrone(frequency){
 	}
 
 	const oscillator = new Oscillator(drone.audioCtx, frequency, 1.0, 'sine');
+	oscillator.connectEndNode(drone.compressorNode);
 	drone.oscillatorsDict.set(frequency, oscillator);
 	oscillator.play();
 }
