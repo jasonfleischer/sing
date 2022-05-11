@@ -16,7 +16,7 @@ Oscillator = class Oscillator {
 	}
 
 	connectEndNode(node) {
-		this.gainNode.connect(compressorNode);
+		this.gainNode.connect(node);
 	}
 	
 	play() {
