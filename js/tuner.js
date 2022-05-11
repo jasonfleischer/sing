@@ -279,7 +279,7 @@ tuner.setup = async () => {
 }
 
 tuner.tunerObject = undefined;
-tuner.average_cents = new Queue();
+tuner.average_cents = {};
 tuner.average_cents_length = 40;
 tuner.uiCleared = false;
 
@@ -389,6 +389,8 @@ tuner.callback = (data) => {
 }
 
 startAndSubscribeTuner = () => {
+
+  tuner.average_cents = new Queue();
   ;(async function () {
     try {
       tuner.tunerObject = await tuner.setup()
