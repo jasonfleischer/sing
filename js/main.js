@@ -14,7 +14,7 @@ const fretboardView = fretboardKit({
 	darkMode: true
 });
 
-tuner.startAndSubscribeTuner();
+startAndSubscribeTuner();
 
 kofi = function(){
 	window.open("https://ko-fi.com/jasonfleischer", "_blank");

@@ -388,7 +388,7 @@ tuner.callback = (data) => {
   } 
 }
 
-tuner.startAndSubscribeTuner = () => {
+startAndSubscribeTuner = () => {
   ;(async function () {
     try {
       tuner.tunerObject = await tuner.setup()
