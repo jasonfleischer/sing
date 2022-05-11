@@ -16,7 +16,10 @@ const tuner = {
   MIDI: 69, // the MIDI note number of A4
   A: 2 ** (1 / 12), // the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
   C0_PITCH: 16.35, // frequency of lowest note: C0
-  THRES: 0.02
+  THRES: 0.02,
+
+
+
 };
 
 // Implements modified ACF2+ algorithm
@@ -246,18 +249,6 @@ tuner.setup = async () => {
     analyser.fftSize = tuner.FFT_SIZE
     analyser.smoothingTimeConstant = 0.4;
     audioContext.createMediaStreamSource(stream).connect(analyser)
-
-    /*navigator.permissions.query(
-      { name: 'microphone' }
-    ).then(function(permissionStatus){
-
-      console.log(permissionStatus.state); // granted, denied, prompt
-
-      permissionStatus.onchange = function(){
-          console.log("Permission changed to " + this.state);
-      }
-
-    })*/
   }
 
   const update = () => {
@@ -285,4 +276,126 @@ tuner.setup = async () => {
     subscribe: (fn) => (callbacks = [...callbacks, fn]),
     unsubscribe: (fn) => (callbacks = callbacks.filter((el) => el !== fn)),
   }
+}
+
+tuner.tunerObject = undefined;
+tuner.average_cents = new Queue();
+tuner.average_cents_length = 40;
+tuner.uiCleared = false;
+
+tuner.callback = (data) => {
+
+  function findNote(noteName, octave){
+    let notes = musicKit.all_notes;
+    var i;
+    for (i = 0; i < notes.length; i++) {
+
+      let note = musicKit.all_notes[i];
+      if(note.octave == octave && note.note_name.type.startsWith(noteName)){
+        return note
+      }
+    }
+    return undefined
+  }
+
+  function getCentsColor(cents) {
+
+    var c = Math.abs(parseInt(cents));
+    if (c <= 10) {
+      return "#00ff00";
+    } else if (c > 10 && c < 25) { // yellow to red (11 to 24)
+      let number = parseInt(255 * ((13-(c-11))/13));
+      var greenValueHexStr = number.toString(16);
+      if(greenValueHexStr < 10) {
+        greenValueHexStr = "0" + greenValueHexStr;
+      }
+      return "#ff" + greenValueHexStr+ "00";
+    } else { //c <= 25
+      return "red"
+    } 
+  }
+
+
+  if (data.frequency !== undefined && data.volume >= model.threshold) {
+
+    tuner.uiCleared = false;
+
+    //$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
+      //data.noteFrequency + " " + data.frequency + " " + data.deviation;
+
+    volumeView.drawVolume(data.volume);
+
+    var note = findNote(data.note, data.octave);
+
+
+    if (note !== undefined) {
+
+      //log.i('note found with freq' + note.frequency + " --> "+ data.frequency);
+
+      tuner.average_cents.enqueue(data.cents);
+
+      var cents = data.cents;
+
+      let color = getCentsColor(cents);
+      let midiValue = note.midi_value
+
+      updateUITuneIndicator(cents, color)
+
+
+      $("note").innerHTML = data.note;
+      $("octave").innerHTML = data.octave;
+
+      centsView.drawCents(cents, color);
+
+      pianoView.clearHover();
+      pianoView.drawHoverNote(note, color);
+    
+      fretboardView.clearHover();
+      if(midiValue >= musicKit.guitar_range.min &&
+        midiValue <= musicKit.guitar_range.max) {
+        fretboardView.drawHoverNote(note, color);
+      }
+
+      tunerView.draw(data.frequency);
+
+      if(tuner.average_cents.length() == tuner.average_cents_length){
+
+        let cents = Math.floor(getAverage(tuner.average_cents.toArray()));
+        let color = getCentsColor(cents);
+        centsView.drawAverageCents(cents, color);
+        tuner.average_cents.dequeue();
+      }
+
+    } else {
+      
+      log.e('note is undefined with freq' + data.frequency)
+      
+    }
+  } else {
+
+    if(!tuner.uiCleared){
+      log.i('freq is undefined, clearing state')
+
+      tuner.average_cents.clear();
+      pianoView.clearHover();
+      fretboardView.clearHover();
+      centsView.clear();
+      volumeView.drawVolume(0);
+
+      clearUITuneIndicator()
+      tuner.uiCleared = true;
+    }
+  } 
+}
+
+tuner.startAndSubscribeTuner = () => {
+  ;(async function () {
+    try {
+      tuner.tunerObject = await tuner.setup()
+      tuner.tunerObject.start()
+      tuner.tunerObject.subscribe(tunerCallback);
+    } catch (error) {
+      tuner.tunerObject = undefined;
+    }
+  })()
 }

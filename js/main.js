@@ -1,6 +1,3 @@
-
-let tunerObject = undefined;
-
 const tunerView = new TunerView("tuner");
 const centsView = new CentsView("cents");
 const volumeView = new VolumeView("volume", model.threshold);
@@ -17,130 +14,7 @@ const fretboardView = fretboardKit({
 	darkMode: true
 });
 
-
-let average_cents = new Queue();
-let average_cents_length = 40;
-
-let uiCleared = false;
-
-const callbackExample = data => {
-
-	function findNote(noteName, octave){
-		let notes = musicKit.all_notes;
-		var i;
-		for (i = 0; i < notes.length; i++) {
-
-			let note = musicKit.all_notes[i];
-			if(note.octave == octave && note.note_name.type.startsWith(noteName)){
-				return note
-			}
-		}
-		return undefined
-	}
-
-	function getCentsColor(cents) {
-
-		var c = Math.abs(parseInt(cents));
-		if (c <= 10) {
-			return "#00ff00";
-		} else if (c > 10 && c < 25) { // yellow to red (11 to 24)
-			let number = parseInt(255 * ((13-(c-11))/13));
-			var greenValueHexStr = number.toString(16);
-			if(greenValueHexStr < 10) {
-				greenValueHexStr = "0" + greenValueHexStr;
-			}
-			return "#ff" + greenValueHexStr+ "00";
-		} else { //c <= 25
-			return "red"
-		} 
-	}
-
-
-	if (data.frequency !== undefined && data.volume >= model.threshold) {
-
-		uiCleared = false;
-
-		//$("output").innerHTML = " : " + data.note + data.octave + ' V:' + data.volume//+ " " + parsecents + "c " //+
-			//data.noteFrequency + " " + data.frequency + " " + data.deviation;
-
-		volumeView.drawVolume(data.volume);
-
-		var note = findNote(data.note, data.octave);
-
-
-		if (note !== undefined) {
-
-			//log.i('note found with freq' + note.frequency + " --> "+ data.frequency);
-
-			average_cents.enqueue(data.cents);
-
-			var cents = data.cents;
-
-			let color = getCentsColor(cents);
-			let midiValue = note.midi_value
-
-			updateUITuneIndicator(cents, color)
-
-
-			$("note").innerHTML = data.note;
-			$("octave").innerHTML = data.octave;
-
-			centsView.drawCents(cents, color);
-
-			pianoView.clearHover();
-			pianoView.drawHoverNote(note, color);
-		
-			fretboardView.clearHover();
-			if(midiValue >= musicKit.guitar_range.min &&
-				midiValue <= musicKit.guitar_range.max) {
-				fretboardView.drawHoverNote(note, color);
-			}
-
-			tunerView.draw(data.frequency);
-
-			if(average_cents.length() == average_cents_length){
-
-				let cents = Math.floor(getAverage(average_cents.toArray()));
-				let color = getCentsColor(cents);
-				centsView.drawAverageCents(cents, color);
-				average_cents.dequeue();
-			}
-
-		} else {
-			
-			log.e('note is undefined with freq' + data.frequency)
-			
-		}
-	} else {
-
-		if(!uiCleared){
-			log.i('freq is undefined, clearing state')
-
-			average_cents.clear();
-			pianoView.clearHover();
-			fretboardView.clearHover();
-			centsView.clear();
-			volumeView.drawVolume(0);
-
-			clearUITuneIndicator()
-			uiCleared = true;
-		}
-	}	
-}
-
-function startAndSubscribeTuner() {
-	;(async function () {
-    try {
-      tunerObject = await tuner.setup()
-      tunerObject.start()
-      tunerObject.subscribe(callbackExample);
-    } catch (error) {
-    	tunerObject = undefined;
-    }
-	})()
-}
-
-startAndSubscribeTuner();
+tuner.startAndSubscribeTuner();
 
 kofi = function(){
 	window.open("https://ko-fi.com/jasonfleischer", "_blank");
@@ -332,8 +206,6 @@ function updateUI() {
 }
 
 function updateUITuneIndicator(cents, color) {
-
-
 	if (cents <= -10) {
 		$("flat").style.backgroundColor = color
 		$("intune").style.backgroundColor = "#494949"
@@ -353,8 +225,3 @@ function  clearUITuneIndicator() {
 	$("intune").style.backgroundColor = "#494949"
 	$("sharp").style.backgroundColor = "#494949"
 }
-
-
-
-
-
