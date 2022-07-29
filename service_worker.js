@@ -1,4 +1,4 @@
-const CACHE_NAME = 'v2.2';
+const CACHE_NAME = 'v3';
 const CACHE = [
         '/tuner/index.html',
         '/tuner/css/bundle.css',
